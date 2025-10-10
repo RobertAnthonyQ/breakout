@@ -12,6 +12,47 @@ export const metadata: Metadata = {
   title: "BREAKOUT - La comunidad tech de Latinoamérica",
   description:
     "Conectamos emprendedores, desarrolladores y visionarios tech para crear el futuro de las startups",
+  keywords: [
+    "breakout",
+    "tech community",
+    "latinoamérica",
+    "startups",
+    "desarrolladores",
+    "emprendedores",
+    "networking",
+  ],
+  authors: [{ name: "BREAKOUT" }],
+  creator: "BREAKOUT",
+  publisher: "BREAKOUT",
+  openGraph: {
+    title: "BREAKOUT - La comunidad tech de Latinoamérica",
+    description:
+      "Conectamos emprendedores, desarrolladores y visionarios tech para crear el futuro de las startups",
+    type: "website",
+    locale: "es_LA",
+    siteName: "BREAKOUT",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BREAKOUT - La comunidad tech de Latinoamérica",
+    description:
+      "Conectamos emprendedores, desarrolladores y visionarios tech para crear el futuro de las startups",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    // Agrega aquí tus códigos de verificación cuando los tengas
+    // google: 'tu-codigo-aqui',
+  },
 };
 
 export default function RootLayout({
@@ -20,8 +61,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
-      <body className={`${inter.variable} font-sans antialiased`}>
+    <html lang="es" className="overflow-x-hidden">
+      <body
+        className={`${inter.variable} font-sans antialiased overflow-x-hidden`}
+      >
         {children}
       </body>
     </html>

@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Breakout Landing Page
 
-## Getting Started
+Landing page profesional para Breakout, desarrollada con Next.js 15, React 19 y Tailwind CSS.
 
-First, run the development server:
+## 🚀 Desarrollo Local
 
 ```bash
+# Instalar dependencias
+npm install
+
+# Ejecutar en desarrollo
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build de producción
+npm run build
+
+# Ejecutar producción localmente
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000) para ver el resultado.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Deploy en Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Opción 1: Deploy Automático (Recomendado)
 
-## Learn More
+1. **Push tu código a GitHub**
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   git add .
+   git commit -m "Preparado para producción"
+   git push origin main
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Conecta con Vercel**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   - Ve a [vercel.com/new](https://vercel.com/new)
+   - Importa tu repositorio de GitHub
+   - Vercel detectará automáticamente Next.js
+   - Click en "Deploy"
 
-## Deploy on Vercel
+3. **Configura tu dominio personalizado**
+   - En el Dashboard de Vercel, ve a Settings → Domains
+   - Agrega tu dominio
+   - Sigue las instrucciones para configurar los DNS:
+     - **Si tu dominio está en otro proveedor:** Apunta un registro `A` a `76.76.21.21` o usa `CNAME` apuntando a `cname.vercel-dns.com`
+     - **O transfiere los nameservers** a Vercel (más fácil)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Opción 2: Deploy desde CLI
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Instalar Vercel CLI
+npm i -g vercel
+
+# Login
+vercel login
+
+# Deploy
+vercel --prod
+```
+
+### Variables de Entorno (Opcional)
+
+Si necesitas variables de entorno, créalas en Vercel:
+
+- Settings → Environment Variables
+- Ejemplo: `NEXT_PUBLIC_SITE_URL=https://tu-dominio.com`
+
+## 🛠️ Stack Tecnológico
+
+- **Framework:** Next.js 15 con App Router
+- **React:** 19.1.0
+- **Estilos:** Tailwind CSS 4
+- **Animaciones:** Framer Motion, GSAP
+- **UI Components:** Radix UI
+- **Efectos:** TSParticles, Atropos
+
+## 📝 Scripts Disponibles
+
+- `npm run dev` - Servidor de desarrollo con Turbopack
+- `npm run build` - Build de producción
+- `npm start` - Ejecutar build de producción
+- `npm run lint` - Ejecutar ESLint
+
+## 🌐 Configuración de Dominio
+
+### DNS Records necesarios:
+
+**Opción A - Registro A (IP):**
+
+```
+Type: A
+Name: @
+Value: 76.76.21.21
+```
+
+**Opción B - CNAME (Recomendado):**
+
+```
+Type: CNAME
+Name: @
+Value: cname.vercel-dns.com
+```
+
+**Subdominio www:**
+
+```
+Type: CNAME
+Name: www
+Value: cname.vercel-dns.com
+```
+
+## 📱 Optimizaciones de Producción
+
+✅ Compresión automática activada
+✅ Optimización de imágenes (AVIF, WebP)
+✅ React Strict Mode
+✅ Header de seguridad configurados
+✅ Build optimizado con Turbopack
+
+## 🔒 Seguridad
+
+El proyecto incluye:
+
+- CSP headers configurados
+- Protección contra clickjacking
+- Headers de seguridad optimizados

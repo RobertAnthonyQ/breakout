@@ -118,7 +118,29 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Smooth global color transitions */
+    transition: background-color 900ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 900ms cubic-bezier(0.22, 1, 0.36, 1);
   }
+}
+
+/* Estado global durante la sección de Eventos */
+body.events-light {
+  /* Usar OKLCH para evitar artefactos rojizos en la interpolación */
+  background-color: oklch(0.985 0 0); /* casi blanco */
+  color: oklch(0.1 0 0); /* casi negro */
+}
+
+/* Cambiar color de las etiquetas de Stats cuando el fondo es blanco */
+body.events-light .stat-label {
+  color: oklch(0.1 0 0) !important; /* casi negro */
+  transition: color 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Estado global para la sección WhatIsBreakout */
+body.breakout-dark {
+  background-color: oklch(0.1 0 0); /* casi negro */
+  color: oklch(0.985 0 0); /* casi blanco */
 }
 
 @layer utilities {

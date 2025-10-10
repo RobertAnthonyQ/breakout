@@ -1,12 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import type { Container, Engine } from "@tsparticles/engine";
 
 export default function ParticlesBackground() {
   const [init, setInit] = useState(false);
+  const containerRef = useRef<Container | undefined>();
 
   useEffect(() => {
     initParticlesEngine(async (engine: Engine) => {
@@ -17,8 +18,27 @@ export default function ParticlesBackground() {
   }, []);
 
   const particlesLoaded = useCallback(async (container?: Container) => {
-    console.log("Particles loaded", container);
+    containerRef.current = container;
   }, []);
+
+  // Pausar/Reanudar según clase en body
+  useEffect(() => {
+    if (!init) return;
+    const body = document.body;
+
+    const applyState = () => {
+      const disabled = body.classList.contains("disable-particles");
+      const c = containerRef.current;
+      if (!c) return;
+      if (disabled) c.pause();
+      else c.play();
+    };
+
+    applyState();
+    const observer = new MutationObserver(applyState);
+    observer.observe(body, { attributes: true, attributeFilter: ["class"] });
+    return () => observer.disconnect();
+  }, [init]);
 
   if (!init) return null;
 
@@ -34,6 +54,8 @@ export default function ParticlesBackground() {
           },
         },
         fpsLimit: 120,
+        pauseOnBlur: true,
+        pauseOnOutsideViewport: true,
         interactivity: {
           events: {
             onClick: {

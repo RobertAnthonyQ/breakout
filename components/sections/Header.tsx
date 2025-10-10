@@ -26,35 +26,40 @@ export default function Header() {
         {/* Navigation */}
         <nav className="hidden lg:flex items-center gap-40">
           <a
-            href="#speakers"
+            href="#about"
             className="text-white hover:text-gray-300 transition-colors text-sm font-semibold uppercase tracking-[0.15em]"
           >
-            SPEAKERS
+            About Us
           </a>
           <a
-            href="#agenda"
+            href="#events"
             className="text-white hover:text-gray-300 transition-colors text-sm font-semibold uppercase tracking-[0.15em]"
           >
-            AGENDA
+            Events
           </a>
           <a
-            href="#venue"
+            href="#community"
             className="text-white hover:text-gray-300 transition-colors text-sm font-semibold uppercase tracking-[0.15em]"
           >
-            VENUE
+            Community
           </a>
           <a
-            href="#sponsors"
+            href="#join"
             className="text-white hover:text-gray-300 transition-colors text-sm font-semibold uppercase tracking-[0.15em]"
           >
-            SPONSORS
+            Join
           </a>
         </nav>
 
         {/* CTA Button */}
-        <Button className="bg-[#214fdd] hover:bg-[#1a3fb8] text-white font-bold px-6 py-2.5 rounded-full text-sm transition-all duration-300 group hidden lg:flex items-center gap-2">
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          Únete Ahora
+        <Button
+          asChild
+          className="bg-[#214fdd] hover:bg-[#1a3fb8] text-white font-bold px-6 py-2.5 rounded-full text-sm transition-all duration-300 group hidden lg:flex items-center gap-2"
+        >
+          <a href="#join">
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            Únete Ahora
+          </a>
         </Button>
 
         {/* Mobile menu button */}
