@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -243,9 +244,11 @@ export default function Events() {
                     {/* Imagen - Primera sección (1/3) */}
                     <CardItem translateZ="100" className="w-full relative">
                       <div className="w-full aspect-[4/3] relative overflow-hidden">
-                        <img
+                        <Image
                           src={mainEvent.image}
                           alt={mainEvent.title}
+                          width={800}
+                          height={600}
                           className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-105"
                         />
                         <div
@@ -351,9 +354,11 @@ export default function Events() {
                           boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                         }}
                       >
-                        <img
+                        <Image
                           src={event.image}
                           alt={event.title}
+                          width={400}
+                          height={128}
                           className="w-full h-32 object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-3">
