@@ -20,6 +20,7 @@ export default function JoinCommunity() {
   const shouldReduceMotion = useReducedMotion();
 
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -32,6 +33,13 @@ export default function JoinCommunity() {
 
   useEffect(() => {
     setMounted(true);
+    if (typeof window !== "undefined") {
+      const mq = window.matchMedia("(max-width: 768px)");
+      const apply = () => setIsMobile(mq.matches);
+      apply();
+      mq.addEventListener?.("change", apply);
+      return () => mq.removeEventListener?.("change", apply);
+    }
   }, []);
 
   // Animación de entrada de la sección y esfera
@@ -131,7 +139,9 @@ export default function JoinCommunity() {
 
     const sphere = sphereRef.current;
     const wordElements = sphere.querySelectorAll(".sphere-word");
-    const radius = 280;
+    const containerRect = sphere.getBoundingClientRect();
+    const containerSize = Math.min(containerRect.width, containerRect.height);
+    const radius = Math.max(140, containerSize * 0.46);
     const total = wordElements.length;
 
     wordElements.forEach((el, i) => {
@@ -293,7 +303,7 @@ export default function JoinCommunity() {
         >
           <h2
             ref={titleRef}
-            className="text-5xl md:text-6xl lg:text-7xl font-black text-white text-center mb-4 tracking-tight whitespace-nowrap"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white text-center mb-4 tracking-tight leading-tight"
             style={{
               fontFamily: "system-ui, -apple-system, sans-serif",
               letterSpacing: "-0.02em",
@@ -304,16 +314,16 @@ export default function JoinCommunity() {
               COMUNIDAD
             </span>
           </h2>
-          <p className="text-center text-gray-400 mb-10">
+          <p className="text-center text-gray-400 mb-8 md:mb-10 text-sm md:text-base">
             Llena el formulario para que tu nombre aparezca en la esfera.
           </p>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Columna izquierda: Esfera de nombres */}
             <div className="flex flex-col items-center justify-center">
               {/* Esfera 3D con nombres */}
               <div
-                className="relative w-full max-w-[600px] h-[600px] flex items-center justify-center"
+                className="relative w-full max-w-[320px] h-[320px] sm:max-w-[420px] sm:h-[420px] md:max-w-[520px] md:h-[520px] lg:max-w-[600px] lg:h-[600px] flex items-center justify-center"
                 style={{
                   perspective: "1200px",
                 }}
@@ -331,7 +341,10 @@ export default function JoinCommunity() {
                       key={index}
                       className="sphere-word absolute left-1/2 top-1/2 text-white font-bold cursor-pointer select-none whitespace-nowrap transition-colors duration-300 will-change-transform"
                       style={{
-                        fontSize: `${1.2 + Math.random() * 0.6}rem`,
+                        fontSize: `${(isMobile
+                          ? 0.9 + Math.random() * 0.4
+                          : 1.1 + Math.random() * 0.6
+                        ).toFixed(2)}rem`,
                         transform: "translate(-50%, -50%)",
                         transformStyle: "preserve-3d",
                         fontFamily: "system-ui, -apple-system, sans-serif",

@@ -46,7 +46,7 @@ export default function ParticlesBackground() {
     <Particles
       id="tsparticles"
       particlesLoaded={particlesLoaded}
-      style={{ pointerEvents: "none" }}
+      style={{ pointerEvents: "none", position: "absolute", inset: 0 }}
       options={{
         background: {
           color: {
@@ -109,7 +109,7 @@ export default function ParticlesBackground() {
               width: 1920,
               height: 1080,
             },
-            value: 150,
+            value: 100,
           },
           opacity: {
             value: 0.5,
@@ -123,7 +123,6 @@ export default function ParticlesBackground() {
         },
         detectRetina: true,
       }}
-      className="absolute inset-0 z-10"
     />
   );
 }

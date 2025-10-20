@@ -11,7 +11,7 @@ export default function Hero() {
       {/* Niebla de fondo */}
       <div className="absolute inset-0 gradient-bg z-0" />
       {/* Partículas por encima de la niebla y por debajo del contenido */}
-      <div className="absolute inset-0 z-10 pointer-events-none">
+      <div className="absolute inset-0 z-[5] pointer-events-none">
         <ParticlesBackground />
       </div>
       <div className="relative z-20 container mx-auto px-4 text-center">
@@ -32,44 +32,91 @@ export default function Hero() {
                 },
               },
             }}
-            className="text-7xl md:text-8xl lg:text-[10rem] xl:text-[13rem] font-bold tracking-tight mb-10 text-white leading-none"
+            className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold tracking-tight mb-10 text-white leading-none"
             style={{
               fontWeight: 700,
               letterSpacing: "-0.02em",
             }}
           >
-            {"BREAKOUT".split("").map((char, index) => (
-              <motion.span
-                key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 50 },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      duration: 0.6,
-                      ease: "easeOut",
+            {/* En móvil muestra BREAK y COMMUNITY en dos líneas */}
+            <span className="block sm:hidden">
+              {"BREAKOUT".split("").map((char, index) => (
+                <motion.span
+                  key={`break-${index}`}
+                  variants={{
+                    hidden: { opacity: 0, y: 50 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        duration: 0.6,
+                        ease: "easeOut",
+                      },
                     },
-                  },
-                }}
-                className="inline-block"
-              >
-                {char}
-              </motion.span>
-            ))}
+                  }}
+                  className="inline-block"
+                >
+                  {char}
+                </motion.span>
+              ))}
+              <br />
+              <span className="text-4xl">
+                {"COMMUNITY".split("").map((char, index) => (
+                  <motion.span
+                    key={`community-${index}`}
+                    variants={{
+                      hidden: { opacity: 0, y: 50 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                          duration: 0.6,
+                          ease: "easeOut",
+                        },
+                      },
+                    }}
+                    className="inline-block"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+            </span>
+            {/* En pantallas más grandes muestra BREAKOUT */}
+            <span className="hidden sm:block">
+              {"BREAKOUT".split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, y: 50 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        duration: 0.6,
+                        ease: "easeOut",
+                      },
+                    },
+                  }}
+                  className="inline-block"
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </span>
           </motion.h1>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9 }}
-            className="mt-16"
+            className="mt-8 sm:mt-12 md:mt-16"
           >
             <Button
               size="lg"
-              className="group bg-[#214fdd] hover:bg-[#1a3fb8] text-white font-bold px-8 py-6 rounded-full text-lg transition-all duration-300"
+              className="group bg-[#214fdd] hover:bg-[#1a3fb8] text-white font-bold px-8 py-5 sm:px-10 sm:py-7 rounded-full text-lg sm:text-xl transition-all duration-300"
             >
-              <ArrowRight className="mr-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="mr-2 w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform" />
               Únete Ahora
             </Button>
           </motion.div>
@@ -80,16 +127,22 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
-          className="absolute -bottom-40 left-0 right-0 flex justify-between items-end px-8 md:px-12 text-white"
+          className="absolute -bottom-40 sm:-bottom-48 md:-bottom-56 lg:-bottom-44 xl:-bottom-40 left-0 right-0 flex justify-between items-end px-4 sm:px-8 md:px-12 text-white"
         >
           <div className="text-left">
-            <p className="text-xl md:text-2xl font-semibold">INNOVATION</p>
+            <p className="text-xs sm:text-sm md:text-base lg:text-xl font-semibold">
+              INNOVATION
+            </p>
           </div>
           <div className="text-center">
-            <p className="text-xl md:text-2xl font-semibold">STARTUPS</p>
+            <p className="text-xs sm:text-sm md:text-base lg:text-xl font-semibold">
+              STARTUPS
+            </p>
           </div>
           <div className="text-right">
-            <p className="text-xl md:text-2xl font-semibold">TECHNOLOGY</p>
+            <p className="text-xs sm:text-sm md:text-base lg:text-xl font-semibold">
+              TECHNOLOGY
+            </p>
           </div>
         </motion.div>
       </div>

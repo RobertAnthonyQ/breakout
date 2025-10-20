@@ -207,11 +207,11 @@ export default function Events() {
       className="relative w-full py-2 md:py-16"
       aria-label="Eventos de Breakout"
     >
-      <div className="container mx-auto px-6 md:px-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-10">
         {/* Título */}
         <h2
           ref={titleRef}
-          className="text-6xl sm:text-7xl md:text-8xl font-black text-center mb-12 md:mb-16 tracking-tight uppercase"
+          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-center mb-10 md:mb-16 tracking-tight uppercase"
           style={{
             color: "#1a1a1a",
             perspective: "1000px",
@@ -224,8 +224,8 @@ export default function Events() {
         </h2>
 
         {/* Evento Principal */}
-        <div ref={heroRef} className="mb-12 md:mb-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto items-start">
+        <div ref={heroRef} className="mb-10 md:mb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-7xl mx-auto items-start">
             {/* Columna Izquierda - Card 3D con imagen */}
             <div className="w-full">
               <CardContainer className="inter-var w-full">
@@ -271,7 +271,7 @@ export default function Events() {
                           {mainEvent.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="px-6 py-3 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                              className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-full text-[10px] sm:text-xs font-bold tracking-wider uppercase transition-all duration-300 hover:scale-105 hover:shadow-lg"
                               style={{
                                 backgroundColor: "#ffffff",
                                 color: "#214fdd",
@@ -295,7 +295,7 @@ export default function Events() {
                       >
                         <a
                           href={mainEvent.registrationLink}
-                          className="group/btn flex items-center justify-center gap-3 w-full px-8 py-5 rounded-2xl text-white font-black uppercase tracking-wider transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 text-sm"
+                          className="group/btn flex items-center justify-center gap-3 w-full px-6 py-4 sm:px-8 sm:py-5 rounded-2xl text-white font-black uppercase tracking-wider transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 text-xs sm:text-sm"
                           style={{
                             backgroundColor: "#214fdd",
                             boxShadow:
@@ -305,7 +305,7 @@ export default function Events() {
                         >
                           <span>Registrarse</span>
                           <svg
-                            className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1"
+                            className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover/btn:translate-x-1"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -378,7 +378,7 @@ export default function Events() {
               {/* Título y descripción */}
               <div>
                 <h3
-                  className="text-5xl md:text-6xl lg:text-7xl font-black mb-6 uppercase"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-6 uppercase"
                   style={{
                     color: "#1a1a1a",
                     letterSpacing: "-0.03em",
@@ -389,7 +389,7 @@ export default function Events() {
                   {mainEvent.title}
                 </h3>
                 <p
-                  className="text-gray-600 text-xl leading-relaxed font-light"
+                  className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed font-light"
                   style={{ letterSpacing: "-0.01em" }}
                 >
                   {mainEvent.description}
@@ -423,7 +423,7 @@ export default function Events() {
                       FECHA
                     </p>
                     <p
-                      className="text-2xl font-black tracking-tight"
+                      className="text-xl sm:text-2xl font-black tracking-tight"
                       style={{
                         color: "#1a1a1a",
                         letterSpacing: "-0.02em",
@@ -459,7 +459,7 @@ export default function Events() {
                       HORARIO
                     </p>
                     <p
-                      className="text-2xl font-black tracking-tight"
+                      className="text-xl sm:text-2xl font-black tracking-tight"
                       style={{
                         color: "#1a1a1a",
                         letterSpacing: "-0.02em",
@@ -501,7 +501,7 @@ export default function Events() {
                       UBICACIÓN
                     </p>
                     <p
-                      className="text-2xl font-black tracking-tight"
+                      className="text-xl sm:text-2xl font-black tracking-tight"
                       style={{
                         color: "#1a1a1a",
                         letterSpacing: "-0.02em",
