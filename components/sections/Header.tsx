@@ -67,7 +67,7 @@ export default function Header() {
           asChild
           className="bg-[#214fdd] hover:bg-[#1a3fb8] text-white font-bold px-6 py-2.5 rounded-full text-sm transition-all duration-300 group hidden lg:flex items-center gap-2"
         >
-          <a href="#join">
+          <a href="/form">
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             Únete Ahora
           </a>
@@ -144,7 +144,7 @@ export default function Header() {
                 className="bg-[#214fdd] hover:bg-[#1a3fb8] text-white font-bold px-8 py-6 rounded-full text-lg transition-all duration-300 group mt-8"
               >
                 <a
-                  href="#join"
+                  href="/form"
                   onClick={closeMenu}
                   className="flex items-center gap-2"
                 >
