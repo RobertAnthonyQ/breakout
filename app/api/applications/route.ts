@@ -25,6 +25,10 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
+    console.log(
+      "[applications][POST] Raw request body:",
+      JSON.stringify(body, null, 2)
+    );
 
     // Validar campos requeridos
     const nombre = body?.nombre?.toString().trim();
@@ -36,6 +40,18 @@ export async function POST(req: NextRequest) {
     const linkedin = body?.linkedin?.toString().trim();
     const areaInteres = body?.areaInteres?.toString().trim();
     const porQue = body?.porQue?.toString().trim();
+
+    console.log("[applications][POST] Processed fields:", {
+      nombre,
+      apellidos,
+      cel,
+      facultad,
+      semestre,
+      correoPUCP,
+      linkedin,
+      areaInteres,
+      porQue,
+    });
 
     if (
       !nombre ||
@@ -85,6 +101,11 @@ export async function POST(req: NextRequest) {
       ],
     };
 
+    console.log(
+      "[applications][POST] Payload to Airtable:",
+      JSON.stringify(payload, null, 2)
+    );
+
     const res = await fetch(url, {
       method: "POST",
       headers: {
@@ -94,9 +115,21 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify(payload),
     });
 
+    console.log("[applications][POST] Airtable response status:", res.status);
+    console.log(
+      "[applications][POST] Airtable response headers:",
+      Object.fromEntries(res.headers.entries())
+    );
+
     if (!res.ok) {
       const text = await res.text();
-      console.error("[applications][POST] Airtable error", res.status, text);
+      console.error("[applications][POST] Airtable error details:", {
+        status: res.status,
+        statusText: res.statusText,
+        responseText: text,
+        url: url,
+        payload: JSON.stringify(payload, null, 2),
+      });
       return NextResponse.json(
         {
           error: "Airtable request failed",
@@ -108,6 +141,10 @@ export async function POST(req: NextRequest) {
     }
 
     const data = await res.json();
+    console.log(
+      "[applications][POST] Airtable success response:",
+      JSON.stringify(data, null, 2)
+    );
     return NextResponse.json({ ok: true, record: data.records?.[0] || null });
   } catch (e) {
     const message = e instanceof Error ? e.message : "Unknown error";

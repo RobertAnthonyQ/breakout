@@ -56,15 +56,13 @@ const AREAS_INTERES = [
       "Se encarga de gestionar formularios, mantener plataformas digitales y desarrollar herramientas o sitios web",
   },
   {
-    value:
-      "People & Culture: Fortalece la cultura Breakout, impulsa la integración del equipo y asegura que cada miembro viva una experiencia formativa, colaborativa y motivadora dentro de la comunidad.",
+    value: "People & Culture",
     label: "People & Culture",
     description:
       "Fortalece la cultura Breakout, impulsa la integración del equipo y asegura que cada miembro viva una experiencia formativa, colaborativa y motivadora dentro de la comunidad",
   },
   {
-    value:
-      "Producto: Investiga el ecosistema de innovación y emprendimiento en la PUCP, transforma datos en estrategias y genera oportunidades para potenciar el impacto y crecimiento de Breakout",
+    value: "Producto",
     label: "Producto",
     description:
       "Investiga el ecosistema de innovación y emprendimiento en la PUCP, transforma datos en estrategias y genera oportunidades para potenciar el impacto y crecimiento de Breakout",
