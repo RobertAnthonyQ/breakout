@@ -64,7 +64,7 @@ const AREAS_INTERES = [
   },
   {
     value:
-      "Producto: Investiga el ecosistema de innovación y emprendimiento en la PUCP, transforma datos en estrategias y genera oportunidades para potenciar el impacto y crecimiento de Breakout.",
+      "Producto: Investiga el ecosistema de innovación y emprendimiento en la PUCP, transforma datos en estrategias y genera oportunidades para potenciar el impacto y crecimiento de Breakout",
     label: "Producto",
     description:
       "Investiga el ecosistema de innovación y emprendimiento en la PUCP, transforma datos en estrategias y genera oportunidades para potenciar el impacto y crecimiento de Breakout",
