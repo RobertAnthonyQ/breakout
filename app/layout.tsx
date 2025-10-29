@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "BREAKOUT - La comunidad tech de Latinoamérica",
+  title: "BREAKOUT - La comunidad de founders de Latinoamérica",
   description:
     "Conectamos emprendedores, desarrolladores y visionarios tech para crear el futuro de las startups",
   keywords: [
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   creator: "BREAKOUT",
   publisher: "BREAKOUT",
   openGraph: {
-    title: "BREAKOUT - La comunidad tech de Latinoamérica",
+    title: "BREAKOUT - La comunidad de founders de Latinoamérica",
     description:
       "Conectamos emprendedores, desarrolladores y visionarios tech para crear el futuro de las startups",
     type: "website",
@@ -34,11 +34,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BREAKOUT - La comunidad tech de Latinoamérica",
+    title: "BREAKOUT - La comunidad de founders de Latinoamérica",
     description:
       "Conectamos emprendedores, desarrolladores y visionarios tech para crear el futuro de las startups",
   },
   robots: {
+    
     index: true,
     follow: true,
     googleBot: {
