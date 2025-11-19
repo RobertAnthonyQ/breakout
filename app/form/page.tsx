@@ -62,6 +62,18 @@ export default function ApplicationForm() {
     return () => document.removeEventListener("mousedown", handleOutside);
   }, []);
 
+  // Bloquear scroll cuando el modal está abierto
+  useEffect(() => {
+    if (submitStatus === "success") {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [submitStatus]);
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -159,6 +171,61 @@ export default function ApplicationForm() {
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden">
+      {/* Modal de éxito */}
+      {submitStatus === "success" && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-in fade-in duration-300">
+          {/* Overlay */}
+          <div
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+            onClick={() => setSubmitStatus("idle")}
+          />
+
+          {/* Contenido del modal */}
+          <div className="relative bg-gradient-to-b from-green-500/10 to-green-600/5 border-2 border-green-500/40 rounded-2xl p-6 sm:p-8 md:p-10 max-w-md w-full shadow-2xl animate-in zoom-in-95 duration-300">
+            {/* Icono de éxito */}
+            <div className="flex justify-center mb-6">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-green-500/20 flex items-center justify-center border-2 border-green-500/50 animate-in zoom-in duration-500">
+                <svg
+                  className="w-10 h-10 sm:w-12 sm:h-12 text-green-400"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={3}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+            </div>
+
+            {/* Título */}
+            <h2 className="text-2xl sm:text-3xl font-black text-center text-green-400 mb-4">
+              ¡Aplicación Enviada!
+            </h2>
+
+            {/* Mensaje */}
+            <p className="text-gray-300 text-center text-base sm:text-lg leading-relaxed mb-8">
+              Tu aplicación al Fellowship ha sido enviada exitosamente.
+              Revisaremos tu perfil y nos pondremos en contacto pronto.
+            </p>
+
+            {/* Botón cerrar */}
+            <button
+              onClick={() => setSubmitStatus("idle")}
+              className="w-full bg-[#214fdd] hover:bg-[#1a3fb8] text-white font-bold py-4 rounded-xl text-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+              style={{
+                boxShadow: "0 4px 20px rgba(33, 79, 221, 0.4)",
+              }}
+            >
+              Entendido
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Fondo con gradiente */}
       <div className="absolute inset-0 gradient-bg z-0" />
 
@@ -211,18 +278,9 @@ export default function ApplicationForm() {
               boxShadow: "0 8px 32px rgba(33, 79, 221, 0.12)",
             }}
           >
-            {submitStatus === "success" && (
-              <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
-                <p className="text-green-400 text-center text-sm sm:text-base">
-                  ¡Aplicación al Fellowship enviada exitosamente! Revisaremos tu
-                  perfil y nos pondremos en contacto pronto.
-                </p>
-              </div>
-            )}
-
             {submitStatus === "error" && (
-              <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-                <p className="text-red-400 text-center text-sm sm:text-base">
+              <div className="mb-4 sm:mb-6 p-4 sm:p-5 bg-red-500/10 border-2 border-red-500/40 rounded-lg animate-in fade-in slide-in-from-top-4 duration-500">
+                <p className="text-red-400 text-center text-base sm:text-lg font-semibold">
                   {errorMessage}
                 </p>
               </div>
