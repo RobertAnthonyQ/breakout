@@ -38,8 +38,8 @@ export async function POST(req: NextRequest) {
     const semestre = body?.semestre?.toString().trim();
     const correoPUCP = body?.correoPUCP?.toString().trim();
     const linkedin = body?.linkedin?.toString().trim();
-    const areaInteres = body?.areaInteres?.toString().trim();
-    const porQue = body?.porQue?.toString().trim();
+    const cvPortafolio = body?.cvPortafolio?.toString().trim();
+    const proyectoIdea = body?.proyectoIdea?.toString().trim();
 
     console.log("[applications][POST] Processed fields:", {
       nombre,
@@ -49,8 +49,8 @@ export async function POST(req: NextRequest) {
       semestre,
       correoPUCP,
       linkedin,
-      areaInteres,
-      porQue,
+      cvPortafolio,
+      proyectoIdea,
     });
 
     if (
@@ -60,8 +60,8 @@ export async function POST(req: NextRequest) {
       !facultad ||
       !semestre ||
       !correoPUCP ||
-      !areaInteres ||
-      !porQue
+      !cvPortafolio ||
+      !proyectoIdea
     ) {
       return NextResponse.json(
         { error: "Todos los campos son requeridos excepto LinkedIn" },
@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
       apellidos,
       facultad,
       semestre,
-      areaInteres,
+      cvPortafolio,
     });
 
     const payload = {
@@ -94,8 +94,8 @@ export async function POST(req: NextRequest) {
             Semestre: semestre,
             "Correo PUCP": correoPUCP,
             ...(linkedin ? { LinkedIn: linkedin } : {}),
-            "Área de interés": areaInteres,
-            "¿Por qué quieres ser parte de Breakout?": porQue,
+            "CV o Portafolio": cvPortafolio,
+            "Proyecto o Idea": proyectoIdea,
           },
         },
       ],

@@ -39,7 +39,7 @@ const mainEvent: Event = {
   image: "/images/events/evento-19-nov-25.png",
   tags: ["Innovación", "Latinoamérica", "Panel"],
   isPast: false,
-  registrationLink: "https://luma.com/ozb7ghkp",
+  registrationLink: "/form",
   location: {
     name: "Pontificia Universidad Católica del Perú",
     address: "Av. Universitaria 1801, San Miguel 15088, Peru - Aula B100",
@@ -61,7 +61,7 @@ const pastEvents: Event[] = [
     image: "/images/events/evento-05-oct-25.jpg",
     tags: ["Networking", "Ecosystem", "Young Talents"],
     isPast: false,
-    registrationLink: "https://luma.com/ozb7ghkp",
+    registrationLink: "/form",
   },
   {
     id: "2",
@@ -322,7 +322,7 @@ export default function Events() {
                         className="w-full flex items-center justify-center"
                       >
                         <a
-                          href={mainEvent.registrationLink}
+                          href="/form"
                           className="group/btn flex items-center justify-center gap-3 w-full px-6 py-4 sm:px-8 sm:py-5 rounded-2xl text-white font-black uppercase tracking-wider transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 text-xs sm:text-sm"
                           style={{
                             backgroundColor: "#214fdd",
@@ -331,7 +331,7 @@ export default function Events() {
                             letterSpacing: "0.14em",
                           }}
                         >
-                          <span>Registrarse</span>
+                          <span>Aplicar al Fellowship</span>
                           <svg
                             className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover/btn:translate-x-1"
                             fill="none"

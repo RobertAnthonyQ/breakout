@@ -67,9 +67,9 @@ export default function Header() {
           asChild
           className="bg-[#214fdd] hover:bg-[#1a3fb8] text-white font-bold px-6 py-2.5 rounded-full text-sm transition-all duration-300 group hidden lg:flex items-center gap-2"
         >
-          <a href="https://luma.com/ozb7ghkp">
+          <a href="/form">
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            Únete Ahora
+            Aplicar al Fellowship
           </a>
         </Button>
 
@@ -144,12 +144,12 @@ export default function Header() {
                 className="bg-[#214fdd] hover:bg-[#1a3fb8] text-white font-bold px-8 py-6 rounded-full text-lg transition-all duration-300 group mt-8"
               >
                 <a
-                  href="https://luma.com/ozb7ghkp"
+                  href="/form"
                   onClick={closeMenu}
                   className="flex items-center gap-2"
                 >
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  Únete Ahora
+                  Aplicar al Fellowship
                 </a>
               </Button>
             </nav>

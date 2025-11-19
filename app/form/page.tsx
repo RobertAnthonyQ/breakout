@@ -26,49 +26,6 @@ const SEMESTRES = [
   "Post grado",
 ];
 
-const AREAS_INTERES = [
-  {
-    value:
-      "Marketing: Apoya en la creación de contenido, diseño de publicaciones y gestión de redes sociales para fortalecer la comunicación y presencia de la organización.",
-    label: "Marketing",
-    description:
-      "Apoya en la creación de contenido, diseño de publicaciones y gestión de redes sociales para fortalecer la comunicación y presencia de la organización",
-  },
-  {
-    value:
-      "Partnerships: Colabora en la búsqueda, desarrollo y mantenimiento de alianzas estratégicas con organizaciones, empresas y comunidades.",
-    label: "Partnerships",
-    description:
-      "Colabora en la búsqueda, desarrollo y mantenimiento de alianzas estratégicas con organizaciones, empresas y comunidades",
-  },
-  {
-    value:
-      "Proyectos: Brinda apoyo en la organización de eventos, investigaciones (research) y programas como fellowships, asegurando una ejecución efectiva.",
-    label: "Proyectos",
-    description:
-      "Brinda apoyo en la organización de eventos, investigaciones (research) y programas como fellowships, asegurando una ejecución efectiva",
-  },
-  {
-    value:
-      "TI (Tecnologías de la Información): Se encarga de gestionar formularios, mantener plataformas digitales y desarrollar herramientas o sitios web.",
-    label: "TI (Tecnologías de la Información)",
-    description:
-      "Se encarga de gestionar formularios, mantener plataformas digitales y desarrollar herramientas o sitios web",
-  },
-  {
-    value: "People & Culture",
-    label: "People & Culture",
-    description:
-      "Fortalece la cultura Breakout, impulsa la integración del equipo y asegura que cada miembro viva una experiencia formativa, colaborativa y motivadora dentro de la comunidad",
-  },
-  {
-    value: "Producto",
-    label: "Producto",
-    description:
-      "Investiga el ecosistema de innovación y emprendimiento en la PUCP, transforma datos en estrategias y genera oportunidades para potenciar el impacto y crecimiento de Breakout",
-  },
-];
-
 export default function ApplicationForm() {
   const [formData, setFormData] = useState({
     nombre: "",
@@ -78,8 +35,8 @@ export default function ApplicationForm() {
     semestre: "",
     correoPUCP: "",
     linkedin: "",
-    areaInteres: "",
-    porQue: "",
+    cvPortafolio: "",
+    proyectoIdea: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -187,8 +144,8 @@ export default function ApplicationForm() {
         semestre: "",
         correoPUCP: "",
         linkedin: "",
-        areaInteres: "",
-        porQue: "",
+        cvPortafolio: "",
+        proyectoIdea: "",
       });
     } catch (error) {
       setSubmitStatus("error");
@@ -234,14 +191,13 @@ export default function ApplicationForm() {
           {/* Título */}
           <div className="text-center mb-8 sm:mb-12">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight mb-3 sm:mb-4">
-              APLICA A{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#214fdd] to-[#4a6fff]">
-                BREAKOUT
+                BREAKOUT FELLOWSHIP
               </span>
             </h1>
             <p className="text-gray-400 text-base sm:text-lg px-4">
-              Completa el formulario para formar parte de nuestra comunidad de
-              innovadores
+              Completa el formulario para ser parte del programa de desarrollo
+              de innovadores y emprendedores
             </p>
           </div>
 
@@ -258,8 +214,8 @@ export default function ApplicationForm() {
             {submitStatus === "success" && (
               <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                 <p className="text-green-400 text-center text-sm sm:text-base">
-                  ¡Aplicación enviada exitosamente! Nos pondremos en contacto
-                  pronto.
+                  ¡Aplicación al Fellowship enviada exitosamente! Revisaremos tu
+                  perfil y nos pondremos en contacto pronto.
                 </p>
               </div>
             )}
@@ -513,82 +469,66 @@ export default function ApplicationForm() {
                 />
               </div>
 
-              {/* Área de interés */}
+              {/* CV/Portafolio */}
               <div>
                 <label
-                  htmlFor="areaInteres"
+                  htmlFor="cvPortafolio"
                   className="block text-sm font-medium text-gray-300 mb-2"
                 >
-                  Área de interés <span className="text-red-400">*</span>
+                  CV o Portafolio <span className="text-red-400">*</span>
                 </label>
-                <select
-                  id="areaInteres"
-                  name="areaInteres"
+                <Input
+                  id="cvPortafolio"
+                  name="cvPortafolio"
+                  type="text"
                   required
-                  value={formData.areaInteres}
+                  value={formData.cvPortafolio}
                   onChange={handleChange}
-                  className="w-full bg-black/50 border border-gray-700 text-white rounded-md px-3 py-3 focus:border-[#214fdd] focus:ring-[#214fdd] focus:outline-none focus:ring-2"
-                  style={{ minHeight: "48px", fontSize: "16px" }}
-                >
-                  <option value="" className="bg-black">
-                    Selecciona un área
-                  </option>
-                  {AREAS_INTERES.map((area) => (
-                    <option
-                      key={area.value}
-                      value={area.value}
-                      className="bg-black py-2"
-                    >
-                      {area.label}
-                    </option>
-                  ))}
-                </select>
-                {formData.areaInteres && (
-                  <p className="mt-2 text-xs text-gray-400">
-                    {
-                      AREAS_INTERES.find(
-                        (a) => a.value === formData.areaInteres
-                      )?.description
-                    }
-                  </p>
-                )}
+                  placeholder="https://drive.google.com/... o tu portafolio web"
+                  className="w-full bg-black/50 border-gray-p700 text-white placeholder:text-gray-500 focus:border-[#214fdd] focus:ring-[#214fdd]"
+                  style={{ height: "48px", fontSize: "16px" }}
+                />
+                <p className="mt-1 text-xs text-gray-500">
+                  Comparte un enlace a tu CV o portafolio (Google Drive, Notion,
+                  web personal, etc.)
+                </p>
               </div>
 
-              {/* Por qué quieres ser parte */}
+              {/* Proyecto o Idea */}
               <div>
                 <label
-                  htmlFor="porQue"
+                  htmlFor="proyectoIdea"
                   className="block text-sm font-medium text-gray-300 mb-2"
                 >
-                  ¿Por qué quieres ser parte de Breakout?{" "}
+                  Cuéntanos porqué quieres unirte al Fellowship{" "}
                   <span className="text-red-400">*</span>
                 </label>
                 <textarea
-                  id="porQue"
-                  name="porQue"
+                  id="proyectoIdea"
+                  name="proyectoIdea"
                   required
-                  value={formData.porQue}
+                  value={formData.proyectoIdea}
                   onChange={handleChange}
-                  placeholder="Cuéntanos qué te motiva a unirte a Breakout y qué esperas aportar a la comunidad..."
+                  placeholder="Me gustaría unirme al Fellowship porque..."
                   rows={6}
                   className="w-full bg-black/50 border border-gray-700 text-white placeholder:text-gray-500 rounded-md px-3 py-3 focus:border-[#214fdd] focus:ring-[#214fdd] focus:outline-none focus:ring-2 resize-none"
                   style={{ fontSize: "16px" }}
                 />
                 <p className="mt-1 text-xs text-gray-500">
-                  Mínimo 50 caracteres ({formData.porQue.length}/50)
+                  Mínimo 100 caracteres ({formData.proyectoIdea.length}/100)
                 </p>
               </div>
 
               {/* Botón Submit */}
               <Button
                 type="submit"
-                disabled={isSubmitting || formData.porQue.length < 50}
+                disabled={isSubmitting || formData.proyectoIdea.length < 100}
                 className="w-full bg-[#214fdd] disabled:opacity-60 disabled:cursor-not-allowed hover:bg-[#1a3fb8] text-white font-bold py-6 rounded-xl text-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
                 style={{
                   boxShadow: "0 4px 20px rgba(33, 79, 221, 0.4)",
                 }}
               >
-                {isSubmitting ? "Enviando..." : "Enviar Aplicación"}
+                {isSubmitting ? "Enviando..." : "Aplicar al Fellowship"}
               </Button>
             </form>
           </div>
@@ -596,7 +536,7 @@ export default function ApplicationForm() {
           {/* Nota al pie */}
           <p className="text-center text-gray-500 text-xs sm:text-sm mt-6 sm:mt-8 px-4">
             Al enviar esta aplicación, aceptas que tu información será revisada
-            por el equipo de Breakout PUCP
+            por el equipo del Breakout Fellowship
           </p>
         </div>
       </main>
