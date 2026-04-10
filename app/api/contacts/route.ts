@@ -1,22 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-
-const AIRTABLE_API_URL = "https://api.airtable.com/v0";
-
-function getEnv() {
-  const baseId = process.env.AIRTABLE_BASE_ID;
-  const apiKey = process.env.AIRTABLE_API_KEY;
-  const tableName = process.env.AIRTABLE_CONTACTS_TABLE || "Contactos Básicos";
-  if (!baseId || !apiKey) {
-    return {
-      ok: false as const,
-      error: "Missing AIRTABLE_BASE_ID or AIRTABLE_API_KEY",
-    };
-  }
-  return { ok: true as const, baseId, apiKey, tableName };
-}
+import { getAirtableEnv, getAirtableUrl, maskBaseId } from "@/lib/airtable";
 
 export async function GET(req: NextRequest) {
-  const env = getEnv();
+  const env = getAirtableEnv("AIRTABLE_CONTACTS_TABLE", "Contactos Básicos");
   if (!env.ok) {
     console.error("[contacts][GET] Missing env:", env);
     return NextResponse.json({ error: env.error }, { status: 500 });
@@ -24,11 +10,9 @@ export async function GET(req: NextRequest) {
   const { baseId, apiKey, tableName } = env;
   const debug = req.nextUrl.searchParams.get("debug") === "1";
   try {
-    const url = `${AIRTABLE_API_URL}/${encodeURIComponent(
-      baseId
-    )}/${encodeURIComponent(tableName)}?pageSize=100&fields%5B%5D=Nombre`;
+    const url = `${getAirtableUrl(baseId, tableName)}?pageSize=100&fields%5B%5D=Nombre`;
     console.log("[contacts][GET] Fetching Airtable", {
-      baseIdMasked: `${baseId.slice(0, 3)}…${baseId.slice(-3)}`,
+      baseIdMasked: maskBaseId(baseId),
       tableName,
       url,
     });
@@ -61,7 +45,7 @@ export async function GET(req: NextRequest) {
             names,
             meta: {
               count: names.length,
-              baseIdMasked: `${baseId.slice(0, 3)}…${baseId.slice(-3)}`,
+              baseIdMasked: maskBaseId(baseId),
               tableName,
             },
           }
@@ -75,7 +59,7 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const env = getEnv();
+  const env = getAirtableEnv("AIRTABLE_CONTACTS_TABLE", "Contactos Básicos");
   if (!env.ok) {
     console.error("[contacts][POST] Missing env:", env);
     return NextResponse.json({ error: env.error }, { status: 500 });
@@ -94,11 +78,9 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Name is required" }, { status: 400 });
     }
 
-    const url = `${AIRTABLE_API_URL}/${encodeURIComponent(
-      baseId
-    )}/${encodeURIComponent(tableName)}`;
+    const url = getAirtableUrl(baseId, tableName);
     console.log("[contacts][POST] Creating record", {
-      baseIdMasked: `${baseId.slice(0, 3)}…${baseId.slice(-3)}`,
+      baseIdMasked: maskBaseId(baseId),
       tableName,
       fields: {
         Nombre: name,

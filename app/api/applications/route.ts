@@ -1,22 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-
-const AIRTABLE_API_URL = "https://api.airtable.com/v0";
-
-function getEnv() {
-  const baseId = process.env.AIRTABLE_BASE_ID;
-  const apiKey = process.env.AIRTABLE_API_KEY;
-  const tableName = process.env.AIRTABLE_CONTACTS_TABLE || "Contactos";
-  if (!baseId || !apiKey) {
-    return {
-      ok: false as const,
-      error: "Missing AIRTABLE_BASE_ID or AIRTABLE_API_KEY",
-    };
-  }
-  return { ok: true as const, baseId, apiKey, tableName };
-}
+import { getAirtableEnv, getAirtableUrl, maskBaseId } from "@/lib/airtable";
 
 export async function POST(req: NextRequest) {
-  const env = getEnv();
+  const env = getAirtableEnv("AIRTABLE_CONTACTS_TABLE", "Contactos");
   if (!env.ok) {
     console.error("[applications][POST] Missing env:", env);
     return NextResponse.json({ error: env.error }, { status: 500 });
@@ -25,10 +11,6 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    console.log(
-      "[applications][POST] Raw request body:",
-      JSON.stringify(body, null, 2)
-    );
 
     // Validar campos requeridos
     const nombre = body?.nombre?.toString().trim();
@@ -40,18 +22,6 @@ export async function POST(req: NextRequest) {
     const linkedin = body?.linkedin?.toString().trim();
     const cvPortafolio = body?.cvPortafolio?.toString().trim();
     const proyectoIdea = body?.proyectoIdea?.toString().trim();
-
-    console.log("[applications][POST] Processed fields:", {
-      nombre,
-      apellidos,
-      cel,
-      facultad,
-      semestre,
-      correoPUCP,
-      linkedin,
-      cvPortafolio,
-      proyectoIdea,
-    });
 
     if (
       !nombre ||
@@ -69,18 +39,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const url = `${AIRTABLE_API_URL}/${encodeURIComponent(
-      baseId
-    )}/${encodeURIComponent(tableName)}`;
+    const url = getAirtableUrl(baseId, tableName);
 
     console.log("[applications][POST] Creating record", {
-      baseIdMasked: `${baseId.slice(0, 3)}…${baseId.slice(-3)}`,
+      baseIdMasked: maskBaseId(baseId),
       tableName,
       nombre,
       apellidos,
       facultad,
       semestre,
-      cvPortafolio,
     });
 
     const payload = {
@@ -101,11 +68,6 @@ export async function POST(req: NextRequest) {
       ],
     };
 
-    console.log(
-      "[applications][POST] Payload to Airtable:",
-      JSON.stringify(payload, null, 2)
-    );
-
     const res = await fetch(url, {
       method: "POST",
       headers: {
@@ -115,12 +77,6 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify(payload),
     });
 
-    console.log("[applications][POST] Airtable response status:", res.status);
-    console.log(
-      "[applications][POST] Airtable response headers:",
-      Object.fromEntries(res.headers.entries())
-    );
-
     if (!res.ok) {
       const text = await res.text();
       console.error("[applications][POST] Airtable error details:", {
@@ -128,7 +84,6 @@ export async function POST(req: NextRequest) {
         statusText: res.statusText,
         responseText: text,
         url: url,
-        payload: JSON.stringify(payload, null, 2),
       });
       return NextResponse.json(
         {
@@ -141,10 +96,6 @@ export async function POST(req: NextRequest) {
     }
 
     const data = await res.json();
-    console.log(
-      "[applications][POST] Airtable success response:",
-      JSON.stringify(data, null, 2)
-    );
     return NextResponse.json({ ok: true, record: data.records?.[0] || null });
   } catch (e) {
     const message = e instanceof Error ? e.message : "Unknown error";

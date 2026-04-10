@@ -1,0 +1,16 @@
+export const SEMESTRES = [
+  "1ro",
+  "2do",
+  "3ro",
+  "4to",
+  "5to",
+  "6to",
+  "7mo",
+  "8vo",
+  "9no",
+  "10mo",
+  "11vo",
+  "12avo",
+  "Egresado",
+  "Post grado",
+];
