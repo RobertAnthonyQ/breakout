@@ -3,6 +3,10 @@
     "tavily": {
       "type": "http",
       "url": "https://mcp.tavily.com/mcp/?tavilyApiKey=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"
+    },
+    "notion": {
+      "type": "http",
+      "url": "https://mcp.notion.com/mcp"
     }
   }
 }
