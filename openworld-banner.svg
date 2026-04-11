@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1080" height="1350" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for depth -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2430FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a24cc;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Glow effect for rocket -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1350" fill="url(#bgGradient)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.15">
+    <line x1="0" y1="200" x2="1080" y2="200" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="400" x2="1080" y2="400" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="600" x2="1080" y2="600" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="800" x2="1080" y2="800" stroke="#ffffff" stroke-width="1"/>
+    <line x1="0" y1="1000" x2="1080" y2="1000" stroke="#ffffff" stroke-width="1"/>
+    <line x1="200" y1="0" x2="200" y2="1350" stroke="#ffffff" stroke-width="1"/>
+    <line x1="400" y1="0" x2="400" y2="1350" stroke="#ffffff" stroke-width="1"/>
+    <line x1="600" y1="0" x2="600" y2="1350" stroke="#ffffff" stroke-width="1"/>
+    <line x1="800" y1="0" x2="800" y2="1350" stroke="#ffffff" stroke-width="1"/>
+  </g>
+
+  <!-- Corner accent -->
+  <g>
+    <rect x="0" y="0" width="8" height="120" fill="#ffffff"/>
+    <rect x="0" y="0" width="120" height="8" fill="#ffffff"/>
+  </g>
+
+  <!-- DETAILED ROCKET WIREFRAME (right side) -->
+  <g transform="translate(780, 675)" filter="url(#glow)">
+
+    <!-- Nose cone with detailed mesh -->
+    <g id="nose">
+      <!-- Main outline -->
+      <polygon points="0,-500 -125,-250 125,-250" fill="none" stroke="#ffffff" stroke-width="4"/>
+
+      <!-- Internal horizontal mesh lines -->
+      <line x1="-112" y1="-280" x2="112" y2="-280" stroke="#B4B7FF" stroke-width="2"/>
+      <line x1="-100" y1="-310" x2="100" y2="-310" stroke="#B4B7FF" stroke-width="2"/>
+      <line x1="-87" y1="-340" x2="87" y2="-340" stroke="#B4B7FF" stroke-width="2"/>
+      <line x1="-75" y1="-370" x2="75" y2="-370" stroke="#B4B7FF" stroke-width="2"/>
+      <line x1="-62" y1="-400" x2="62" y2="-400" stroke="#B4B7FF" stroke-width="2"/>
+      <line x1="-50" y1="-430" x2="50" y2="-430" stroke="#B4B7FF" stroke-width="2"/>
+      <line x1="-37" y1="-460" x2="37" y2="-460" stroke="#B4B7FF" stroke-width="2"/>
+
+      <!-- Diagonal mesh -->
+      <line x1="-125" y1="-250" x2="0" y2="-500" stroke="#7882FF" stroke-width="2"/>
+      <line x1="-90" y1="-250" x2="0" y2="-440" stroke="#7882FF" stroke-width="1.5"/>
+      <line x1="-60" y1="-250" x2="0" y2="-380" stroke="#7882FF" stroke-width="1.5"/>
+      <line x1="-30" y1="-250" x2="0" y2="-320" stroke="#7882FF" stroke-width="1.5"/>
+
+      <line x1="125" y1="-250" x2="0" y2="-500" stroke="#7882FF" stroke-width="2"/>
+      <line x1="90" y1="-250" x2="0" y2="-440" stroke="#7882FF" stroke-width="1.5"/>
+      <line x1="60" y1="-250" x2="0" y2="-380" stroke="#7882FF" stroke-width="1.5"/>
+      <line x1="30" y1="-250" x2="0" y2="-320" stroke="#7882FF" stroke-width="1.5"/>
+    </g>
+
+    <!-- Main body with detailed mesh -->
+    <g id="body">
+      <!-- Side edges -->
+      <line x1="-125" y1="-250" x2="-125" y2="250" stroke="#ffffff" stroke-width="4"/>
+      <line x1="125" y1="-250" x2="125" y2="250" stroke="#ffffff" stroke-width="4"/>
+
+      <!-- Horizontal ellipses (many for detail) -->
+      <ellipse cx="0" cy="-220" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="-190" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="-160" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="-130" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="-100" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="-70" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="-40" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="-10" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="20" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="50" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="80" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="110" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="140" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="170" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="200" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+      <ellipse cx="0" cy="230" rx="125" ry="20" fill="none" stroke="#7882FF" stroke-width="2"/>
+
+      <!-- Panel separations -->
+      <line x1="-125" y1="0" x2="125" y2="0" stroke="#ffffff" stroke-width="3"/>
+      <line x1="-125" y1="125" x2="125" y2="125" stroke="#ffffff" stroke-width="3"/>
+
+      <!-- Vertical panel lines -->
+      <line x1="-60" y1="-250" x2="-60" y2="250" stroke="#B4B7FF" stroke-width="1.5" opacity="0.6"/>
+      <line x1="60" y1="-250" x2="60" y2="250" stroke="#B4B7FF" stroke-width="1.5" opacity="0.6"/>
+
+      <!-- Window -->
+      <circle cx="0" cy="-120" r="50" fill="none" stroke="#ffffff" stroke-width="4"/>
+      <circle cx="0" cy="-120" r="40" fill="none" stroke="#7882FF" stroke-width="3"/>
+      <circle cx="0" cy="-120" r="30" fill="none" stroke="#B4B7FF" stroke-width="2"/>
+
+      <!-- Rivets -->
+      <circle cx="-125" cy="-200" r="4" fill="#B4B7FF"/>
+      <circle cx="125" cy="-200" r="4" fill="#B4B7FF"/>
+      <circle cx="-125" cy="-50" r="4" fill="#B4B7FF"/>
+      <circle cx="125" cy="-50" r="4" fill="#B4B7FF"/>
+      <circle cx="-125" cy="100" r="4" fill="#B4B7FF"/>
+      <circle cx="125" cy="100" r="4" fill="#B4B7FF"/>
+      <circle cx="-125" cy="200" r="4" fill="#B4B7FF"/>
+      <circle cx="125" cy="200" r="4" fill="#B4B7FF"/>
+    </g>
+
+    <!-- Left fin with detailed mesh -->
+    <g id="leftFin">
+      <polygon points="-125,150 -125,250 -300,300" fill="none" stroke="#ffffff" stroke-width="4"/>
+
+      <!-- Internal triangular mesh -->
+      <line x1="-125" y1="150" x2="-180" y2="200" stroke="#7882FF" stroke-width="2"/>
+      <line x1="-125" y1="150" x2="-210" y2="233" stroke="#7882FF" stroke-width="2"/>
+      <line x1="-125" y1="150" x2="-240" y2="266" stroke="#7882FF" stroke-width="2"/>
+      <line x1="-125" y1="150" x2="-270" y2="283" stroke="#7882FF" stroke-width="2"/>
+
+      <line x1="-125" y1="250" x2="-180" y2="200" stroke="#B4B7FF" stroke-width="1.5"/>
+      <line x1="-125" y1="250" x2="-210" y2="233" stroke="#B4B7FF" stroke-width="1.5"/>
+      <line x1="-125" y1="250" x2="-240" y2="266" stroke="#B4B7FF" stroke-width="1.5"/>
+      <line x1="-125" y1="250" x2="-270" y2="283" stroke="#B4B7FF" stroke-width="1.5"/>
+
+      <line x1="-300" y1="300" x2="-180" y2="200" stroke="#B4B7FF" stroke-width="1.5"/>
+      <line x1="-300" y1="300" x2="-210" y2="233" stroke="#B4B7FF" stroke-width="1.5"/>
+      <line x1="-300" y1="300" x2="-240" y2="266" stroke="#B4B7FF" stroke-width="1.5"/>
+    </g>
+
+    <!-- Right fin with detailed mesh -->
+    <g id="rightFin">
+      <polygon points="125,150 125,250 300,300" fill="none" stroke="#ffffff" stroke-width="4"/>
+
+      <!-- Internal triangular mesh -->
+      <line x1="125" y1="150" x2="180" y2="200" stroke="#7882FF" stroke-width="2"/>
+      <line x1="125" y1="150" x2="210" y2="233" stroke="#7882FF" stroke-width="2"/>
+      <line x1="125" y1="150" x2="240" y2="266" stroke="#7882FF" stroke-width="2"/>
+      <line x1="125" y1="150" x2="270" y2="283" stroke="#7882FF" stroke-width="2"/>
+
+      <line x1="125" y1="250" x2="180" y2="200" stroke="#B4B7FF" stroke-width="1.5"/>
+      <line x1="125" y1="250" x2="210" y2="233" stroke="#B4B7FF" stroke-width="1.5"/>
+      <line x1="125" y1="250" x2="240" y2="266" stroke="#B4B7FF" stroke-width="1.5"/>
+      <line x1="125" y1="250" x2="270" y2="283" stroke="#B4B7FF" stroke-width="1.5"/>
+
+      <line x1="300" y1="300" x2="180" y2="200" stroke="#B4B7FF" stroke-width="1.5"/>
+      <line x1="300" y1="300" x2="210" y2="233" stroke="#B4B7FF" stroke-width="1.5"/>
+      <line x1="300" y1="300" x2="240" y2="266" stroke="#B4B7FF" stroke-width="1.5"/>
+    </g>
+
+    <!-- Engine nozzle -->
+    <g id="nozzle">
+      <line x1="-87" y1="250" x2="-50" y2="350" stroke="#ffffff" stroke-width="4"/>
+      <line x1="87" y1="250" x2="50" y2="350" stroke="#ffffff" stroke-width="4"/>
+
+      <!-- Internal rings -->
+      <line x1="-82" y1="270" x2="82" y2="270" stroke="#7882FF" stroke-width="2"/>
+      <line x1="-76" y1="290" x2="76" y2="290" stroke="#7882FF" stroke-width="2"/>
+      <line x1="-70" y1="310" x2="70" y2="310" stroke="#7882FF" stroke-width="2"/>
+      <line x1="-64" y1="330" x2="64" y2="330" stroke="#7882FF" stroke-width="2"/>
+    </g>
+
+    <!-- Flame/exhaust with detailed mesh -->
+    <g id="flame" opacity="0.9">
+      <!-- Layer 1 -->
+      <polygon points="-50,350 0,400 50,350" fill="none" stroke="#ffffff" stroke-width="3"/>
+      <!-- Layer 2 -->
+      <polygon points="-42,380 0,420 42,380" fill="none" stroke="#B4B7FF" stroke-width="2"/>
+      <!-- Layer 3 -->
+      <polygon points="-35,410 0,445 35,410" fill="none" stroke="#ffffff" stroke-width="3"/>
+      <!-- Layer 4 -->
+      <polygon points="-28,440 0,470 28,440" fill="none" stroke="#B4B7FF" stroke-width="2"/>
+      <!-- Layer 5 -->
+      <polygon points="-21,470 0,495 21,470" fill="none" stroke="#ffffff" stroke-width="2"/>
+      <!-- Layer 6 -->
+      <polygon points="-14,500 0,520 14,500" fill="none" stroke="#B4B7FF" stroke-width="2"/>
+      <!-- Layer 7 -->
+      <polygon points="-10,525 0,540 10,525" fill="none" stroke="#ffffff" stroke-width="1.5"/>
+      <!-- Layer 8 -->
+      <polygon points="-6,550 0,560 6,550" fill="none" stroke="#B4B7FF" stroke-width="1.5"/>
+
+      <!-- Particle lines -->
+      <line x1="-20" y1="360" x2="-10" y2="450" stroke="#B4B7FF" stroke-width="1"/>
+      <line x1="0" y1="360" x2="0" y2="460" stroke="#B4B7FF" stroke-width="1"/>
+      <line x1="20" y1="360" x2="10" y2="450" stroke="#B4B7FF" stroke-width="1"/>
+
+      <line x1="-15" y1="420" x2="-8" y2="500" stroke="#7882FF" stroke-width="1"/>
+      <line x1="15" y1="420" x2="8" y2="500" stroke="#7882FF" stroke-width="1"/>
+    </g>
+
+  </g>
+
+  <!-- TYPOGRAPHY -->
+
+  <!-- Title "OPEN" with shadow -->
+  <text x="63" y="423" font-family="Arial, sans-serif" font-size="150" font-weight="900" fill="#14189e" opacity="0.3">OPEN</text>
+  <text x="60" y="420" font-family="Arial, sans-serif" font-size="150" font-weight="900" fill="#ffffff">OPEN</text>
+
+  <!-- Title "WORLD" with shadow -->
+  <text x="63" y="578" font-family="Arial, sans-serif" font-size="150" font-weight="900" fill="#14189e" opacity="0.3">WORLD</text>
+  <text x="60" y="575" font-family="Arial, sans-serif" font-size="150" font-weight="900" fill="#ffffff">WORLD</text>
+
+  <!-- Subtitle -->
+  <text x="60" y="760" font-family="Arial, sans-serif" font-size="38" font-weight="600" fill="#ffffff">Full Day de Startups,</text>
+  <text x="60" y="808" font-family="Arial, sans-serif" font-size="38" font-weight="600" fill="#ffffff">IA y Emprendimiento</text>
+
+  <!-- Date box -->
+  <rect x="52" y="872" width="420" height="75" fill="none" stroke="#ffffff" stroke-width="4"/>
+  <text x="67" y="920" font-family="Arial, sans-serif" font-size="42" font-weight="900" fill="#ffffff">13 ABRIL · 9AM-6PM</text>
+
+  <!-- Location -->
+  <text x="60" y="980" font-family="Arial, sans-serif" font-size="26" font-weight="400" fill="#B4B7FF">PUCP, Lima</text>
+
+  <!-- Breakout logo -->
+  <text x="60" y="1240" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">Breakout</text>
+  <text x="60" y="1285" font-family="Arial, sans-serif" font-size="26" font-weight="400" fill="#7882FF">@breakout_community</text>
+
+</svg>

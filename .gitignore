@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Forzar inclusión de contexto Claude y MCP config
+!.claude/
+!.claude/**
+!.vscode/mcp.json

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPEN WORLD · Breakout</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Raleway:wght@400;500;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', Calibri, sans-serif;
+            background-color: #f5f5f5;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        table {
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 0;
+        }
+
+        img {
+            border: 0;
+            display: block;
+        }
+
+        .wrapper {
+            width: 100%;
+            background-color: #f5f5f5;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+        }
+
+        .header {
+            background-color: #2430FF;
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+            margin: 0;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2430FF 0%, #1a23cc 100%);
+            padding: 48px 24px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 1.1;
+            color: #ffffff;
+            margin: 0 0 16px 0;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Raleway', Calibri, sans-serif;
+            font-size: 20px;
+            line-height: 1.5;
+            color: #F1EAE4;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .content {
+            padding: 40px 32px;
+        }
+
+        .event-details {
+            background-color: #F1EAE4;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 0 0 32px 0;
+            text-align: center;
+        }
+
+        .event-detail-item {
+            font-family: 'Raleway', Calibri, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #1A1A1A;
+            margin: 8px 0;
+            font-weight: 500;
+        }
+
+        .event-detail-item strong {
+            font-weight: 600;
+            color: #2430FF;
+        }
+
+        h2 {
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: #2430FF;
+            margin: 32px 0 16px 0;
+            line-height: 1.3;
+        }
+
+        p {
+            font-family: 'Raleway', Calibri, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1A1A1A;
+            margin: 0 0 16px 0;
+        }
+
+        .program-block {
+            background-color: #ffffff;
+            border-left: 4px solid #2430FF;
+            padding: 20px;
+            margin: 16px 0;
+            border-radius: 4px;
+        }
+
+        .program-time {
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #2430FF;
+            margin: 0 0 8px 0;
+        }
+
+        .program-title {
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #1A1A1A;
+            margin: 0 0 8px 0;
+        }
+
+        .program-desc {
+            font-family: 'Raleway', Calibri, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #444444;
+            margin: 0;
+        }
+
+        .highlights {
+            background-color: #F1EAE4;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .highlights h3 {
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: #2430FF;
+            margin: 0 0 16px 0;
+        }
+
+        .highlights ul {
+            margin: 0;
+            padding: 0 0 0 20px;
+        }
+
+        .highlights li {
+            font-family: 'Raleway', Calibri, sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #1A1A1A;
+            margin: 8px 0;
+        }
+
+        .cta-container {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #2430FF;
+            color: #ffffff !important;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            text-decoration: none;
+            padding: 18px 48px;
+            border-radius: 50px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #1a23cc;
+        }
+
+        .footer {
+            background-color: #0A0A0A;
+            padding: 32px 24px;
+            text-align: center;
+        }
+
+        .footer-text {
+            font-family: 'Raleway', Calibri, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #F1EAE4;
+            margin: 8px 0;
+        }
+
+        .footer-social {
+            margin: 16px 0 0 0;
+        }
+
+        .footer-social a {
+            color: #2430FF;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Mobile responsive */
+        @media only screen and (max-width: 600px) {
+            .hero-title {
+                font-size: 36px !important;
+            }
+
+            .hero-subtitle {
+                font-size: 18px !important;
+            }
+
+            .content {
+                padding: 32px 20px !important;
+            }
+
+            .event-details {
+                padding: 20px !important;
+            }
+
+            .event-detail-item {
+                font-size: 16px !important;
+            }
+
+            h2 {
+                font-size: 22px !important;
+            }
+
+            .program-block {
+                padding: 16px !important;
+            }
+
+            .cta-button {
+                padding: 16px 40px !important;
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Raleway', Calibri, sans-serif; background-color: #f5f5f5;">
+    <table role="presentation" class="wrapper" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5;">
+        <tr>
+            <td align="center" style="padding: 20px 0;">
+                <table role="presentation" class="email-container" width="600" cellpadding="0" cellspacing="0" style="max-width: 600px; background-color: #ffffff;">
+
+                    <!-- Header -->
+                    <tr>
+                        <td class="hero" style="background: linear-gradient(135deg, #2430FF 0%, #1a23cc 100%); padding: 56px 24px; text-align: center;">
+                            <h1 class="hero-title" style="font-family: 'Poppins', Arial, sans-serif; font-weight: 700; font-size: 48px; line-height: 1.1; color: #ffffff; margin: 0 0 8px 0;">BREAKOUT</h1>
+                            <h2 class="hero-title" style="font-family: 'Poppins', Arial, sans-serif; font-weight: 700; font-size: 48px; line-height: 1.1; color: #ffffff; margin: 0 0 16px 0;">OPEN WORLD</h2>
+                            <p class="hero-subtitle" style="font-family: 'Raleway', Calibri, sans-serif; font-size: 20px; color: #F1EAE4; margin: 0; font-weight: 500;">Full Day de startups, IA y emprendimiento</p>
+                        </td>
+                    </tr>
+
+                    <!-- Content -->
+                    <tr>
+                        <td class="content" style="padding: 40px 32px;">
+
+                            <!-- Event Details Box -->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td style="text-align: center; padding: 24px 0;">
+                                        <p style="font-family: 'Raleway', Calibri, sans-serif; font-size: 16px; color: #1A1A1A; margin: 0; line-height: 1.6;">
+                                            📅 Domingo 13 de abril  |  🕐 9am – 6pm  |  📍 PUCP
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Intro -->
+                            <p style="font-family: 'Raleway', Calibri, sans-serif; font-size: 16px; line-height: 1.6; color: #1A1A1A; margin: 0 0 24px 0; text-align: center;">
+                                9 horas para entender cómo funciona el ecosistema startup: desde acceder a oportunidades globales hasta construir con IA y simular el rol de founder.
+                            </p>
+
+                            <!-- Program -->
+                            <h2 style="font-family: 'Poppins', Arial, sans-serif; font-weight: 700; font-size: 22px; color: #2430FF; margin: 32px 0 20px 0; text-align: center;">Programa</h2>
+
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td style="padding: 14px 0; border-bottom: 1px solid #E1E1E1;">
+                                        <p style="font-family: 'Poppins', Arial, sans-serif; font-weight: 600; font-size: 15px; color: #2430FF; margin: 0 0 6px 0;">9:50 – 12:00</p>
+                                        <p style="font-family: 'Raleway', Calibri, sans-serif; font-size: 16px; color: #1A1A1A; margin: 0 0 4px 0; font-weight: 600;">Breakout Global Opportunities</p>
+                                        <p style="font-family: 'Raleway', Calibri, sans-serif; font-size: 14px; color: #666666; margin: 0; line-height: 1.5;">Fellowships, hackathons, becas. Experiencias reales + mesas de networking.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 14px 0; border-bottom: 1px solid #E1E1E1;">
+                                        <p style="font-family: 'Poppins', Arial, sans-serif; font-weight: 600; font-size: 15px; color: #2430FF; margin: 0 0 6px 0;">1:30 – 3:45</p>
+                                        <p style="font-family: 'Raleway', Calibri, sans-serif; font-size: 16px; color: #1A1A1A; margin: 0 0 4px 0; font-weight: 600;">Construye y valida con IA</p>
+                                        <p style="font-family: 'Raleway', Calibri, sans-serif; font-size: 14px; color: #666666; margin: 0; line-height: 1.5;">Demo en vivo + retos hands-on. No necesitás saber programar.</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 14px 0;">
+                                        <p style="font-family: 'Poppins', Arial, sans-serif; font-weight: 600; font-size: 15px; color: #2430FF; margin: 0 0 6px 0;">3:45 – 5:20</p>
+                                        <p style="font-family: 'Raleway', Calibri, sans-serif; font-size: 16px; color: #1A1A1A; margin: 0 0 4px 0; font-weight: 600;">Founder Role Play</p>
+                                        <p style="font-family: 'Raleway', Calibri, sans-serif; font-size: 14px; color: #666666; margin: 0; line-height: 1.5;">Simulación del ecosistema: Founder, VC, Cliente, Competidor. Pitch Battle.</p>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Highlights -->
+                            <p style="font-family: 'Raleway', Calibri, sans-serif; font-size: 15px; line-height: 1.7; color: #666666; margin: 32px 0 0 0; text-align: center;">
+                                Incluye: Speed Networking · Sorteo de premios · Pasaporte AXIS · Almuerzo
+                            </p>
+
+                            <p style="font-family: 'Raleway', Calibri, sans-serif; font-size: 14px; line-height: 1.6; color: #1A1A1A; margin: 24px 0 0 0; text-align: center; font-weight: 500;">
+                                Sin requisitos previos. Abierto a todos los estudiantes.
+                            </p>
+
+
+                            <!-- CTA -->
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="cta-container" style="text-align: center; padding: 40px 0;">
+                                        <a href="https://www.instagram.com/breakout_community/" class="cta-button" style="display: inline-block; background-color: #2430FF; color: #ffffff; font-family: 'Poppins', Arial, sans-serif; font-weight: 600; font-size: 18px; text-decoration: none; padding: 18px 48px; border-radius: 50px;">
+                                            Registrarme ahora
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <p style="font-family: 'Raleway', Calibri, sans-serif; font-size: 14px; line-height: 1.6; color: #666666; margin: 0; text-align: center;">
+                                Link de registro en bio de @breakout_community
+                            </p>
+
+                        </td>
+                    </tr>
+
+                    <!-- Footer -->
+                    <tr>
+                        <td class="footer" style="background-color: #0A0A0A; padding: 32px 24px; text-align: center;">
+                            <p class="footer-text" style="font-family: 'Raleway', Calibri, sans-serif; font-size: 14px; color: #F1EAE4; margin: 8px 0;">
+                                <strong style="font-family: 'Poppins', Arial, sans-serif;">BREAKOUT</strong><br>
+                                Comunidad estudiantil de innovación, emprendimiento y tecnología
+                            </p>
+                            <p class="footer-text" style="font-family: 'Raleway', Calibri, sans-serif; font-size: 14px; color: #F1EAE4; margin: 8px 0;">
+                                En el marco de AXIS · LEAD PUCP
+                            </p>
+                            <p class="footer-social" style="margin: 16px 0 0 0;">
+                                <a href="https://www.instagram.com/breakout_community/" style="color: #2430FF; text-decoration: none; font-weight: 600; font-family: 'Raleway', Calibri, sans-serif;">@breakout_community</a>
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
