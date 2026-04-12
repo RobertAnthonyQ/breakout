@@ -89,7 +89,8 @@ export default function OpportunitiesPage() {
 
   // ---- render --------------------------------------------------------------
   return (
-    <div className="relative min-h-screen bg-[#030305] text-white selection:bg-white/10 overflow-hidden">
+    <div className="relative bg-[#030305] text-white selection:bg-white/10">
+
       {/* ====== Globe — Full background on desktop ====== */}
       <div className="hidden lg:block fixed inset-0 z-0">
         <GlobeViewer
@@ -101,17 +102,89 @@ export default function OpportunitiesPage() {
         />
       </div>
 
-      {/* ====== Left overlay panel ====== */}
-      <div className="relative z-10 flex flex-col h-screen lg:flex-row lg:min-h-screen lg:h-auto pointer-events-none">
+      {/* ====== MOBILE layout (< lg) ====== */}
+      <div className="lg:hidden flex flex-col min-h-screen">
+
+        {/* Header mobile */}
+        <header className="flex items-center justify-between px-5 h-16 border-b border-white/[0.04] shrink-0 bg-[#030305]">
+          <Link
+            href="/"
+            className="group flex items-center gap-2 text-xs font-medium text-white/30 transition-colors hover:text-white/60"
+          >
+            <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
+          </Link>
+          <h1 className="text-base font-extrabold tracking-tight bg-gradient-to-r from-white via-white/80 to-blue-400/60 bg-clip-text text-transparent">
+            Oportunidades
+          </h1>
+          <div className="w-8" />
+        </header>
+
+        {/* Globe mobile — altura fija visible */}
+        <div className="relative w-full h-[45vh] min-h-[220px] bg-[#030305] shrink-0">
+          <GlobeViewer
+            opportunities={filteredOpportunities}
+            selectedOpportunity={selectedOpportunity}
+            hoveredOpportunity={hoveredOpportunity}
+            onSelectOpportunity={handleSelect}
+            onHoverOpportunity={setHoveredOpportunity}
+          />
+        </div>
+
+        {/* Search + filters mobile */}
+        <div className="px-4 py-3 border-b border-white/[0.04] shrink-0 bg-[#030305]">
+          <SearchFilters
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            activeTypes={activeTypes}
+            onTypeToggle={(type) =>
+              setActiveTypes((prev) =>
+                prev.includes(type)
+                  ? prev.filter((t) => t !== type)
+                  : [...prev, type],
+              )
+            }
+            totalResults={filteredOpportunities.length}
+            onClearFilters={() => {
+              setSearchQuery("")
+              setActiveTypes([])
+            }}
+          />
+        </div>
+
+        {/* Card list mobile — scroll natural */}
+        <div className="flex-1 overflow-y-auto px-4 py-4 bg-[#030305]">
+          <div className="space-y-2">
+            {filteredOpportunities.map((opp) => (
+              <OpportunityCard
+                key={opp.id}
+                opportunity={opp}
+                isSelected={selectedOpportunity?.id === opp.id}
+                isHovered={false}
+                onSelect={handleSelect}
+                onHover={() => {}}
+              />
+            ))}
+          </div>
+          {filteredOpportunities.length === 0 && (
+            <div className="flex flex-col items-center justify-center py-20 text-center">
+              <p className="text-sm text-white/20">Sin resultados</p>
+              <p className="mt-1 text-xs text-white/10">Intenta ajustar los filtros</p>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ====== DESKTOP layout (>= lg) ====== */}
+      <div className="hidden lg:flex lg:flex-row relative z-10 min-h-screen pointer-events-none">
         {/* ── Left sidebar (search + cards) ── */}
         <div
           className="
-            w-full lg:w-[420px] lg:min-w-[420px]
+            w-[420px] min-w-[420px]
             flex flex-col shrink-0
-            lg:h-screen
-            bg-[#030305]/40 lg:bg-[#030305]/30
-            lg:backdrop-blur-2xl
-            lg:border-r lg:border-white/[0.04]
+            h-screen
+            bg-[#030305]/30
+            backdrop-blur-2xl
+            border-r border-white/[0.04]
             pointer-events-auto
           "
         >
@@ -122,15 +195,11 @@ export default function OpportunitiesPage() {
               className="group flex items-center gap-2 text-xs font-medium text-white/30 transition-colors hover:text-white/60"
             >
               <ArrowLeft className="h-3.5 w-3.5 transition-transform group-hover:-translate-x-0.5" />
-              <span className="hidden sm:inline tracking-wide">Volver</span>
+              <span className="tracking-wide">Volver</span>
             </Link>
-
-            <h1
-              className="text-base font-extrabold tracking-tight bg-gradient-to-r from-white via-white/80 to-blue-400/60 bg-clip-text text-transparent"
-            >
+            <h1 className="text-base font-extrabold tracking-tight bg-gradient-to-r from-white via-white/80 to-blue-400/60 bg-clip-text text-transparent">
               Oportunidades
             </h1>
-
             <div className="w-12" />
           </header>
 
@@ -180,29 +249,13 @@ export default function OpportunitiesPage() {
                 />
               ))}
             </div>
-
             {filteredOpportunities.length === 0 && (
               <div className="flex flex-col items-center justify-center py-20 text-center">
-                <p className="text-sm text-white/20">
-                  Sin resultados
-                </p>
-                <p className="mt-1 text-xs text-white/10">
-                  Intenta ajustar los filtros
-                </p>
+                <p className="text-sm text-white/20">Sin resultados</p>
+                <p className="mt-1 text-xs text-white/10">Intenta ajustar los filtros</p>
               </div>
             )}
           </div>
-        </div>
-
-        {/* ── Mobile globe ── */}
-        <div className="lg:hidden relative flex-1 min-h-[300px] bg-[#030305] pointer-events-auto">
-          <GlobeViewer
-            opportunities={filteredOpportunities}
-            selectedOpportunity={selectedOpportunity}
-            hoveredOpportunity={hoveredOpportunity}
-            onSelectOpportunity={handleSelect}
-            onHoverOpportunity={setHoveredOpportunity}
-          />
         </div>
 
         {/* ── Desktop detail panel ── */}
@@ -215,7 +268,6 @@ export default function OpportunitiesPage() {
               exit={{ width: 0, opacity: 0 }}
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="
-                hidden lg:block
                 fixed right-0 top-0 bottom-0 z-20
                 overflow-hidden
                 bg-[#030305]/30 backdrop-blur-2xl
@@ -249,7 +301,6 @@ export default function OpportunitiesPage() {
               className="absolute inset-0 bg-black/40 backdrop-blur-sm"
               onClick={handleClosePanel}
             />
-
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
@@ -259,10 +310,9 @@ export default function OpportunitiesPage() {
                 absolute inset-x-0 bottom-0 top-14
                 overflow-hidden rounded-t-2xl
                 border-t border-white/[0.06]
-                bg-[#030305]/50 backdrop-blur-2xl
+                bg-[#030305]/95 backdrop-blur-2xl
               "
             >
-              {/* Mobile close */}
               <div className="flex items-center justify-between border-b border-white/[0.04] px-5 py-3">
                 <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/20">
                   Detalle
@@ -274,7 +324,6 @@ export default function OpportunitiesPage() {
                   <X className="h-3.5 w-3.5 text-white/30" />
                 </button>
               </div>
-
               <div className="h-full overflow-y-auto pb-20">
                 <OpportunityPanel
                   opportunity={selectedOpportunity!}

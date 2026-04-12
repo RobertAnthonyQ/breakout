@@ -23,7 +23,13 @@
       "Bash(/tmp/extract_notion_team.md:*)",
       "Read(//tmp/**)",
       "Bash(mv .claude/breakout/creaciones ../BREAKOUT-CREACIONES)",
-      "Read(//home/ubuntu/projects/breakout/**)"
+      "Read(//home/ubuntu/projects/breakout/**)",
+      "mcp__resend__list-domains",
+      "mcp__resend__send-email",
+      "Bash(cp:*)",
+      "mcp__tavily__tavily_extract",
+      "mcp__composio__COMPOSIO_GET_TOOL_SCHEMAS",
+      "Bash(git add:*)"
     ]
   },
   "enableAllProjectMcpServers": true,

@@ -1,5 +1,16 @@
 {
   "mcpServers": {
+    "resend": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "resend-mcp"
+      ],
+      "env": {
+        "RESEND_API_KEY": "re_ZunxGnWQ_2XgChng1RsqpTzhy6RDDsQ3s"
+      }
+    },
     "tavily": {
       "type": "http",
       "url": "https://mcp.tavily.com/mcp/?tavilyApiKey=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"
