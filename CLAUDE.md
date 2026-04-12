@@ -25,22 +25,25 @@ Este repo tiene dos responsabilidades:
     agente-docs.md          ← definición del Agente de Docs
   breakout/
     recursos.md             ← accesos, links y herramientas del equipo Breakout
-    creaciones/             ← TODAS las creaciones de Breakout organizadas
-      posts/                ← Posts de Instagram/TikTok
-      banners/              ← Banners, flyers, teasers
-      emails/               ← Emails HTML para eventos
-      docs/                 ← Documentos .docx, .pptx, .pdf, .xlsx
-      otros/                ← Otras creaciones
-      README.md             ← Documentación de nomenclatura
+    integrantes-breakout.md ← lista completa de integrantes con correos
+    mapa-notion-breakout.md ← estructura completa del Notion Wiki
   events/
     openworld-13-04-26.md   ← evento actual (Open World, 13 abril 2026)
     [otros eventos...]
   skills/                   ← todos los skills con contexto Breakout embebido
+
+BREAKOUT-CREACIONES/        ← TODAS las creaciones de Breakout (directorio principal)
+  posts/                    ← Posts de Instagram/TikTok
+  banners/                  ← Banners, flyers, teasers
+  emails/                   ← Emails HTML para eventos
+  docs/                     ← Documentos .docx, .pptx, .pdf, .xlsx
+  otros/                    ← Otras creaciones
+  README.md                 ← Documentación de nomenclatura
 ```
 
 ### Regla de guardado de creaciones
 
-**TODAS las creaciones (posts, banners, emails, docs) se guardan en `.claude/breakout/creaciones/`**
+**TODAS las creaciones (posts, banners, emails, docs) se guardan en `BREAKOUT-CREACIONES/` (directorio principal)**
 
 **Nomenclatura:** `[tipo]-[nombre-descriptivo]-[dd-mm-aa].[ext]`
 
@@ -49,7 +52,7 @@ Ejemplos:
 - `post-ig-convocatoria-openworld-11-04-26.png`
 - `email-openworld-recordatorio-12-04-26.html`
 
-Ver `.claude/breakout/creaciones/README.md` para más detalles.
+Ver `BREAKOUT-CREACIONES/README.md` para más detalles.
 
 ### Accesos y recursos
 
@@ -59,6 +62,50 @@ Este archivo centraliza:
 - Credenciales de redes sociales (Instagram, LinkedIn, etc.)
 - Accesos a herramientas (Beacons, Luma, Notion, Canva, GitHub, etc.)
 - Links internos (Drive, correos, workspace)
+
+### Integrantes del equipo
+
+**Si el usuario pregunta por integrantes, miembros, equipo, correos del equipo o contactos** → leer siempre `.claude/breakout/integrantes-breakout.md`
+
+Este archivo contiene:
+- Lista completa de los 15 integrantes de Breakout
+- Correos electrónicos (@pucp.edu.pe)
+- Áreas: Community & Experience, Partnerships & Programs, Growth & Innovation
+- Skills y disponibilidad de cada integrante
+- Lista de correos para envíos masivos
+
+**Fuente:** Extraído desde Notion (base de datos "Tabla 2" del workspace interno de Breakout)
+
+### Mapa del Notion de Breakout
+
+**Si el usuario pregunta por estructura del Notion, bases de datos, dónde encontrar algo en Notion, o qué contiene cada sección** → leer siempre `.claude/breakout/mapa-notion-breakout.md`
+
+Este archivo contiene:
+- Estructura completa del Notion Wiki de Breakout
+- Todas las bases de datos con sus Collection URLs
+- Descripción de cada sección y área
+- Qué datos contiene cada base de datos (campos, propósito)
+- Guía de uso rápido: dónde buscar cada tipo de información
+- **Secciones principales:**
+  - 👥 Equipo (Tabla 2, Tabla por Área)
+  - 🧪 Partnerships & Programs (Pipeline de alianzas, Pendientes)
+  - 🌸 Community & Experience (Eventos, Calendario, Disponibilidad)
+  - 🌎 Growth & Innovation
+  - 📊 Tracker 26-1 (sistema principal de tareas)
+  - 🚀 Proyectos
+  - 🔗 Links importantes
+
+**Fuente:** Mapeado completo del Notion Wiki de Breakout PUCP
+
+**IMPORTANTE - Acceso a Notion:**
+- **SIEMPRE usar el MCP de Notion** (`mcp__notion__*` tools) para acceder al Notion de Breakout
+- **NUNCA usar el MCP de Composio** para Notion
+- Tools disponibles:
+  - `mcp__notion__notion-search` - buscar en el workspace
+  - `mcp__notion__notion-fetch` - leer páginas y bases de datos
+  - `mcp__notion__notion-create-pages` - crear páginas
+  - `mcp__notion__notion-update-page` - actualizar páginas
+- El MCP de Notion está conectado directamente al workspace de Breakout PUCP
 
 ---
 
@@ -254,6 +301,60 @@ Casos de uso: tendencias del ecosistema startup, referencias para posts, documen
 
 ---
 
+## Composio MCP — Integración automática
+
+**Composio MCP** conecta 500+ apps para automatizar workflows de Breakout.
+
+### Apps conectadas activamente
+
+- **Gmail** (`breakout.fellow@gmail.com`) — ✅ activo
+- **Google Calendar** — ✅ activo
+
+### Apps disponibles (requieren conexión)
+
+- Google Docs, Google Drive, Google Sheets
+- Notion, Slack, Trello
+
+### Cuándo usar Composio automáticamente
+
+**SIEMPRE que el usuario mencione o necesite:**
+
+1. **Enviar emails** → usar `GMAIL_SEND_EMAIL` automáticamente
+2. **Crear eventos / reuniones** → usar `GOOGLECALENDAR_CREATE_EVENT` automáticamente
+3. **Buscar emails** → usar `GMAIL_FETCH_EMAILS` o `GMAIL_SEARCH_PEOPLE`
+4. **Gestión de calendario** → usar herramientas de Google Calendar
+
+### Workflow automático
+
+```
+Usuario menciona: "envía un correo a..."
+  ↓
+Claude detecta → llamar COMPOSIO_SEARCH_TOOLS
+  ↓
+Ejecutar → COMPOSIO_MULTI_EXECUTE_TOOL con GMAIL_SEND_EMAIL
+  ↓
+Confirmar envío al usuario
+```
+
+**NO preguntar** si el usuario quiere usar Composio. **Ejecutar directamente** cuando la intención sea clara.
+
+### Casos de uso de Breakout
+
+| Tarea | Herramienta Composio |
+|---|---|
+| Enviar invitación a evento por email | `GMAIL_SEND_EMAIL` |
+| Agendar reunión de equipo | `GOOGLECALENDAR_CREATE_EVENT` |
+| Buscar emails de sponsors | `GMAIL_FETCH_EMAILS` |
+| Encontrar contacto | `GMAIL_SEARCH_PEOPLE` |
+| Ver agenda del día | `GOOGLECALENDAR_FIND_EVENT` |
+| Actualizar evento existente | `GOOGLECALENDAR_PATCH_EVENT` |
+
+### Regla de oro
+
+**Si la tarea involucra Gmail o Google Calendar → usar Composio automáticamente, sin preguntar.**
+
+---
+
 ## Preview de emails HTML
 
 Telegram no renderiza HTML. Para preview:
@@ -303,7 +404,7 @@ No crear tareas con nombres genéricos sin confirmar con el usuario primero.
 
 **Cuando generes cualquier archivo (banner, post, email, doc, etc.):**
 
-→ Guardarlo SIEMPRE en `.claude/breakout/creaciones/` en la subcarpeta correspondiente:
+→ Guardarlo SIEMPRE en `BREAKOUT-CREACIONES/` (directorio principal del proyecto) en la subcarpeta correspondiente:
 - `posts/` → Posts de IG/TikTok
 - `banners/` → Banners, flyers, teasers
 - `emails/` → Emails HTML
@@ -313,6 +414,8 @@ No crear tareas con nombres genéricos sin confirmar con el usuario primero.
 **Nomenclatura:** `[tipo]-[nombre-descriptivo]-[dd-mm-aa].[ext]`
 
 Ejemplo: `banner-openworld-teaser-11-04-26.svg`
+
+**Ruta completa:** `BREAKOUT-CREACIONES/[subcarpeta]/[archivo]`
 
 Ver `.claude/skills/GUARDADO.md` para instrucciones completas por skill.
 

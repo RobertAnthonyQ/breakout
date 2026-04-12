@@ -7,6 +7,13 @@
     "notion": {
       "type": "http",
       "url": "https://mcp.notion.com/mcp"
+    },
+    "composio": {
+      "type": "http",
+      "url": "https://connect.composio.dev/mcp",
+      "headers": {
+        "x-consumer-api-key": "ck_gfSX9_w1rYeF7gW1hyCw"
+      }
     }
   }
 }

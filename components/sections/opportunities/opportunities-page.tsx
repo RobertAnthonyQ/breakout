@@ -102,12 +102,12 @@ export default function OpportunitiesPage() {
       </div>
 
       {/* ====== Left overlay panel ====== */}
-      <div className="relative z-10 flex flex-col lg:flex-row min-h-screen pointer-events-none">
+      <div className="relative z-10 flex flex-col h-screen lg:flex-row lg:min-h-screen lg:h-auto pointer-events-none">
         {/* ── Left sidebar (search + cards) ── */}
         <div
           className="
             w-full lg:w-[420px] lg:min-w-[420px]
-            flex flex-col
+            flex flex-col shrink-0
             lg:h-screen
             bg-[#030305]/40 lg:bg-[#030305]/30
             lg:backdrop-blur-2xl
@@ -195,7 +195,7 @@ export default function OpportunitiesPage() {
         </div>
 
         {/* ── Mobile globe ── */}
-        <div className="lg:hidden relative h-[380px] sm:h-[450px] bg-[#030305] pointer-events-auto">
+        <div className="lg:hidden relative flex-1 min-h-[300px] bg-[#030305] pointer-events-auto">
           <GlobeViewer
             opportunities={filteredOpportunities}
             selectedOpportunity={selectedOpportunity}
