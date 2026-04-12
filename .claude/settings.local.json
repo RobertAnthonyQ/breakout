@@ -29,7 +29,9 @@
       "Bash(cp:*)",
       "mcp__tavily__tavily_extract",
       "mcp__composio__COMPOSIO_GET_TOOL_SCHEMAS",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
