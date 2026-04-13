@@ -4,7 +4,7 @@ import { useMemo, useState } from "react"
 import dynamic from "next/dynamic"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowLeft, X } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 
 import type {
   Opportunity,
@@ -120,7 +120,7 @@ export default function OpportunitiesPage() {
         </header>
 
         {/* Globe mobile — altura fija visible */}
-        <div className="relative w-full h-[45vh] min-h-[220px] bg-[#030305] shrink-0">
+        <div className="relative w-full h-[45vh] min-h-[220px] bg-[#030305] shrink-0 overflow-hidden">
           <GlobeViewer
             opportunities={filteredOpportunities}
             selectedOpportunity={selectedOpportunity}
@@ -286,51 +286,29 @@ export default function OpportunitiesPage() {
         </AnimatePresence>
       </div>
 
-      {/* ====== Mobile detail overlay ====== */}
+      {/* ====== Mobile detail overlay — slides up below globe ====== */}
       <AnimatePresence>
         {panelOpen && (
           <motion.div
             key="mobile-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[60] lg:hidden pointer-events-auto"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "100%" }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="
+              fixed inset-x-0 bottom-0 z-[60] lg:hidden
+              overflow-hidden rounded-t-2xl
+              border-t border-white/[0.06]
+              bg-[#030305] shadow-[0_-8px_40px_rgba(0,0,0,0.7)]
+            "
+            style={{ top: "calc(45vh + 64px)" }}
           >
-            <div
-              className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-              onClick={handleClosePanel}
-            />
-            <motion.div
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              exit={{ y: "100%" }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="
-                absolute inset-x-0 bottom-0 top-14
-                overflow-hidden rounded-t-2xl
-                border-t border-white/[0.06]
-                bg-[#030305]/95 backdrop-blur-2xl
-              "
-            >
-              <div className="flex items-center justify-between border-b border-white/[0.04] px-5 py-3">
-                <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-white/20">
-                  Detalle
-                </span>
-                <button
-                  onClick={handleClosePanel}
-                  className="flex items-center justify-center rounded-full bg-white/[0.05] p-1.5 transition-colors hover:bg-white/[0.1] cursor-pointer"
-                >
-                  <X className="h-3.5 w-3.5 text-white/30" />
-                </button>
-              </div>
-              <div className="h-full overflow-y-auto pb-20">
-                <OpportunityPanel
-                  opportunity={selectedOpportunity!}
-                  onClose={handleClosePanel}
-                />
-              </div>
-            </motion.div>
+            <div className="h-full overflow-y-auto pb-10">
+              <OpportunityPanel
+                opportunity={selectedOpportunity!}
+                onClose={handleClosePanel}
+              />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

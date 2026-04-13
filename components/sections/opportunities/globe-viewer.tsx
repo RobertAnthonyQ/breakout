@@ -80,9 +80,12 @@ export default function GlobeViewer({
 
     const update = () => {
       const { width, height } = container.getBoundingClientRect()
+      // On desktop use 400px minimum so the globe looks full; on mobile
+      // respect the actual container height to avoid overflowing into filters.
+      const isMobile = window.innerWidth < 1024
       setDimensions({
         width: Math.round(width),
-        height: Math.round(Math.max(height, 400)),
+        height: Math.round(isMobile ? Math.max(height, 200) : Math.max(height, 400)),
       })
     }
 
