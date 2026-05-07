@@ -6,6 +6,13 @@ Breakout is a 15-member student innovation and entrepreneurship organization at 
 
 ## Workspace Map
 
+### Areas (by team)
+- **Community & Experience:** `areas/community-experience/` — events, community, culture (lead: Tatiana)
+- **Growth & Innovation:** `areas/growth-innovation/` — growth strategy, content, new initiatives (lead: Robert)
+- **Partnerships & Programs:** `areas/partnerships-programs/` — alliances, programs, revenue (lead: Andrea)
+- Each area README has: team members, purpose, objectives, metrics, projects, Notion link
+- When Freddy asks about an area, read the area's README.md first.
+
 ### People
 - **Team roster:** `people/team.yml` — All 15 members with name, email, area, role, skills, availability
 - To look up a member, read `people/team.yml`
@@ -37,6 +44,15 @@ Breakout is a 15-member student innovation and entrepreneurship organization at 
 ### Archive
 - Notion snapshots: `archive/notion-snapshots/`
 - Latest snapshot: `archive/notion-snapshots/2026-04-08-snapshot.md`
+
+## Key External Resources (from Notion)
+
+| Resource | URL | Description |
+|----------|-----|-------------|
+| Email repo | https://github.com/DavidSChing/Breakout-correos | Mailing HTML templates by David Ching |
+| Email viewer | https://davidsching.github.io/Breakout-correos/ | Visual preview of past mass mailings |
+| PUCP student DB | Google Sheets (see Notion "Links importantes") | Student enrollment data by faculty |
+| Photo drive | Google Drive (see Notion "Links importantes") | Event photos archive |
 
 ## What Lives in Notion (NOT here)
 

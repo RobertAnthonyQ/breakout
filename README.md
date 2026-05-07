@@ -10,6 +10,11 @@ Este repositorio es la fuente de verdad para la identidad, miembros, eventos, al
 
 ```
 breakout/
+├── areas/                  Nuestras 3 areas funcionales
+│   ├── community-experience/   Eventos, comunidad, cultura
+│   ├── growth-innovation/      Crecimiento, contenido, nuevas iniciativas
+│   └── partnerships-programs/  Alianzas, programas, revenue
+│
 ├── identity/               Quienes somos
 │   ├── about.md              Mision, vision, origen
 │   ├── org-structure.md      3 areas, roles, herramientas
@@ -49,6 +54,9 @@ breakout/
 | Templates | Links de Canva/Sheets/Luma |
 
 ## Como usar
+
+### Ver informacion de un area
+Abrir `areas/<nombre-del-area>/README.md` — cada area tiene su equipo, proposito, objetivos, metricas y proyectos.
 
 ### Buscar informacion de un miembro
 Abrir `people/team.yml` — contiene nombre, email, area, skills y disponibilidad de los 15 miembros.

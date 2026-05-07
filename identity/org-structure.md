@@ -2,9 +2,11 @@
 
 Breakout opera con 15 miembros activos distribuidos en 3 areas funcionales. Cada area tiene un lider y objetivos propios. Algunos miembros participan en un area secundaria.
 
+Cada area tiene su propia carpeta con documentacion detallada en `areas/`.
+
 ## Areas
 
-### 1. Community & Experience
+### 1. Community & Experience — [`areas/community-experience/`](../areas/community-experience/)
 
 **Lider:** Tatiana Mirella Avila Arauco
 **Miembros:** Tatiana, Hugo Antonio, Nayheli, Javier Uziel, Enrique Alexandre
@@ -25,7 +27,7 @@ Breakout opera con 15 miembros activos distribuidos en 3 areas funcionales. Cada
 
 ---
 
-### 2. Growth & Innovation
+### 2. Growth & Innovation — [`areas/growth-innovation/`](../areas/growth-innovation/)
 
 **Lider:** Robert Anthony Quispe Quispe
 **Miembros:** Robert, Freddy, Axel Hugo, Matias Fabian, Jordy Javier
@@ -41,7 +43,7 @@ Estrategia de crecimiento, contenido, y nuevas iniciativas.
 
 ---
 
-### 3. Partnerships & Programs
+### 3. Partnerships & Programs — [`areas/partnerships-programs/`](../areas/partnerships-programs/)
 
 **Lider:** Andrea Melo
 **Miembros:** Andrea, David Sung, Nayely Liliana, Renato Sebastian, Saymon Estefano
