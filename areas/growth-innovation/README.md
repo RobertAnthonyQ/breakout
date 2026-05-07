@@ -28,11 +28,17 @@ Estrategia de crecimiento, contenido, y nuevas iniciativas para Breakout.
 
 ## Proyectos Actuales
 
-### Software — ROCKY
+### ROCKY — Agente de IA
 
-Mencionado en la pagina de Growth en Notion como "TAREAS PROPIAS DE GROWTH - SOFTWARE / ROCKY". Detalle por definir.
+Agente de IA construido por Robert. Capacidades:
+- Crear presentaciones
+- Generar imagenes
+- Acceder y operar sobre Notion
+- Multiples otras funcionalidades
 
-<!-- TODO: Documentar que es ROCKY y el alcance del proyecto de software -->
+ROCKY es un proyecto de software propio del area de Growth & Innovation, y demuestra la capacidad tecnica del equipo para construir herramientas internas con IA.
+
+<!-- TODO: Documentar stack tecnico, repo, y roadmap de ROCKY -->
 
 ## Eventos del Semestre 26-1
 
