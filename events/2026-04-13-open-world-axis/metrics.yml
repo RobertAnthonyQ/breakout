@@ -1,0 +1,48 @@
+# OPEN WORLD / AXIS — Post-Event Metrics
+# Fill in null values from Luma/Google Sheets data
+
+event: "OPEN WORLD — Breakout & Lead PUCP: AXIS"
+date: 2026-04-13
+format: Full Day (2 blocks)
+location: PUCP (B100)
+co_organized_with: Lead PUCP
+axis_theme: "Business & Venture (Eje 8)"
+
+attendance:
+  registered: null        # From registration form
+  attended: null           # From actual headcount
+  conversion_rate: null    # attended / registered
+
+outreach:
+  emails_sent: 21043       # Across 7 PUCP faculties
+  faculties_reached: 7
+  team_members_involved: 14
+
+satisfaction:
+  survey_sent: null
+  responses: null
+  avg_score: null
+  nps: null
+
+speakers:
+  block_1:
+    - name: Okaren Cabrera Fernandez
+      topic: Global opportunities through scholarships
+      credentials: "PRONABEC, Harvard Aspire, SABF"
+    - name: Arianna Yauri Azabache
+      topic: International academic and tech opportunities
+      credentials: "DAAD Scholar, Harvard Aspire, Huawei"
+  block_2:
+    - name: Freddy Nanez Choque
+      topic: "Build with AI — Vibe Coding workshop"
+      credentials: "UIF Stanford/Twente, SUSI Scholar, Makers Fellow"
+
+content:
+  photos_captured: null
+  video_reel: null
+  post_event_post: null
+
+notes: >
+  Second Breakout event. Joint with Lead PUCP for AXIS framework.
+  Block 1: Global Opportunities (speakers). Block 2: Vibe Coding (hands-on workshop).
+  Massive outreach campaign to 21,000+ students across 7 faculties.

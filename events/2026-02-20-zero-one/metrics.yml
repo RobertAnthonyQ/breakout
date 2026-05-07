@@ -1,0 +1,40 @@
+# ZERO ONE — Post-Event Metrics
+# Fill in null values from Luma/Google Sheets data
+
+event: "ZERO ONE: Building a Startup — The Real Process"
+date: 2026-02-20
+format: Panel
+location: Open PUCP
+co_organized_with: Hult Prize PUCP
+
+attendance:
+  registered: null       # From Luma / Google Sheets
+  attended: null          # From actual headcount
+  conversion_rate: null   # attended / registered
+
+satisfaction:
+  survey_sent: true
+  responses: null
+  avg_score: null          # 1-5 scale
+  nps: null
+
+speakers:
+  count: 6
+  countries: 3  # Peru, Bolivia, Chile
+  names:
+    - Yanel Ulpiano (Dommies — Proptech)
+    - Katia Naupari (Agroglim — Agritech/Biotech)
+    - Deyvid Tolentino (XRAI — Healthtech/AI)
+    - Pedro Anze (Favorcito — Gig Economy)
+    - Reno (Indies — Tech)
+    - Damian Panes (Rodar — Mobility)
+
+content:
+  photos_captured: false
+  video_reel: false       # Cancelled per Notion
+  post_event_post: false  # Pending per Notion
+
+notes: >
+  First Breakout event. Panel format at Open PUCP.
+  Post-event reel was cancelled. Post-event post still pending.
+  Registration tracked via Google Sheets.

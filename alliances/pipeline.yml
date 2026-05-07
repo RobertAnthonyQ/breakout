@@ -1,0 +1,152 @@
+# Breakout Alliance Pipeline — Semester 26-1
+# Canonical tracking of all organizational partnerships
+# Last synced from Notion: 2026-05-07
+#
+# Status values: Scouting | Not started | Contactado | En conversacion | No respondio | Ejecutado | Cerrado
+# Priority values: Nula | Baja | Medio | Alto
+
+alliances:
+  - organization: FACI
+    description: Facultad de Ciencias e Ingenieria
+    type: Facultad
+    status: Contactado
+    priority: Nula
+    collaboration_type: Difusion
+    objective: Difusion
+    responsible: David Ching
+    contact_name: Comunicaciones, Rector
+    contact_role: null
+    email: null
+    last_contact: 2026-02-19
+
+  - organization: LEAD PUCP
+    description: null
+    type: Orga estudiantil
+    status: En conversacion
+    priority: null
+    collaboration_type: null
+    objective: null
+    responsible: David Ching
+    contact_name: Jhoel Cisneros
+    contact_role: Presidente
+    email: null
+    last_contact: 2026-02-22
+
+  - organization: ASIME
+    description: Asociacion de Estudiantes y Egresados de Ingenieria Mecatronica
+    type: Orga estudiantil
+    status: Contactado
+    priority: Nula
+    collaboration_type: Difusion
+    objective: Difusion
+    responsible: David Ching
+    contact_name: null
+    contact_role: null
+    email: null
+    last_contact: 2026-02-17
+
+  - organization: Yavendio
+    description: null
+    type: Startup
+    status: Contactado
+    priority: Baja
+    collaboration_type: null
+    objective: null
+    responsible: null
+    contact_name: null
+    contact_role: null
+    email: null
+    last_contact: 2025-11-22
+
+  - organization: EQUIPU
+    description: null
+    type: null
+    status: Not started
+    priority: Nula
+    collaboration_type: Difusion
+    objective: Difusion
+    responsible: null
+    contact_name: Jhohan
+    contact_role: Coordinador general
+    email: null
+    last_contact: null
+
+  - organization: HULT PRIZE PUCP
+    description: >
+      Concurso estudiantil de emprendimiento social mas grande del mundo,
+      denominado el "Premio Nobel de los estudiantes"
+    type: Programa
+    status: Cerrado
+    priority: Medio
+    collaboration_type: Co-organizacion de eventos
+    objective: Co-organizacion evento
+    responsible: Nayheli Rojas
+    contact_name: Nayheli Rojas
+    contact_role: Coordinadora de campus
+    email: null
+    last_contact: 2026-02-20
+
+  - organization: AAII
+    description: Asociacion de Alumnos de Ingenieria Informatica
+    type: Orga estudiantil
+    status: Contactado
+    priority: Nula
+    collaboration_type: Difusion
+    objective: Difusion
+    responsible: David Ching
+    contact_name: null
+    contact_role: null
+    email: null
+    last_contact: 2026-02-19
+
+  - organization: START Lima
+    description: null
+    type: Programa
+    status: Contactado
+    priority: null
+    collaboration_type: null
+    objective: Co-organizacion evento
+    responsible: null
+    contact_name: null
+    contact_role: null
+    email: null
+    last_contact: 2025-11-22
+
+  - organization: FGAD
+    description: Facultad de Gestion y Alta Direccion
+    type: Facultad
+    status: No respondio
+    priority: Nula
+    collaboration_type: Difusion
+    objective: Difusion
+    responsible: null
+    contact_name: Comunicaciones, Rector
+    contact_role: null
+    email: null
+    last_contact: null
+
+  - organization: Oficina de Innovacion PUCP
+    description: null
+    type: null
+    status: Contactado
+    priority: Baja
+    collaboration_type: null
+    objective: null
+    responsible: null
+    contact_name: Enrique Quispe Pena, Karina Banon Felix
+    contact_role: Jefe
+    email: enrique.quispe@pucp.pe
+    last_contact: 2026-02-13
+
+  - organization: Hapi
+    description: null
+    type: Startup
+    status: Contactado
+    priority: Baja
+    collaboration_type: null
+    objective: null
+    responsible: null
+    contact_name: null
+    contact_role: null
+    email: null
+    last_contact: 2025-11-22
