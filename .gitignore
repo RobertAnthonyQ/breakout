@@ -1,0 +1,37 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.nav
+*.snm
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Temporary files
+tmp/
+
+# Node (if scripts are added later)
+node_modules/
+.env
+
+# Python (if scripts are added later)
+__pycache__/
+*.pyc
+.venv/
