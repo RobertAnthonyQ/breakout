@@ -1,5 +1,5 @@
 # OPEN WORLD / AXIS — Post-Event Metrics
-# Fill in null values from Luma/Google Sheets data
+# Source: Luma export (registrations.csv) — exported 2026-05-07
 
 event: "OPEN WORLD — Breakout & Lead PUCP: AXIS"
 date: 2026-04-13
@@ -9,14 +9,48 @@ co_organized_with: Lead PUCP
 axis_theme: "Business & Venture (Eje 8)"
 
 attendance:
-  registered: null        # From registration form
-  attended: null           # From actual headcount
-  conversion_rate: null    # attended / registered
+  registered: 72
+  attended: null           # No check-in data in Luma — fill from manual count
+  conversion_rate: null
 
 outreach:
   emails_sent: 21043       # Across 7 PUCP faculties
   faculties_reached: 7
   team_members_involved: 14
+  registration_rate: 0.34%   # 72 / 21,043
+
+audience_profile:
+  universities:
+    PUCP: 58
+    other: 14              # UNI (3), UNMSM (2), UPC (2), UTEC, UTP, UNEGYV, etc.
+  ciclo:
+    "1ro": 14
+    "2do-5to": 18
+    "6to-10mo": 31
+    "Egresado": 9
+  top_careers:
+    - Gestion (16)
+    - Ing. Mecatronica (10)
+    - Ing. Informatica/Sistemas (7)
+    - Ing. Civil (6)
+    - Economia (5)
+    - Derecho (4)
+    - Finanzas (4)
+  block_preference:
+    both_blocks: 34
+    block_1_only: 31        # Global Opportunities
+    block_2_only: 6         # Construye con IA
+    founder_role_play: 1
+  startup_interest:
+    "Si": 43                # 60%
+    "Tal vez": 28           # 39%
+    "No": 0                 # 0% — self-selected audience
+  opportunity_interests:
+    becas: 52
+    programas_de_innovacion: 43
+    fellowships: 35
+    cursos_cortos: 32
+    hackathons: 31
 
 satisfaction:
   survey_sent: null
@@ -43,6 +77,9 @@ content:
   post_event_post: null
 
 notes: >
-  Second Breakout event. Joint with Lead PUCP for AXIS framework.
-  Block 1: Global Opportunities (speakers). Block 2: Vibe Coding (hands-on workshop).
-  Massive outreach campaign to 21,000+ students across 7 faculties.
+  Second Breakout event. 72 registrations from 21,000+ email outreach (0.34% conversion).
+  81% PUCP, 19% external universities.
+  47% wanted both blocks, 43% only Block 1 (Global Opportunities).
+  60% said "Si" to creating a startup — highly motivated audience.
+  Becas (72%) and Programas de innovacion (60%) were top interests.
+  No one said "No" to startup interest — perfect self-selection.
