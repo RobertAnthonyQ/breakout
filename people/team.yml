@@ -94,7 +94,10 @@ members:
     area: Growth & Innovation
     role: member
     availability: null
-    skills: []
+    skills:
+      - IA
+      - Diseno de proyectos
+      - No code AI
 
   # ── Partnerships & Programs ─────────────────────────────
 

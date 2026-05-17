@@ -110,4 +110,21 @@ The AXIS event spanned April 13-14, 2026. Breakout's Full Day was on April 13.
 
 ---
 
-*Documented on May 7, 2026. Sources: event posters, Notion planning page, event description copy, LinkedIn and web research of each speaker, freddy.md profile.*
+## Programa detallado (del documento de planificación)
+
+> Fuente: `BREAKOUT-CONTEXTO/eventos/openworld-13-04-26.md` (doc de planificación de Robert, consolidado aquí).
+> Nota: este doc indica "Domingo 13 de abril, 2:30pm–6:00pm" pero lista un programa de 9:00am a 6:00pm — discrepancia heredada del original, no resuelta aquí.
+
+- **9:00** — Registro y primeras conexiones
+- **9:30** — Opening: la visión de Breakout
+- **9:50 – 12:00** — **Breakout Global Opportunities**: acceso a oportunidades globales (fellowships, hackathons, becas, programas internacionales), experiencias reales de estudiantes, mesas temáticas de networking
+- **12:00 – 1:30** — Almuerzo + sorteo de premios
+- **1:30 – 3:45** — **Construye y valida con IA**: demo en vivo de prototipado con IA, resolución hands-on de retos, speed networking (no se necesita programar)
+- **3:45 – 5:20** — **Construye con mentoras**: sesión con mentoras invitadas del ecosistema, conexiones estratégicas
+- **5:20 – 6:00** — Closing + sorteo de premios
+
+**Extras:** Speed networking entre cada bloque · Sorteo de premios y merch · Pasaporte AXIS con sellos por bloque
+
+---
+
+*Documented on May 7, 2026. Sources: event posters, Notion planning page, event description copy, LinkedIn and web research of each speaker, freddy.md profile. Programa detallado consolidado desde el doc de planificación el 16 de mayo de 2026.*

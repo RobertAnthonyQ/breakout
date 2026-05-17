@@ -1,11 +1,11 @@
-# BREAKOUT-CREACIONES
+# Breakout — Creations
 
 Todas las creaciones de Breakout se guardan aquí, organizadas por tipo.
 
 ## 📁 Estructura
 
 ```
-BREAKOUT-CREACIONES/
+creations/
 ├── posts/      ← Posts de Instagram/TikTok (PNG, JPG, MP4)
 ├── banners/    ← Banners, flyers, teasers (SVG, PNG, PDF)
 ├── emails/     ← Emails HTML para eventos y campañas
@@ -58,16 +58,16 @@ Para buscar creaciones por fecha, tipo o evento:
 
 ```bash
 # Por evento
-find BREAKOUT-CREACIONES -name "*openworld*"
+find creations -name "*openworld*"
 
 # Por tipo
-ls BREAKOUT-CREACIONES/posts/
+ls creations/posts/
 
 # Por fecha
-find BREAKOUT-CREACIONES -name "*11-04-26*"
+find creations -name "*11-04-26*"
 
 # Por extensión
-find BREAKOUT-CREACIONES -name "*.html"
+find creations -name "*.html"
 ```
 
 ---
