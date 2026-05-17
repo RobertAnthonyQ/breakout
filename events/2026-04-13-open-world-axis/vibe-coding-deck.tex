@@ -1,0 +1,573 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+% --- Colors ---
+\definecolor{bgdark}{HTML}{0D0D0D}
+\definecolor{accent}{HTML}{6C63FF}
+\definecolor{accentlight}{HTML}{A29BFE}
+\definecolor{textwhite}{HTML}{F5F5F5}
+\definecolor{textgray}{HTML}{B0B0B0}
+\definecolor{success}{HTML}{00E676}
+\definecolor{warning}{HTML}{FFD600}
+
+% --- Theme ---
+\usetheme{default}
+\setbeamercolor{background canvas}{bg=bgdark}
+\setbeamercolor{normal text}{fg=textwhite}
+\setbeamercolor{frametitle}{fg=textwhite}
+\setbeamercolor{itemize item}{fg=accent}
+\setbeamercolor{itemize subitem}{fg=accentlight}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{}
+\setbeamertemplate{itemize item}{\textcolor{accent}{\rule{6pt}{6pt}}}
+\setbeamertemplate{itemize subitem}{\textcolor{accentlight}{\small\textbullet}}
+
+\begin{document}
+
+% ============================================
+% SLIDE 1: TITLE
+% ============================================
+\begin{frame}[plain]
+\begin{center}
+\vspace{1.2cm}
+{\fontsize{14}{16}\selectfont\color{accentlight} AXIS --- OPEN WORLD $\vert$ BLOQUE 2}
+
+\vspace{0.6cm}
+{\fontsize{40}{44}\selectfont\bfseries\color{textwhite} VIBE CODING}
+
+\vspace{0.3cm}
+{\fontsize{18}{22}\selectfont\color{accent} Build Your Startup in 85 Minutes}
+
+\vspace{1.2cm}
+{\color{textgray}\large Breakout \& Lead PUCP}
+
+\vspace{0.3cm}
+{\color{textgray} 13 de Abril, 2026}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 2: INTERACTIVE QUESTIONS
+% ============================================
+\begin{frame}[plain]
+\begin{center}
+\vspace{2cm}
+{\fontsize{28}{32}\selectfont\color{textwhite}\bfseries ?`Qui\'enes tienen una idea\\[8pt] de negocio o proyecto?}
+
+\vspace{2cm}
+{\fontsize{18}{22}\selectfont\color{accent} Levanten la mano}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 3: SECOND QUESTION
+% ============================================
+\begin{frame}[plain]
+\begin{center}
+\vspace{2cm}
+{\fontsize{28}{32}\selectfont\color{textwhite}\bfseries ?`Y qui\'enes NO la han construido\\[8pt] porque no saben programar?}
+
+\vspace{2cm}
+{\fontsize{18}{22}\selectfont\color{warning} Esa excusa muere hoy.}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 4: WHAT IS VIBE CODING
+% ============================================
+\begin{frame}{?`Qu\'e es Vibe Coding?}
+\vspace{0.3cm}
+
+{\large\color{accentlight} Construir software real describiendo lo que quieres.}
+
+\vspace{0.5cm}
+
+\begin{itemize}
+\setlength\itemsep{0.6em}
+\item T\'u describes tu idea en lenguaje natural
+\item La IA escribe todo el c\'odigo
+\item Ves resultados en tiempo real
+\item Iteras en conversaci\'on: ``cambia esto'', ``agrega aquello''
+\end{itemize}
+
+\vspace{0.6cm}
+
+\begin{center}
+\begin{tikzpicture}
+\node[rounded corners=8pt, fill=accent!15, text=textwhite, minimum width=13cm, minimum height=1.4cm, align=center] {
+\large ``You fully give in to the vibes, embrace exponentials,\\and forget that the code even exists.'' --- Andrej Karpathy
+};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 5: THE PROCESS
+% ============================================
+\begin{frame}{El Proceso}
+\vspace{0.5cm}
+
+\begin{center}
+{\color{textgray} Lo que van a aprender hoy no es solo una herramienta. Es un \textbf{\color{accent}proceso}.}
+
+\vspace{0.8cm}
+
+\begin{tikzpicture}[
+    box/.style={rounded corners=6pt, minimum width=3cm, minimum height=1.5cm, align=center, font=\normalsize},
+    arrow/.style={->, very thick, color=accentlight}
+]
+\node[box, fill=accent!25, text=textwhite] (p1) at (0, 0) {\textbf{IDEA}\\[-1pt]\small Tu proyecto};
+\node[box, fill=accent!35, text=textwhite] (p2) at (4, 0) {\textbf{PRD}\\[-1pt]\small via ChatGPT};
+\node[box, fill=accent!50, text=textwhite] (p3) at (8, 0) {\textbf{BUILDER}\\[-1pt]\small Lovable};
+\node[box, fill=accent!70, text=textwhite] (p4) at (12, 0) {\textbf{APP REAL}\\[-1pt]\small con IA};
+
+\draw[arrow] (p1) -- (p2);
+\draw[arrow] (p2) -- (p3);
+\draw[arrow] (p3) -- (p4);
+\end{tikzpicture}
+
+\vspace{0.8cm}
+
+{\color{textgray}\large Este proceso funciona con \textbf{cualquier} herramienta.\\Las herramientas cambian, el proceso queda.}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 6: TOOLS
+% ============================================
+\begin{frame}{Herramientas de Vibe Coding}
+\vspace{0.3cm}
+
+\begin{columns}[T]
+\column{0.48\textwidth}
+{\large\color{accent}\textbf{Lovable}} {\small\color{success}(la de hoy)}
+\begin{itemize}
+\setlength\itemsep{0.2em}
+\item Apps completas desde un prompt
+\item Gratis, en el navegador
+\item Deploy con un click
+\end{itemize}
+
+\vspace{0.4cm}
+{\large\color{accentlight}\textbf{V0 by Vercel}}
+\begin{itemize}
+\setlength\itemsep{0.2em}
+\item Interfaces y componentes
+\item Excelente para UI
+\end{itemize}
+
+\column{0.48\textwidth}
+{\large\color{accentlight}\textbf{Google AI Studio}}
+\begin{itemize}
+\setlength\itemsep{0.2em}
+\item De Google, gratis con Gemini
+\item Lo usaremos para el chatbot
+\end{itemize}
+
+\vspace{0.4cm}
+{\large\color{accentlight}\textbf{bolt.new}}
+\begin{itemize}
+\setlength\itemsep{0.2em}
+\item Similar a Lovable
+\item Buena alternativa
+\end{itemize}
+\end{columns}
+
+\vspace{0.5cm}
+\begin{center}
+{\color{textgray} Hoy usamos \textbf{\color{accent}Lovable} + \textbf{\color{accent}Google AI Studio}}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 7: LIVE DEMO TRANSITION
+% ============================================
+\begin{frame}[plain]
+\begin{center}
+\vspace{2.5cm}
+{\fontsize{32}{36}\selectfont\color{textwhite}\bfseries D\'enme una idea de startup.}
+
+\vspace{0.8cm}
+{\fontsize{20}{24}\selectfont\color{accent} Mientras m\'as loca, mejor.}
+
+\vspace{1.5cm}
+{\color{textgray}\large (Live Demo)}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 8: SETUP - QR LOVABLE
+% ============================================
+\begin{frame}[plain]
+\begin{center}
+\vspace{1cm}
+{\fontsize{24}{28}\selectfont\color{textwhite}\bfseries Abran dos cosas:}
+
+\vspace{0.8cm}
+
+\begin{columns}[c]
+\column{0.48\textwidth}
+\begin{center}
+{\fontsize{18}{22}\selectfont\color{accent}\textbf{1. Lovable}}
+
+\vspace{0.3cm}
+{\large\color{textwhite} lovable.dev}
+
+\vspace{0.2cm}
+{\color{textgray} Creen cuenta con Google}
+
+\vspace{0.3cm}
+{\small\color{textgray} (QR en pantalla)}
+\end{center}
+
+\column{0.48\textwidth}
+\begin{center}
+{\fontsize{18}{22}\selectfont\color{accent}\textbf{2. Cualquier IA}}
+
+\vspace{0.3cm}
+{\large\color{textwhite} ChatGPT / Claude / Gemini}
+
+\vspace{0.2cm}
+{\color{textgray} En otra pesta\~na}
+
+\vspace{0.3cm}
+{\small\color{textgray} (la que prefieran)}
+\end{center}
+\end{columns}
+
+\vspace{1cm}
+{\color{warning}\large Sin laptop? Emp\'arejense con alguien.}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 9: PRD CONCEPT
+% ============================================
+\begin{frame}{?`Qu\'e es un PRD?}
+\vspace{0.3cm}
+
+{\large\color{accentlight} Product Requirements Document}
+
+\vspace{0.4cm}
+
+Un documento que describe \textbf{exactamente} qu\'e quieres construir:
+\begin{itemize}
+\setlength\itemsep{0.4em}
+\item Qu\'e p\'aginas tiene
+\item Qu\'e hace cada secci\'on
+\item Qu\'e texto muestra
+\item Qu\'e colores y estilo usa
+\end{itemize}
+
+\vspace{0.5cm}
+
+\begin{center}
+\begin{tikzpicture}
+\node[rounded corners=6pt, fill=accent!20, text=textwhite, minimum width=12cm, minimum height=1.2cm, align=center] {
+\large Buen PRD = Buen resultado. \textbf{La IA lo escribe por ti.}
+};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 10: PRD TEMPLATE
+% ============================================
+\begin{frame}{Template: Pega esto en tu IA favorita}
+\vspace{0.1cm}
+
+{\small
+\begin{tikzpicture}
+\node[rounded corners=8pt, fill=white!8, text=textwhite, minimum width=14.5cm, text width=14cm, align=left, inner sep=12pt] {
+\texttt{I need you to create a detailed PRD for a landing page.}\\[4pt]
+\texttt{Here's my project:}\\
+\texttt{- Name: \textbf{\textcolor{warning}{[TU NOMBRE DE STARTUP]}}}\\
+\texttt{- What it does: \textbf{\textcolor{warning}{[QUE HACE EN 1-2 FRASES]}}}\\
+\texttt{- Target audience: \textbf{\textcolor{warning}{[PARA QUIEN ES]}}}\\
+\texttt{- Color vibe: \textbf{\textcolor{warning}{[ej: ``dark and techy'']}}}\\ [4pt]
+\texttt{Generate a PRD with: hero section, how it works (3 steps),}\\
+\texttt{features (4-6), testimonials (3), pricing (3 tiers),}\\
+\texttt{signup form, FAQ (5 questions), footer.}\\[4pt]
+\texttt{For each section specify exact text, layout, and style.}\\
+\texttt{Make it detailed enough to build without questions.}
+};
+\end{tikzpicture}
+}
+
+\vspace{0.3cm}
+\begin{center}
+{\color{accent}\textbf{Cambia las 4 variables en amarillo.} \color{textgray}Copia el PRD que te genera.}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 11: BUILD TIME
+% ============================================
+\begin{frame}[plain]
+\begin{center}
+\vspace{1.5cm}
+{\fontsize{36}{40}\selectfont\bfseries\color{accent} BUILD TIME}
+
+\vspace{0.5cm}
+{\fontsize{18}{22}\selectfont\color{textwhite} Pega tu PRD completo en Lovable.}
+
+\vspace{0.3cm}
+{\fontsize{18}{22}\selectfont\color{textwhite} Dale Enter. Espera la magia.}
+
+\vspace{1.2cm}
+
+{\color{textgray}\large Tips:}
+
+\vspace{0.3cm}
+{\color{accentlight} ``Cambia los colores a azul oscuro''}
+
+\vspace{0.2cm}
+{\color{accentlight} ``Traduce todo a espa\~nol''}
+
+\vspace{0.2cm}
+{\color{accentlight} ``Agrega animaciones al scroll''}
+
+\vspace{0.2cm}
+{\color{accentlight} ``Make the design more modern and clean''}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 12: LEVEL UP - AI CHATBOT
+% ============================================
+\begin{frame}[plain]
+\begin{center}
+\vspace{2cm}
+{\fontsize{28}{32}\selectfont\color{textwhite}\bfseries Ya tienen una landing page.}
+
+\vspace{0.6cm}
+{\fontsize{28}{32}\selectfont\color{accent}\bfseries Ahora le vamos a agregar\\[8pt] inteligencia artificial.}
+
+\vspace{1.5cm}
+{\fontsize{16}{20}\selectfont\color{textgray} Y es gratis.}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 13: GEMINI API KEY
+% ============================================
+\begin{frame}{Paso 1: Obtener API Key de Gemini (gratis)}
+\vspace{0.3cm}
+
+\begin{center}
+{\Large\color{accent}\textbf{aistudio.google.com/apikey}}
+
+\vspace{0.3cm}
+{\color{textgray} (QR en pantalla)}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{enumerate}
+\setlength\itemsep{0.5em}
+\item Iniciar sesi\'on con tu cuenta de Google
+\item Click en \textbf{``Create API Key''}
+\item Seleccionar cualquier proyecto
+\item \textbf{Copiar} la API key
+\end{enumerate}
+
+\vspace{0.5cm}
+
+\begin{center}
+\begin{tikzpicture}
+\node[rounded corners=6pt, fill=warning!15, text=textwhite, minimum width=12cm, minimum height=0.9cm, align=center, font=\small] {
+\textcolor{warning}{Nota:} API keys en frontend no es seguro para producci\'on. Para este workshop est\'a perfecto.
+};
+\end{tikzpicture}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 14: SYSTEM PROMPT
+% ============================================
+\begin{frame}{Paso 2: System Prompt para tu chatbot}
+\vspace{0.2cm}
+
+{\small
+\begin{tikzpicture}
+\node[rounded corners=8pt, fill=white!8, text=textwhite, minimum width=14.5cm, text width=14cm, align=left, inner sep=12pt] {
+\texttt{You are the AI assistant for \textbf{\textcolor{warning}{[STARTUP NAME]}}.}\\[3pt]
+\texttt{\textbf{\textcolor{warning}{[STARTUP NAME]}} is \textbf{\textcolor{warning}{[QUE HACE EN 1-2 FRASES]}}.}\\[3pt]
+\texttt{You help visitors understand the product,}\\
+\texttt{answer questions about features and pricing,}\\
+\texttt{and encourage them to sign up for early access.}\\[3pt]
+\texttt{Be friendly, concise, and enthusiastic.}\\[3pt]
+\texttt{If asked something you don't know, say:}\\
+\texttt{``Great question! Sign up for early access}\\
+\texttt{and our team will follow up with you.''}\\[3pt]
+\texttt{Always respond in Spanish unless the user}\\
+\texttt{writes in English.}
+};
+\end{tikzpicture}
+}
+
+\vspace{0.3cm}
+\begin{center}
+{\color{accent}\textbf{Cambia las variables en amarillo.} \color{textgray} Copia este texto.}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 15: LOVABLE CHATBOT PROMPT
+% ============================================
+\begin{frame}{Paso 3: Pega esto en Lovable}
+\vspace{0.2cm}
+
+{\small
+\begin{tikzpicture}
+\node[rounded corners=8pt, fill=white!8, text=textwhite, minimum width=14.5cm, text width=14cm, align=left, inner sep=12pt] {
+\texttt{Add an AI chatbot to my landing page:}\\[3pt]
+\texttt{- Floating chat button, bottom-right, message icon}\\
+\texttt{- Opens sleek chat window when clicked}\\
+\texttt{- Welcome: ``Hola! Soy el asistente de}\\
+\texttt{\ \ \textbf{\textcolor{warning}{[STARTUP NAME]}}. En que te puedo ayudar?''}\\
+\texttt{- Google Gemini API (gemini-2.0-flash)}\\
+\texttt{- API Key: \textbf{\textcolor{warning}{[TU API KEY]}}}\\
+\texttt{- System instruction: \textbf{\textcolor{warning}{[TU SYSTEM PROMPT]}}}\\
+\texttt{- Maintain chat history}\\
+\texttt{- Match landing page colors}\\
+\texttt{- ``Powered by AI'' badge at bottom}
+};
+\end{tikzpicture}
+}
+
+\vspace{0.3cm}
+\begin{center}
+{\color{accent}\textbf{Pega tus 3 valores} \color{textgray} y dale Enter. Tu landing ahora tiene IA.}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 16: TEST YOUR CHATBOT
+% ============================================
+\begin{frame}[plain]
+\begin{center}
+\vspace{2cm}
+{\fontsize{28}{32}\selectfont\color{textwhite}\bfseries Prueba tu chatbot}
+
+\vspace{0.8cm}
+{\fontsize{16}{20}\selectfont\color{accentlight} Preg\'untale sobre tu startup\\[8pt]
+Preg\'untale los precios\\[8pt]
+Preg\'untale algo que no sepa\\[8pt]
+}
+
+\vspace{1cm}
+{\fontsize{14}{18}\selectfont\color{textgray} Si no funciona a la primera, dile a Lovable:\\
+``Fix the chatbot, it's not connecting to the API''}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 17: SHOWCASE TIME
+% ============================================
+\begin{frame}[plain]
+\begin{center}
+\vspace{2.5cm}
+{\fontsize{36}{40}\selectfont\bfseries\color{accent} SHOWCASE}
+
+\vspace{0.8cm}
+{\fontsize{18}{22}\selectfont\color{textwhite} 3 voluntarios muestran lo que construyeron.}
+
+\vspace{0.5cm}
+{\fontsize{16}{20}\selectfont\color{textgray} 3 minutos cada uno.\\Landing + chatbot en vivo.}
+
+\vspace{1cm}
+{\fontsize{16}{20}\selectfont\color{warning} El mejor se lleva un libro.}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 18: CLOSING
+% ============================================
+\begin{frame}[plain]
+\begin{center}
+\vspace{1.5cm}
+{\fontsize{22}{26}\selectfont\color{textgray} Hace 85 minutos no sab\'ian programar.}
+
+\vspace{0.6cm}
+{\fontsize{28}{32}\selectfont\color{textwhite}\bfseries Ahora tienen una startup\\[8pt] con inteligencia artificial.}
+
+\vspace{1cm}
+{\fontsize{18}{22}\selectfont\color{accent} Las herramientas son gratis.\\[6pt] Las ideas son suyas.\\[6pt] Lo \'unico que falta es que empiecen.}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 19: RESOURCES
+% ============================================
+\begin{frame}{Recursos}
+\vspace{0.3cm}
+
+\begin{columns}[T]
+\column{0.48\textwidth}
+{\color{accentlight}\textbf{Herramientas}}
+\begin{itemize}
+\setlength\itemsep{0.3em}
+\item \textbf{Lovable:} lovable.dev
+\item \textbf{V0:} v0.dev
+\item \textbf{AI Studio:} aistudio.google.com
+\item \textbf{bolt.new:} bolt.new
+\end{itemize}
+
+\vspace{0.4cm}
+{\color{accentlight}\textbf{Deploy gratis}}
+\begin{itemize}
+\setlength\itemsep{0.3em}
+\item \textbf{Vercel:} vercel.com
+\item \textbf{Netlify:} netlify.com
+\end{itemize}
+
+\column{0.48\textwidth}
+{\color{accentlight}\textbf{Para lanzar en serio}}
+\begin{itemize}
+\setlength\itemsep{0.3em}
+\item \textbf{Dominio:} Namecheap (\$10/a\~no)
+\item \textbf{Pagos:} Stripe
+\item \textbf{Analytics:} Google Analytics
+\end{itemize}
+
+\vspace{0.4cm}
+{\color{accentlight}\textbf{Breakout}}
+\begin{itemize}
+\setlength\itemsep{0.3em}
+\item Pr\'oximamente: \textbf{Hackathon AI}
+\item S\'igannos en redes: @breakout
+\end{itemize}
+\end{columns}
+
+\vspace{0.5cm}
+\begin{center}
+{\color{warning}\textbf{Compartan lo que construyeron en IG/LinkedIn taggeando @breakout}}
+\end{center}
+\end{frame}
+
+% ============================================
+% SLIDE 20: FINAL
+% ============================================
+\begin{frame}[plain]
+\begin{center}
+\vspace{2.5cm}
+{\fontsize{40}{44}\selectfont\bfseries\color{accent} Si puedes describirlo,}
+
+\vspace{0.5cm}
+{\fontsize{40}{44}\selectfont\bfseries\color{textwhite} puedes construirlo.}
+
+\vspace{2cm}
+{\color{textgray}\large Breakout \& Lead PUCP | AXIS 2026}
+\end{center}
+\end{frame}
+
+\end{document}

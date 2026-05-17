@@ -1,0 +1,67 @@
+# ZERO ONE — Post-Event Metrics
+# Source: Luma export (registrations.csv) — exported 2026-05-07
+
+event: "ZERO ONE: Building a Startup — The Real Process"
+date: 2026-02-20
+format: Panel
+location: Open PUCP
+co_organized_with: Hult Prize PUCP
+
+attendance:
+  registered: 112
+  attended: null          # No check-in data in Luma — fill from manual count
+  conversion_rate: null   # attended / 112
+
+audience_profile:
+  occupation:
+    students: 87
+    independent: 11
+    employed: 8
+    founders: 6
+  universities:
+    PUCP: 91
+    other: 21            # UPC, UNMSM, UNI, Continental, U de Lima, etc.
+  top_careers:
+    - Ing. Informatica (9)
+    - Derecho (6)
+    - Economia (6)
+    - Gestion (6)
+    - Ing. Industrial (5)
+    - Ing. Biomedica (5)
+  startup_knowledge_avg: 2.2   # 1-5 scale
+  ecosystem_involvement_avg: 2.6  # 1-5 scale
+  startup_status:
+    "No": 42
+    "Developing an idea": 38
+    "Initial stage (MVP)": 28
+    "Generating revenue": 2
+    "Growth stage": 2
+
+satisfaction:
+  survey_sent: true
+  responses: null
+  avg_score: null
+  nps: null
+
+speakers:
+  count: 6
+  countries: 3  # Peru, Bolivia, Chile
+  names:
+    - Yanel Ulpiano (Dommies — Proptech)
+    - Katia Naupari (Agroglim — Agritech/Biotech)
+    - Deyvid Tolentino (XRAI — Healthtech/AI)
+    - Pedro Anze (Favorcito — Gig Economy)
+    - Reno (Indies — Tech)
+    - Damian Panes (Rodar — Mobility)
+
+content:
+  photos_captured: false
+  video_reel: false       # Cancelled per Notion
+  post_event_post: false  # Pending per Notion
+
+notes: >
+  First Breakout event. 112 registrations — strong for a debut.
+  81% from PUCP, 19% from other universities.
+  Audience was mostly beginners: 2.2/5 startup knowledge, 2.6/5 ecosystem involvement.
+  62% had no startup or were just developing an idea — perfect target audience.
+  No check-in data recorded in Luma (all checked_in_at fields empty).
