@@ -69,5 +69,5 @@ __pycache__/
 .venv/
 
 # ───────── Keep Claude context tracked ─────────
-!.claude/
-!.claude/**
+!org-hub/.claude/
+!org-hub/.claude/**
