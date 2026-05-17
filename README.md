@@ -10,6 +10,8 @@ Este repositorio es la fuente de verdad para la identidad, miembros, eventos, al
 
 ```
 breakout/
+├── web/                    Landing page breakout.lat (Next.js — Vercel root dir)
+│
 ├── areas/                  Nuestras 3 areas funcionales
 │   ├── community-experience/   Eventos, comunidad, cultura
 │   ├── growth-innovation/      Crecimiento, contenido, nuevas iniciativas
@@ -38,9 +40,14 @@ breakout/
 │   ├── meeting-notes.md      Notas de reunion
 │   └── onboarding.md        Guia para nuevos miembros
 │
+├── creations/              Assets producidos (banners, emails, posts, docs)
+│
 └── archive/                Archivos historicos
-    └── notion-snapshots/     Exports periodicos de Notion
+    └── notion-snapshots/     Exports periodicos de Notion + mapa Notion
 ```
+
+> El sitio web vive en `web/` (app Next.js, deploy en Vercel con Root Directory = `web/`).
+> Ver `web/README.md` para desarrollo local. El sistema de agentes de contenido / persona "ROCKY" está en `.claude/ROCKY.md`.
 
 ## Que esta aqui vs. que esta en Notion
 

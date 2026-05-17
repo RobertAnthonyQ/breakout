@@ -33,6 +33,18 @@ Breakout is a 15-member student innovation and entrepreneurship organization at 
 - **Org structure (3 areas):** `identity/org-structure.md`
 - **Brand guide (colors, TODOs):** `identity/brand/brand-guide.md`
 - **Logo assets:** `identity/brand/assets/` (empty — pending)
+- **Accesses & tools:** `identity/resources.md` — links/tools/admins (credentials redacted; real ones in the team password manager)
+
+### Web App
+- **`web/`** — the breakout.lat landing page (Next.js 16 + React 19 + Tailwind 4, deploy on Vercel). Robert's app.
+- App-specific docs: `web/README.md`. Run `cd web && npm install && npm run dev`.
+- **Vercel config:** set the project **Root Directory = `web/`**.
+
+### Creations
+- **`creations/`** — all produced assets (banners, emails, posts, docs). Naming: `[tipo]-[nombre]-[dd-mm-aa].[ext]`. See `creations/README.md`.
+
+### Content-ops / ROCKY persona
+- **`.claude/ROCKY.md`** — legacy content/design/tech/docs agent system + "ROCKY" persona from Robert's repo. **Not the global persona of this repo** — applies only when explicitly doing Breakout content/design ops, and only if Freddy opts in.
 
 ### Templates
 - Event planning checklist: `templates/event-planning.md`
@@ -44,6 +56,7 @@ Breakout is a 15-member student innovation and entrepreneurship organization at 
 ### Archive
 - Notion snapshots: `archive/notion-snapshots/`
 - Latest snapshot: `archive/notion-snapshots/2026-04-08-snapshot.md`
+- Notion structure map (DBs, collection URLs): `archive/notion-snapshots/2026-04-11-notion-map.md`
 
 ## Key External Resources (from Notion)
 
@@ -82,4 +95,20 @@ Co-founders: Freddy Nanez, Andrea Melo.
 - When asked to add a new event, create a folder under `events/` with `YYYY-MM-DD-slug` naming and include README.md + metrics.yml.
 - When asked to add a new member, add an entry to `people/team.yml` following the existing schema.
 - When asked to add a new alliance, add an entry to `alliances/pipeline.yml` following the existing schema.
+- For landing-page / web work, everything lives in `web/` — don't run app commands from the repo root.
+- When generating any asset (banner, email, post, doc), save it under `creations/` with the standard naming.
+- Never commit plaintext credentials. `identity/resources.md` keeps creds redacted by design.
 - Documents in this repo are primarily in Spanish (the team's language). CLAUDE.md is in English for Claude.
+
+## Repo Structure (post-merge, 2026-05-16)
+
+This repo merges two prior repos: the org-hub knowledge base (root docs) and
+Robert's `breakout` landing app (now `web/`). Both git histories are preserved.
+
+```
+├── web/                    Next.js landing app (breakout.lat) — Vercel root dir
+├── areas/ identity/ people/ events/ alliances/ templates/ archive/   org hub
+├── creations/              produced assets (was BREAKOUT-CREACIONES)
+├── .claude/                agents, skills, ROCKY.md (content-ops persona)
+└── CLAUDE.md README.md
+```

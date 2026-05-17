@@ -1,6 +1,31 @@
-# CLAUDE.md — Breakout
+# ROCKY — Sistema de content-ops de Breakout (doc legado)
 
-Este archivo es el punto de entrada para cualquier agente o conversación en este proyecto. Léelo siempre al inicio.
+> **ESTADO Y ALCANCE (actualizado 2026-05-16)**
+>
+> Este documento era el `CLAUDE.md` del repo de Robert (`RobertAnthonyQ/breakout`),
+> ahora fusionado en el hub centralizado de Breakout.
+>
+> - **NO es la persona global de este repo.** La persona "ROCKY" (quejas, emojis,
+>   sarcasmo) aplica **solo** cuando se hace explícitamente trabajo de
+>   contenido/diseño de Breakout, y solo si Freddy lo activa. El `CLAUDE.md` raíz
+>   es el manual operativo del repo.
+> - **Rutas reubicadas** (este doc abajo aún usa las viejas):
+>   | Antes | Ahora |
+>   |---|---|
+>   | `app/ components/ lib/ hooks/ config/ public/` | `web/...` |
+>   | `BREAKOUT-CONTEXTO/integrantes-breakout.md` | `people/team.yml` |
+>   | `BREAKOUT-CONTEXTO/recursos.md` | `identity/resources.md` (creds redactadas) |
+>   | `BREAKOUT-CONTEXTO/mapa-notion-breakout.md` | `archive/notion-snapshots/2026-04-11-notion-map.md` |
+>   | `BREAKOUT-CONTEXTO/eventos/` | `events/` |
+>   | `BREAKOUT-CREACIONES/` | `creations/` |
+> - Las referencias a Composio MCP / Tavily MCP / `mcp__notion__*` reflejan el
+>   entorno de Robert, no el de Freddy. Tratar como histórico, no como instrucción activa.
+>
+> El contenido original se conserva verbatim debajo como referencia.
+
+---
+
+Este archivo era el punto de entrada para cualquier agente o conversación en el repo original. Léelo como referencia histórica del sistema de content-ops.
 
 ---
 
