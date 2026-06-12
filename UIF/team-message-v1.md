@@ -1,0 +1,45 @@
+# Mensaje para Tati y David — WhatsApp / chat del cohort
+
+> Para enviar hoy (martes 26 may). Deadline interno para sus respuestas: miércoles 27 a las 22:00.
+
+---
+
+Cracks 👋
+
+Como saben, este jueves tenemos la presentación con la Oficina de Innovación para contarles los resultados del Global Summit en Twente. Estuve adelantando la estructura del deck y necesito jalar contenido de ustedes dos antes de mañana en la noche, para poder armar la versión final el jueves temprano.
+
+**Lo que les pido:**
+
+1. **Workshops a los que fueron**: nombre del workshop + 1-2 líneas de qué se trabajó. Cada uno asistió a sesiones distintas, así que entre los tres armamos la lista completa.
+2. **Tu aprendizaje principal**: la cosa que se te quedó del Summit, la que de verdad te cambió cómo piensas algo. No tiene que ser largo, pero sí honesto. Si fueron dos, mejor.
+3. **Una reflexión personal**: sobre liderazgo, mentalidad, lo que sea. Algo que sirva para que la oficina entienda qué nos llevamos como personas, no solo como cohort.
+4. **Momentos del Summit que quieras que aparezcan**: alguna conversación, taller, salida, lo que te marcó y quieres que esté sí o sí en el deck.
+5. **Fotos de tu carpeta del Drive**: si tienen 2-3 favoritas para que aparezcan, díganme los nombres o me las marcan. Si no, las elijo yo y se las paso para que validen.
+
+**Estructura preliminar del deck (~11 slides, en español):**
+
+1. Portada
+2. Qué es UIF y por qué PUCP forma parte
+3. El Global Summit en Twente: fechas, formato, escala
+4-5. Workshops a los que asistimos (uno cada uno)
+6. Reflexiones del cohort (un bloque por cada uno de nosotros)
+7. La red internacional que construimos: Leticia, el otro co-fundador de Stanford, el español del club de IA, el presidente del club de emprendimiento
+8. Cómo el Summit aterriza en Breakout
+9. Trayectoria de Breakout: lo que ya hicimos antes y después del Summit
+10. Próximos pasos y propuestas a la oficina (ej. evento virtual con los co-fundadores de UIF)
+11. Cierre y agradecimiento
+
+Si algo de la estructura no les cuadra, díganmelo ya, es el momento de moverla. La idea es que sea de los tres, no mía solita.
+
+Y otra cosa: en el slide 9 quiero meter eventos concretos que ya hicimos con Breakout, para mostrar que el Summit aterriza en cosas reales que ya están corriendo. Si tienen un par que les parezca clave resaltar, échenmelos también.
+
+Reparto tentativo de turnos al presentar:
+- Yo: portada, UIF, Summit overview, red internacional, próximos pasos, cierre
+- Tati: workshops parte 1, su reflexión, Breakout aterrizaje
+- David: workshops parte 2, su reflexión, trayectoria de Breakout
+
+Es solo una propuesta. Si prefieren otra repartición, lo movemos.
+
+**Deadline para mandarme su parte: mañana miércoles 27 a las 10pm.** Si necesitan más tiempo, avísenme ahora, mejor saberlo de una.
+
+Cualquier duda por acá. Vamos.
