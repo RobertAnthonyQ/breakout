@@ -23,6 +23,7 @@ Breakout is a 15-member student innovation and entrepreneurship organization at 
 - Current past events:
   - `events/2026-02-20-zero-one/` — First event, panel with Hult Prize
   - `events/2026-04-13-open-world-axis/` — AXIS Full Day with Lead PUCP
+  - `events/2026-05-16-invertir/` — INVERTIR: la realidad en Perú (investing; Diego Torres / Trii + 6 HBS students)
 
 ### Alliances
 - **Alliance pipeline:** `alliances/pipeline.yml` — All 11 organizations with status, contacts, objectives
@@ -31,8 +32,8 @@ Breakout is a 15-member student innovation and entrepreneurship organization at 
 ### Identity
 - **About (mission, vision, origin):** `identity/about.md`
 - **Org structure (3 areas):** `identity/org-structure.md`
-- **Brand guide (colors, TODOs):** `identity/brand/brand-guide.md`
-- **Logo assets:** `identity/brand/assets/` (empty — pending)
+- **Brand source of truth (colors, fonts, voice, specs):** `identity/brand/brand-context.md` — visual brandbook at `identity/brand/brandbook.pdf`
+- **Logo assets:** `identity/brand/assets/` — BREAKOUT wordmark (triangle-A) SVG + PNG variants
 - **Accesses & tools:** `identity/resources.md` — links/tools/admins (credentials redacted; real ones in the team password manager)
 
 ### Web App
@@ -52,6 +53,7 @@ Breakout is a 15-member student innovation and entrepreneurship organization at 
 - Meeting notes: `templates/meeting-notes.md`
 - New member onboarding: `templates/onboarding.md`
 - Alliance proposal: `alliances/templates/alliance-proposal.md`
+- Presentation template (Marp, branded): `templates/presentation/` — copy `breakout-starter.md`, see its README
 
 ### Archive
 - Notion snapshots: `archive/notion-snapshots/`
@@ -91,7 +93,7 @@ Co-founders: Freddy Nanez, Andrea Melo.
 - When Freddy asks about a member, read `people/team.yml` first.
 - When Freddy asks about an alliance, read `alliances/pipeline.yml` first.
 - When Freddy asks about an event, check `events/` for the relevant folder.
-- When Freddy asks about brand/identity, check `identity/brand/brand-guide.md`.
+- When Freddy asks about brand/identity, check `identity/brand/brand-context.md` (the source of truth).
 - When asked to add a new event, create a folder under `events/` with `YYYY-MM-DD-slug` naming and include README.md + metrics.yml.
 - When asked to add a new member, add an entry to `people/team.yml` following the existing schema.
 - When asked to add a new alliance, add an entry to `alliances/pipeline.yml` following the existing schema.

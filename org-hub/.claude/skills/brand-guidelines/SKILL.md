@@ -10,7 +10,7 @@ license: Complete terms in LICENSE.txt
 
 This skill applies Breakout's official brand identity to any artifact (presentation, document, HTML, poster, social post, etc.).
 
-**Full brand reference:** Always read `.agents/breakout-brand.md` before applying brand styles.
+**Full brand reference:** Always read `org-hub/identity/brand/brand-context.md` before applying brand styles (exact colors, tints, fonts, voice, applications).
 
 **Keywords**: branding, identidad visual, brand colors, tipografía, Breakout brand, visual formatting, diseño
 
@@ -22,16 +22,20 @@ This skill applies Breakout's official brand identity to any artifact (presentat
 
 | Rol | Nombre | HEX |
 |-----|--------|-----|
-| **Primario / identitario** | Azul Breakout | `#2430FF` |
+| **Primario / identitario** | Azul Breakout (cobalto) | `#214FDD` |
+| Acento (solo highlights) | Electric Blue | `#2430FF` |
+| Soporte | Spark Cyan | `#6CE5E8` |
 | Fondo neutro cálido | Gris cálido | `#F1EAE4` |
 | Fondo neutro frío | Gris frío | `#E1E1E1` |
 | Fondo oscuro (bold) | Negro | `#0A0A0A` |
-| Texto | Gris oscuro | `#1A1A1A` |
+| Texto | Gris oscuro | `#1A1A1A` / `#363639` |
 
 **Rules:**
-- `#2430FF` is the identity color — use for emphasis, CTAs, high-impact backgrounds, typographic highlights
+- `#214FDD` is the identity color — use for hero backgrounds, CTAs, key headlines, the logo background
+- `#2430FF` (electric) is for punch only: the triangle device, in-text highlights/links, emphasized words — never a large background
+- `#6CE5E8` (cyan) is a support accent and always pairs with dark text
 - Never use pure black (`#000000`) for text — always use dark grays
-- Never mix `#2430FF` with other blues
+- Never run cobalt and electric as competing backgrounds on the same surface
 
 ### Typography
 
@@ -73,8 +77,8 @@ This skill applies Breakout's official brand identity to any artifact (presentat
 
 When applying Breakout's brand to any artifact:
 
-1. Read `.agents/breakout-brand.md` for the full brand guide
-2. Use `#2430FF` as the dominant accent or background
+1. Read `org-hub/identity/brand/brand-context.md` for the full brand guide
+2. Use `#214FDD` (cobalt) as the dominant background; `#2430FF` (electric) for highlights only
 3. Use Poppins for headings, Raleway for body
 4. Never use pure black text
 5. Keep "Breakout" wordmark visible in the piece
