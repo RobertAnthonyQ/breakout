@@ -1,9 +1,0 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Allow: /
-
-# Disallow admin pages if any
-# Disallow: /admin
-
-Sitemap: https://breakout.lat/sitemap.xml
-
