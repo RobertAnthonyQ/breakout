@@ -1,5 +1,5 @@
 {
-  description = "breakly env";
+  description = "breakout env";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
