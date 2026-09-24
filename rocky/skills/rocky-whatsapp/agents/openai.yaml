@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rocky WhatsApp"
+  short_description: "Mensajes enriquecidos y rutinas de WhatsApp"
+  default_prompt: "Usa $rocky-whatsapp para preparar una acción de WhatsApp o una rutina programada."

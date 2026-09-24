@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <rect width="1080" height="1350" fill="#fff"/>
+  <image xlink:href="assets/open-world-sketch.png" x="0" y="0" width="1080" height="1350" preserveAspectRatio="xMidYMid slice" opacity=".52"/>
+  <rect x="70" y="70" width="940" height="1210" fill="#F1EAE4" fill-opacity=".9" stroke="#2430FF" stroke-width="3"/>
+  <text x="96" y="145" fill="#292929" font-family="Arial, sans-serif" font-size="22" letter-spacing="3">OPEN WORLD / GUARDA ESTO</text>
+  <text x="95" y="320" fill="#2430FF" font-family="Arial, sans-serif" font-size="82" font-weight="800" letter-spacing="-4">Nos vemos</text>
+  <text x="95" y="405" fill="#2430FF" font-family="Arial, sans-serif" font-size="82" font-weight="800" letter-spacing="-4">en el mapa.</text>
+  <g fill="#292929" font-family="Arial, sans-serif">
+    <text x="105" y="565" font-size="28" font-weight="700">DOMINGO 13 DE ABRIL, 2026</text>
+    <text x="105" y="635" font-size="27">2:30pm – 6:00pm</text>
+    <text x="105" y="705" font-size="27">PUCP, Lima · Salón B100</text>
+  </g>
+  <path d="M95 765 C250 730 390 780 558 748 S820 720 950 768" fill="none" stroke="#2430FF" stroke-width="6"/>
+  <text x="96" y="880" fill="#2430FF" font-family="Arial, sans-serif" font-size="42" font-weight="800">Regístrate desde el link</text>
+  <text x="96" y="935" fill="#2430FF" font-family="Arial, sans-serif" font-size="42" font-weight="800">de Luma en la bio.</text>
+  <text x="95" y="1190" fill="#292929" font-family="Arial, sans-serif" font-size="22" letter-spacing="2">03 / 03</text>
+  <text x="95" y="1233" fill="#292929" font-family="Arial, sans-serif" font-size="20">BREAKOUT  ·  @breakout_community  ·  AXIS / LEAD PUCP</text>
+</svg>

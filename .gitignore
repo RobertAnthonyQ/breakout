@@ -40,7 +40,19 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Forzar inclusión de contexto Claude y MCP config
-!.claude/
-!.claude/**
+# Integraciones locales del editor
 !.vscode/mcp.json
+
+# Estado local de Rocky (nunca versionar sesiones ni adjuntos temporales)
+/rocky/data/*
+!/rocky/data/.gitkeep
+/rocky/auth/
+/rocky/tmp/
+/rocky/dist/
+/rocky/node_modules/
+/deploy/.env.rocky
+/.runtime/
+
+# Las capacidades de Rocky forman parte del proyecto y sí se versionan
+!/rocky/skills/
+!/rocky/skills/**

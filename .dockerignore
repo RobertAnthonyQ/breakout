@@ -1,0 +1,13 @@
+.git
+.next
+.vercel
+.env*
+node_modules
+rocky/node_modules
+rocky/dist
+rocky/data
+rocky/.env*
+BREAKOUT-CREACIONES
+.claude
+*.log
+.DS_Store

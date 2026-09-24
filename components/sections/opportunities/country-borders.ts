@@ -94,7 +94,6 @@ function sampleRing(
   const points: BorderPoint[] = []
   let accum = 0
   let segIdx = 0
-  let segAccum = 0
 
   for (let i = 0; i < maxPoints; i++) {
     const target = i * step

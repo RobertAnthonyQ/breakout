@@ -1,0 +1,4 @@
+interface:
+  display_name: "Breakout Social Design"
+  short_description: "Posts y carruseles editoriales de Breakout"
+  default_prompt: "Usa $breakout-social-design para crear una pieza editorial de Breakout para redes sociales."

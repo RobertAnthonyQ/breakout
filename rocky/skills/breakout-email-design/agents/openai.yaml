@@ -1,0 +1,4 @@
+interface:
+  display_name: "Correos HTML de Breakout"
+  short_description: "Diseña correos HTML editoriales de Breakout"
+  default_prompt: "Usa $breakout-email-design para crear un correo HTML de Breakout para este evento."

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <image xlink:href="assets/03-cierre-art.png" x="0" y="0" width="1080" height="1350" preserveAspectRatio="xMidYMid slice"/>
+  <g font-family="Avenir Next, Avenir, sans-serif">
+    <text x="520" y="92" fill="#292929" font-size="19" font-weight="600" letter-spacing="3">OPEN WORLD · 03/03</text>
+    <text x="516" y="205" fill="#2430FF" font-size="78" font-weight="800" letter-spacing="-4">HAZLO</text>
+    <text x="516" y="280" fill="#2430FF" font-size="78" font-weight="800" letter-spacing="-4">REAL.</text>
+    <text x="520" y="350" fill="#292929" font-size="25" font-weight="550">Ideas, prototipos y personas</text>
+    <text x="520" y="386" fill="#292929" font-size="25" font-weight="550">para abrir tu siguiente oportunidad.</text>
+    <text x="520" y="470" fill="#2430FF" font-size="20" font-weight="750" letter-spacing="2">GUARDA ESTE POST</text>
+  </g>
+</svg>

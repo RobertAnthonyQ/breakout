@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <image xlink:href="assets/02-promesas-art.png" x="0" y="0" width="1080" height="1350" preserveAspectRatio="xMidYMid slice"/>
+  <g font-family="Avenir Next, Avenir, sans-serif">
+    <text x="62" y="92" fill="#292929" font-size="19" font-weight="600" letter-spacing="3">OPEN WORLD · 02/03</text>
+    <text x="60" y="190" fill="#2430FF" font-size="66" font-weight="800" letter-spacing="-3">LO QUE</text>
+    <text x="60" y="252" fill="#2430FF" font-size="66" font-weight="800" letter-spacing="-3">TE ESPERA</text>
+    <g fill="#292929">
+      <text x="62" y="390" fill="#2430FF" font-size="22" font-weight="800">01</text>
+      <text x="62" y="430" font-size="29" font-weight="650">Oportunidades</text>
+      <text x="62" y="466" font-size="29" font-weight="650">globales</text>
+      <text x="62" y="600" fill="#2430FF" font-size="22" font-weight="800">02</text>
+      <text x="62" y="640" font-size="29" font-weight="650">Prototipado</text>
+      <text x="62" y="676" font-size="29" font-weight="650">con IA</text>
+      <text x="62" y="810" fill="#2430FF" font-size="22" font-weight="800">03</text>
+      <text x="62" y="850" font-size="29" font-weight="650">Mentoría y</text>
+      <text x="62" y="886" font-size="29" font-weight="650">conexiones</text>
+    </g>
+    <text x="62" y="1245" fill="#292929" font-size="18" font-weight="500">Ideas que salen de la pantalla.</text>
+  </g>
+</svg>

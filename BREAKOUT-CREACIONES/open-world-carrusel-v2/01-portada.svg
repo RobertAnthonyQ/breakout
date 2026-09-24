@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <image xlink:href="assets/01-portada-art.png" x="0" y="0" width="1080" height="1350" preserveAspectRatio="xMidYMid slice"/>
+  <g font-family="Avenir Next, Avenir, sans-serif">
+    <text x="72" y="92" fill="#292929" font-size="21" font-weight="600" letter-spacing="4">BREAKOUT PRESENTA</text>
+    <text x="70" y="235" fill="#2430FF" font-size="102" font-weight="800" letter-spacing="-5">OPEN</text>
+    <text x="70" y="325" fill="#2430FF" font-size="102" font-weight="800" letter-spacing="-5">WORLD</text>
+    <text x="74" y="385" fill="#292929" font-size="25" font-weight="500">Startups · IA · oportunidades globales</text>
+    <text x="74" y="446" fill="#2430FF" font-size="20" font-weight="700" letter-spacing="2">DESLIZA →</text>
+  </g>
+</svg>

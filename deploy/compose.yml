@@ -1,0 +1,36 @@
+services:
+  landing:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.landing
+    container_name: breakout-landing
+    environment:
+      HOSTNAME: 127.0.0.1
+      NODE_ENV: production
+      PORT: 3500
+    init: true
+    network_mode: host
+    restart: unless-stopped
+
+  rocky:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.rocky
+    container_name: breakout-rocky
+    env_file:
+      - .env.rocky
+    environment:
+      CODEX_HOME: /home/node/.codex
+      NODE_ENV: production
+      ROCKY_AUTH_DIR: /workspace/rocky/data/whatsapp-auth
+      ROCKY_DATABASE_PATH: /workspace/rocky/data/rocky.sqlite
+      ROCKY_HOST: 127.0.0.1
+      ROCKY_PORT: 3100
+      ROCKY_PROJECT_ROOT: /workspace
+      ROCKY_ROUTINES_PATH: /workspace/rocky/data/routines.json
+    init: true
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - ..:/workspace
+      - ../.runtime/codex:/home/node/.codex

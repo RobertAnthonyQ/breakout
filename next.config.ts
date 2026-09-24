@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   transpilePackages: ["three", "globe.gl", "react-globe.gl"],
   images: {
     remotePatterns: [

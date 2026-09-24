@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" height="1350" viewBox="0 0 1080 1350">
+  <rect width="1080" height="1350" fill="#fff"/>
+  <image xlink:href="assets/open-world-sketch.png" x="0" y="0" width="1080" height="1350" preserveAspectRatio="xMidYMid slice" opacity=".62"/>
+  <rect x="70" y="70" width="940" height="1210" fill="#fff" fill-opacity=".78" stroke="#2430FF" stroke-width="3"/>
+  <path d="M110 215 C260 168 382 234 520 194 S814 177 962 222" fill="none" stroke="#2430FF" stroke-width="5"/>
+  <text x="96" y="145" fill="#292929" font-family="Arial, sans-serif" font-size="22" letter-spacing="3">OPEN WORLD / LO QUE TE ESPERA</text>
+  <text x="95" y="330" fill="#2430FF" font-family="Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="-3">Explora sin</text>
+  <text x="95" y="408" fill="#2430FF" font-family="Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="-3">mapa previo.</text>
+  <g fill="#292929" font-family="Arial, sans-serif">
+    <text x="110" y="560" font-size="34" font-weight="700">01</text><text x="190" y="560" font-size="32">Oportunidades globales</text>
+    <text x="110" y="680" font-size="34" font-weight="700">02</text><text x="190" y="680" font-size="32">Prototipado con IA</text>
+    <text x="110" y="800" font-size="34" font-weight="700">03</text><text x="190" y="800" font-size="32">Mentoras y conexiones</text>
+  </g>
+  <path d="M188 582 C390 600 580 565 790 582 M188 702 C360 717 510 690 700 706 M188 822 C390 840 600 808 820 827" fill="none" stroke="#2430FF" stroke-width="4"/>
+  <text x="96" y="1125" fill="#292929" font-family="Arial, sans-serif" font-size="30">No necesitas saber programar.</text>
+  <text x="95" y="1190" fill="#292929" font-family="Arial, sans-serif" font-size="22" letter-spacing="2">02 / 03</text>
+  <text x="95" y="1233" fill="#292929" font-family="Arial, sans-serif" font-size="20">Startups · innovación · emprendimiento · venture capital</text>
+</svg>
