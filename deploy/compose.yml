@@ -17,6 +17,7 @@ services:
       context: ..
       dockerfile: deploy/Dockerfile.rocky
     container_name: breakout-rocky
+    user: "1001:1001"
     env_file:
       - .env.rocky
     environment:
