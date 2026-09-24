@@ -41,3 +41,32 @@ test("rechaza asignar una campaña a alguien fuera del workspace", async () => {
     await rm(directory, { recursive: true, force: true });
   }
 });
+
+test("importa contactos por carrera y actualiza duplicados por correo", async () => {
+  const directory = await mkdtemp(path.join(tmpdir(), "rocky-workspace-"));
+  try {
+    const store = new WorkspaceStore(path.join(directory, "rocky.sqlite"));
+    assert.deepEqual(
+      store.upsertContacts([
+        { email: "alumna@pucp.edu.pe", name: "Alumna Uno", studentCode: "20230001", studentType: "REGULAR", career: "Gestión" },
+        { email: "alumno@pucp.edu.pe", name: "Alumno Dos", studentCode: "20230002", studentType: "REGULAR", career: "Ingeniería Industrial" },
+      ]),
+      { inserted: 2, updated: 0 },
+    );
+    assert.deepEqual(
+      store.upsertContacts([
+        { email: "ALUMNA@PUCP.EDU.PE", name: "Alumna Actualizada", studentCode: "20230001", studentType: "REGULAR", career: "Gestión" },
+      ]),
+      { inserted: 0, updated: 1 },
+    );
+    assert.deepEqual(store.getContactSummary(), {
+      total: 2,
+      byCareer: [
+        { career: "Gestión", count: 1 },
+        { career: "Ingeniería Industrial", count: 1 },
+      ],
+    });
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});

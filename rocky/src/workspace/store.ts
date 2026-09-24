@@ -10,6 +10,21 @@ export type WorkspaceMember = {
   connectedAt: string | null;
 };
 
+export type ContactInput = {
+  email: string;
+  name: string;
+  studentCode?: string | null;
+  studentType?: string | null;
+  career: string;
+  sourceFile?: string | null;
+  sourceSheet?: string | null;
+};
+
+export type ContactSummary = {
+  total: number;
+  byCareer: Array<{ career: string; count: number }>;
+};
+
 export type CampaignAssignmentStatus =
   | "pending"
   | "draft_created"
@@ -99,7 +114,77 @@ export class WorkspaceStore {
         error TEXT,
         UNIQUE(campaign_id, member_email)
       );
+      CREATE TABLE IF NOT EXISTS contacts (
+        email TEXT PRIMARY KEY,
+        name TEXT NOT NULL,
+        student_code TEXT,
+        student_type TEXT,
+        career TEXT NOT NULL,
+        source_file TEXT,
+        source_sheet TEXT,
+        created_at TEXT NOT NULL,
+        updated_at TEXT NOT NULL
+      );
+      CREATE INDEX IF NOT EXISTS contacts_career_idx ON contacts(career);
     `);
+  }
+
+  upsertContacts(contacts: ContactInput[]): { inserted: number; updated: number } {
+    const exists = this.database.prepare(`SELECT 1 FROM contacts WHERE email = ?`);
+    const upsert = this.database.prepare(`
+      INSERT INTO contacts (
+        email, name, student_code, student_type, career, source_file, source_sheet, created_at, updated_at
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(email) DO UPDATE SET
+        name = excluded.name,
+        student_code = COALESCE(excluded.student_code, contacts.student_code),
+        student_type = COALESCE(excluded.student_type, contacts.student_type),
+        career = excluded.career,
+        source_file = COALESCE(excluded.source_file, contacts.source_file),
+        source_sheet = COALESCE(excluded.source_sheet, contacts.source_sheet),
+        updated_at = excluded.updated_at
+    `);
+    let inserted = 0;
+    let updated = 0;
+    this.database.exec("BEGIN IMMEDIATE");
+    try {
+      for (const contact of contacts) {
+        const email = validateEmail(contact.email);
+        const name = contact.name.trim();
+        const career = contact.career.trim();
+        if (!name) throw new Error(`El contacto ${email} no tiene nombre.`);
+        if (!career) throw new Error(`El contacto ${email} no tiene carrera.`);
+        const alreadyExists = Boolean(exists.get(email));
+        const now = new Date().toISOString();
+        upsert.run(
+          email,
+          name,
+          contact.studentCode?.trim() || null,
+          contact.studentType?.trim() || null,
+          career,
+          contact.sourceFile?.trim() || null,
+          contact.sourceSheet?.trim() || null,
+          now,
+          now,
+        );
+        if (alreadyExists) updated += 1;
+        else inserted += 1;
+      }
+      this.database.exec("COMMIT");
+      return { inserted, updated };
+    } catch (error) {
+      this.database.exec("ROLLBACK");
+      throw error;
+    }
+  }
+
+  getContactSummary(): ContactSummary {
+    const total = Number((this.database.prepare(`SELECT COUNT(*) AS count FROM contacts`).get() as { count: number }).count);
+    const rows = this.database
+      .prepare(`SELECT career, COUNT(*) AS count FROM contacts GROUP BY career ORDER BY career`)
+      .all() as ContactSummary["byCareer"];
+    const byCareer = rows.map((row) => ({ career: row.career, count: Number(row.count) }));
+    return { total, byCareer };
   }
 
   bootstrapMembers(emails: string[]): void {
