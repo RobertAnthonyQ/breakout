@@ -99,7 +99,6 @@ export function createAdminServer(
       const gmailStatus = await gmail.getStatus();
       sendJson(response, 200, {
         configured: gmailStatus.configured,
-        connected: gmailStatus.connected,
       });
       return;
     }

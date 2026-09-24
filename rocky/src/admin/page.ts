@@ -94,13 +94,46 @@ export const adminPage = String.raw`<!doctype html>
     .campaign-item small { color: #8992b0; }
     .success { display: none; margin-top: 16px; padding: 13px 15px; border-radius: 12px; color: #9df0bd; background: #173526; }
     footer { margin-top: 22px; color: #747d9c; text-align: center; font-size: 13px; }
-    body.google-only { display: grid; min-height: 100vh; background: radial-gradient(circle at 50% -15%, #32409a 0, #11173f 43%, #080a17 100%); }
-    .google-only main { display: grid; place-items: center; width: min(1120px, calc(100% - 32px)); min-height: 100vh; padding: 48px 0; }
+    .welcome-panel { display: none; }
+    body.google-only { position: relative; display: grid; min-height: 100vh; overflow-x: hidden; color-scheme: light; color: #10132a; background: #eef1fb; }
+    body.google-only::before, body.google-only::after { content: ''; position: fixed; z-index: -2; width: min(46vw, 680px); aspect-ratio: 1; border-radius: 50%; filter: blur(8px); pointer-events: none; }
+    body.google-only::before { left: -12vw; top: -18vw; background: radial-gradient(circle, #7585ff 0, #a6b2ff99 34%, transparent 70%); }
+    body.google-only::after { right: -16vw; bottom: -24vw; background: radial-gradient(circle, #5368ffcc 0, #9aa9ff70 38%, transparent 72%); }
+    .google-only main { display: grid; place-items: center; width: min(1180px, calc(100% - 40px)); min-height: 100vh; padding: 44px 0; }
     .google-only header, .google-only .grid, .google-only .team-panel, .google-only .gmail-tools, .google-only footer { display: none !important; }
-    .google-only .gmail-card { width: 100%; min-height: auto; margin: 0; }
-    .google-only .gmail-content { width: min(100%, 760px); padding: clamp(42px, 7vw, 76px) 28px; }
-    .google-only .gmail-access { padding: clamp(32px, 6vw, 56px); }
+    .google-only .gmail-card { width: 100%; min-height: auto; margin: 0; border: 1px solid #ffffffd9; border-radius: 38px; background: #ffffff6e; box-shadow: 0 40px 100px #4250a326, inset 0 1px #fff; backdrop-filter: blur(28px) saturate(145%); }
+    .google-only .gmail-card::before { opacity: .42; background-image: linear-gradient(#2430ff09 1px, transparent 1px), linear-gradient(90deg, #2430ff09 1px, transparent 1px); background-size: 42px 42px; mask-image: linear-gradient(130deg, #000, transparent 70%); }
+    .google-only .gmail-card::after { width: 600px; height: 600px; left: 22%; top: 10%; background: #2430ff1f; filter: blur(100px); }
+    .google-only #gmail-particles { opacity: .32; }
+    .google-only .gmail-content { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr); gap: 18px; width: 100%; padding: 18px; }
+    .google-only .welcome-panel { position: relative; display: flex; min-height: 610px; flex-direction: column; justify-content: space-between; overflow: hidden; padding: clamp(38px, 5vw, 68px); border-radius: 28px; color: white; background: linear-gradient(145deg, #161d81 0%, #2430ff 53%, #6572ff 100%); box-shadow: 0 26px 70px #2430ff35; }
+    .google-only .welcome-panel::before { content: ''; position: absolute; width: 440px; height: 440px; right: -170px; top: -190px; border: 1px solid #ffffff4f; border-radius: 50%; box-shadow: 0 0 0 54px #ffffff0c, 0 0 0 108px #ffffff0a; }
+    .google-only .welcome-panel::after { content: ''; position: absolute; width: 380px; height: 380px; left: -250px; bottom: -260px; border: 1px solid #ffffff3b; border-radius: 50%; box-shadow: 0 0 0 58px #ffffff0d; }
+    .welcome-brand { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; font-size: 22px; font-weight: 850; letter-spacing: -.04em; }
+    .welcome-brand span { display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid #ffffff35; border-radius: 14px; background: #ffffff17; box-shadow: inset 0 1px #ffffff3d; }
+    .welcome-copy { position: relative; z-index: 1; max-width: 510px; }
+    .welcome-kicker { margin: 0 0 18px; color: #d9ddff; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .welcome-copy h1 { max-width: 470px; margin: 0; font-size: clamp(44px, 5vw, 68px); line-height: .98; letter-spacing: -.065em; }
+    .welcome-copy > p:last-child { max-width: 440px; margin: 24px 0 0; color: #e6e8ff; font-size: 17px; line-height: 1.6; }
+    .welcome-foot { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; color: #e4e7ff; font-size: 13px; }
+    .welcome-foot::before { content: ''; width: 34px; height: 1px; background: #ffffff8c; }
+    .google-only .gmail-access { display: flex; min-height: 610px; flex-direction: column; justify-content: center; padding: clamp(34px, 4.4vw, 58px); border: 1px solid #ffffffee; border-radius: 28px; color: #15182c; background: #ffffffc7; box-shadow: 0 24px 70px #27357b1a, inset 0 1px #fff; backdrop-filter: blur(22px); }
+    .google-only .google-mark { width: 64px; height: 64px; margin-bottom: 30px; border: 1px solid #e7e9f4; border-radius: 20px; box-shadow: 0 18px 38px #3440941c; }
+    .google-only .google-mark svg { width: 32px; height: 32px; }
+    .google-only .eyebrow { margin-bottom: 14px; color: #5360db; letter-spacing: .17em; }
+    .google-only .gmail-access h2 { color: #10132a; font-size: clamp(34px, 4vw, 50px); line-height: 1.02; }
+    .google-only .gmail-copy { margin: 20px auto 26px; color: #626881; font-size: 15px; line-height: 1.65; }
+    .google-only .gmail-state { margin-bottom: 22px; padding: 8px 13px; border-color: #dfe2ef; color: #687087; background: #f5f6fb; }
+    .google-only .gmail-state::before { background: #8790ad; }
+    .google-only .gmail-state.connected { color: #18754b; border-color: #c8ead8; background: #eefaf4; }
+    .google-only .google-button { max-width: 360px; min-height: 54px; margin-top: 0; border: 1px solid #d9ddec; color: #1c2032; background: #fff; box-shadow: 0 15px 34px #34409418; }
+    .google-only .google-button:hover { color: #fff; border-color: #2430ff; background: #2430ff; box-shadow: 0 18px 40px #2430ff36; }
+    .google-only .security-note { margin-top: 20px; color: #858ba0; }
+    .google-only .gmail-feedback { color: #9d2436; background: #fff0f2; }
+    .google-only .gmail-feedback.success-feedback { color: #176b46 !important; background: #eaf8f1 !important; }
+    @media (max-width: 900px) { .google-only main { width: min(680px, calc(100% - 28px)); padding: 24px 0; } .google-only .gmail-content { grid-template-columns: 1fr; } .google-only .welcome-panel { min-height: 380px; } .google-only .gmail-access { min-height: 510px; } .welcome-copy h1 { font-size: clamp(40px, 10vw, 60px); } }
     @media (max-width: 760px) { main { padding-top: 24px; } header, .grid { grid-template-columns: 1fr; } header { align-items: flex-start; flex-direction: column; } .qr-zone { min-height: 390px; } .gmail-content { padding: 42px 16px 30px; } .gmail-access { padding: 30px 20px; } .member-form, .campaign-form { grid-template-columns: 1fr; } .member-form button, .campaign-form button { width: 100%; } }
+    @media (max-width: 540px) { .google-only main { width: calc(100% - 20px); } .google-only .gmail-card { border-radius: 28px; } .google-only .gmail-content { padding: 10px; } .google-only .welcome-panel { min-height: 330px; padding: 30px; border-radius: 22px; } .google-only .gmail-access { min-height: 480px; padding: 34px 24px; border-radius: 22px; } .welcome-copy > p:last-child { font-size: 15px; } .welcome-foot { font-size: 12px; } }
     @media (prefers-reduced-motion: reduce) { #gmail-particles { display: none; } }
   </style>
 </head>
@@ -138,10 +171,19 @@ export const adminPage = String.raw`<!doctype html>
     <section id="gmail-card" class="gmail-card card">
       <canvas id="gmail-particles" aria-hidden="true"></canvas>
       <div class="gmail-content">
+        <div class="welcome-panel" aria-hidden="true">
+          <div class="welcome-brand"><span>R</span> Rocky</div>
+          <div class="welcome-copy">
+            <p class="welcome-kicker">Breakout workspace</p>
+            <h1>Menos tareas.<br />Más impacto.</h1>
+            <p>Conecta tu cuenta para que Rocky prepare borradores en Gmail. Tú mantienes siempre la revisión y el control final.</p>
+          </div>
+          <div class="welcome-foot">Integración oficial con Google OAuth</div>
+        </div>
         <div class="gmail-access">
           <div class="google-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.29-2.65l-3.57-2.77c-.98.66-2.23 1.06-3.72 1.06-2.87 0-5.3-1.94-6.17-4.54H2.14v2.85A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.83 14.1A6.6 6.6 0 0 1 5.49 12c0-.73.13-1.43.34-2.1V7.05H2.14A11 11 0 0 0 1 12c0 1.78.43 3.46 1.14 4.95l3.69-2.85Z"/><path fill="#EA4335" d="M12 5.36c1.62 0 3.06.56 4.2 1.64l3.17-3.17A10.64 10.64 0 0 0 12 1a11 11 0 0 0-9.86 6.05L5.83 9.9C6.7 7.3 9.13 5.36 12 5.36Z"/></svg></div>
           <p class="eyebrow">Rocky + Google</p>
-          <h2 id="gmail-title">Conecta Gmail en un clic</h2>
+          <h2 id="gmail-title">Conecta tu cuenta de Gmail</h2>
           <p id="gmail-copy" class="gmail-copy">Autoriza a Rocky para preparar borradores. Tú conservas la revisión y el envío desde Gmail.</p>
           <span id="gmail-state" class="gmail-state">Consultando conexión…</span>
           <button id="connect-gmail" class="google-button" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1Z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.29-2.65l-3.57-2.77c-.98.66-2.23 1.06-3.72 1.06-2.87 0-5.3-1.94-6.17-4.54H2.14v2.85A11 11 0 0 0 12 23Z"/><path fill="#FBBC05" d="M5.83 14.1A6.6 6.6 0 0 1 5.49 12c0-.73.13-1.43.34-2.1V7.05H2.14A11 11 0 0 0 1 12c0 1.78.43 3.46 1.14 4.95l3.69-2.85Z"/><path fill="#EA4335" d="M12 5.36c1.62 0 3.06.56 4.2 1.64l3.17-3.17A10.64 10.64 0 0 0 12 1a11 11 0 0 0-9.86 6.05L5.83 9.9C6.7 7.3 9.13 5.36 12 5.36Z"/></svg><span>Continuar con Google</span></button>
@@ -228,14 +270,15 @@ export const adminPage = String.raw`<!doctype html>
       const card = document.querySelector('#gmail-card'); const state = document.querySelector('#gmail-state'); const connect = document.querySelector('#connect-gmail'); const connectLabel = connect.querySelector('span'); const create = document.querySelector('#create-draft'); const title = document.querySelector('#gmail-title'); const copy = document.querySelector('#gmail-copy');
       if (!response.ok) { state.textContent = 'Sin acceso'; return; }
       const gmail = await response.json();
-      card.classList.toggle('connected', gmail.connected);
-      state.className = 'gmail-state' + (gmail.connected ? ' connected' : '');
-      state.textContent = gmail.connected ? 'Gmail conectado' : gmail.configured ? 'Listo para conectar' : 'Falta configuración';
-      title.textContent = gmail.connected ? 'Tu Gmail ya está conectado' : 'Conecta Gmail en un clic';
-      copy.textContent = gmail.connected ? 'Rocky puede preparar borradores para que tú los revises y envíes desde Gmail.' : 'Autoriza a Rocky para preparar borradores. Tú conservas la revisión y el envío desde Gmail.';
-      connectLabel.textContent = gmail.connected ? 'Cambiar cuenta de Google' : 'Continuar con Google';
+      const connected = googleOnly ? googleResult === 'connected' : gmail.connected;
+      card.classList.toggle('connected', connected);
+      state.className = 'gmail-state' + (connected ? ' connected' : '');
+      state.textContent = connected ? 'Cuenta conectada' : gmail.configured ? 'Conexión segura disponible' : 'Falta configuración';
+      title.textContent = connected ? 'Cuenta conectada correctamente' : 'Conecta tu cuenta de Gmail';
+      copy.textContent = connected ? 'Rocky ya puede preparar borradores para esta cuenta. Puedes cerrar esta ventana con tranquilidad.' : 'Autoriza a Rocky para preparar borradores. Tú conservas la revisión y el envío desde Gmail.';
+      connectLabel.textContent = connected ? 'Conectar otra cuenta' : 'Continuar con Google';
       connect.disabled = !gmail.configured;
-      create.disabled = !gmail.connected;
+      create.disabled = !connected;
       const account = document.querySelector('#draft-account'); account.replaceChildren();
       for (const item of gmail.accounts || []) { const option = document.createElement('option'); option.value = item.email; option.textContent = item.name ? item.name + ' · ' + item.email : item.email; account.append(option); }
       const memberList = document.querySelector('#member-list'); memberList.replaceChildren();
@@ -304,7 +347,7 @@ export const adminPage = String.raw`<!doctype html>
       } catch (error) { alert(error.message); } finally { button.disabled = false; }
     });
     const googleParams = new URLSearchParams(location.search); const googleResult = googleParams.get('google'); const gmailFeedback = document.querySelector('#gmail-feedback');
-    if (googleResult === 'connected') { gmailFeedback.textContent = 'Cuenta conectada correctamente: ' + (googleParams.get('email') || 'Google'); gmailFeedback.style.display = 'block'; gmailFeedback.style.color = '#9df0bd'; gmailFeedback.style.background = '#173526'; history.replaceState({}, '', '/'); }
+    if (googleResult === 'connected') { gmailFeedback.textContent = 'Cuenta conectada correctamente: ' + (googleParams.get('email') || 'Google'); gmailFeedback.classList.add('success-feedback'); gmailFeedback.style.display = 'block'; history.replaceState({}, '', '/'); }
     if (googleResult === 'error') { gmailFeedback.textContent = googleParams.get('message') || 'No se pudo conectar Gmail'; gmailFeedback.style.display = 'block'; history.replaceState({}, '', '/'); }
     startGmailParticles(); loadGmailStatus();
     if (!document.body.classList.contains('google-only')) { loadStatus(); loadCampaigns(); connectEvents(); }
