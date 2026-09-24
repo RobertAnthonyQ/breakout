@@ -95,6 +95,29 @@ export function createAdminServer(
       return;
     }
 
+    if (request.method === "GET" && url.pathname === "/api/integrations/google/public-status") {
+      const gmailStatus = await gmail.getStatus();
+      sendJson(response, 200, {
+        configured: gmailStatus.configured,
+        connected: gmailStatus.connected,
+      });
+      return;
+    }
+
+    if (request.method === "GET" && url.pathname === "/api/integrations/google/connect") {
+      try {
+        response.writeHead(302, {
+          "Cache-Control": "no-store",
+          Location: gmail.createAuthorizationUrl(),
+        });
+        response.end();
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        sendJson(response, 409, { error: message });
+      }
+      return;
+    }
+
     if (!isAuthorized(request, config)) {
       sendJson(response, 401, { error: "Token administrativo inválido." });
       return;
@@ -116,20 +139,6 @@ export function createAdminServer(
 
     if (request.method === "GET" && url.pathname === "/api/integrations/google/status") {
       sendJson(response, 200, await gmail.getStatus());
-      return;
-    }
-
-    if (request.method === "GET" && url.pathname === "/api/integrations/google/connect") {
-      try {
-        response.writeHead(302, {
-          "Cache-Control": "no-store",
-          Location: gmail.createAuthorizationUrl(),
-        });
-        response.end();
-      } catch (error) {
-        const message = error instanceof Error ? error.message : String(error);
-        sendJson(response, 409, { error: message });
-      }
       return;
     }
 

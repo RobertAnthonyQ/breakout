@@ -222,7 +222,9 @@ export const adminPage = String.raw`<!doctype html>
     }
     async function loadStatus() { const response = await fetch(authUrl('/api/status'), { cache: 'no-store' }); if (response.ok) render(await response.json()); }
     async function loadGmailStatus() {
-      const response = await fetch(authUrl('/api/integrations/google/status'), { cache: 'no-store' });
+      const googleOnly = document.body.classList.contains('google-only');
+      const statusPath = googleOnly ? '/api/integrations/google/public-status' : authUrl('/api/integrations/google/status');
+      const response = await fetch(statusPath, { cache: 'no-store' });
       const card = document.querySelector('#gmail-card'); const state = document.querySelector('#gmail-state'); const connect = document.querySelector('#connect-gmail'); const connectLabel = connect.querySelector('span'); const create = document.querySelector('#create-draft'); const title = document.querySelector('#gmail-title'); const copy = document.querySelector('#gmail-copy');
       if (!response.ok) { state.textContent = 'Sin acceso'; return; }
       const gmail = await response.json();
@@ -235,11 +237,11 @@ export const adminPage = String.raw`<!doctype html>
       connect.disabled = !gmail.configured;
       create.disabled = !gmail.connected;
       const account = document.querySelector('#draft-account'); account.replaceChildren();
-      for (const item of gmail.accounts) { const option = document.createElement('option'); option.value = item.email; option.textContent = item.name ? item.name + ' · ' + item.email : item.email; account.append(option); }
+      for (const item of gmail.accounts || []) { const option = document.createElement('option'); option.value = item.email; option.textContent = item.name ? item.name + ' · ' + item.email : item.email; account.append(option); }
       const memberList = document.querySelector('#member-list'); memberList.replaceChildren();
       const assignmentEmail = document.querySelector('#assignment-email'); assignmentEmail.replaceChildren();
-      if (!gmail.members.length) { const empty = document.createElement('span'); empty.className = 'subtitle'; empty.textContent = 'Agrega al primer integrante; será el propietario.'; memberList.append(empty); }
-      for (const member of gmail.members) { const row = document.createElement('div'); row.className = 'member-item'; const email = document.createElement('span'); email.textContent = member.email; const status = document.createElement('small'); status.textContent = member.status === 'connected' ? 'Conectado' : 'Invitado'; row.append(email, status); memberList.append(row); const memberOption = document.createElement('option'); memberOption.value = member.email; memberOption.textContent = member.email; assignmentEmail.append(memberOption); }
+      if (!(gmail.members || []).length) { const empty = document.createElement('span'); empty.className = 'subtitle'; empty.textContent = 'Agrega al primer integrante; será el propietario.'; memberList.append(empty); }
+      for (const member of gmail.members || []) { const row = document.createElement('div'); row.className = 'member-item'; const email = document.createElement('span'); email.textContent = member.email; const status = document.createElement('small'); status.textContent = member.status === 'connected' ? 'Conectado' : 'Invitado'; row.append(email, status); memberList.append(row); const memberOption = document.createElement('option'); memberOption.value = member.email; memberOption.textContent = member.email; assignmentEmail.append(memberOption); }
     }
     async function loadCampaigns() {
       const response = await fetch(authUrl('/api/campaigns'), { cache: 'no-store' }); if (!response.ok) return;
