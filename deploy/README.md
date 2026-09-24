@@ -17,16 +17,14 @@ docker compose ps
 docker compose logs -f rocky
 ```
 
-## URLs temporales
+## URLs de producción
 
-- `https://breakout.168.129.177.199.nip.io`
-- `https://rocky.168.129.177.199.nip.io`
-- `https://assets.breakout.168.129.177.199.nip.io`
+- Landing: `https://www.breakout.lat` (Vercel).
+- Rocky: `https://rocky.breakout.lat` (VM).
+- Imágenes de correo: `https://assets.breakout.lat` (VM).
 
 Antes de conectar Gmail en producción se debe registrar exactamente este retorno en Google Cloud:
 
 ```text
-https://rocky.168.129.177.199.nip.io/api/integrations/google/callback
+https://rocky.breakout.lat/api/integrations/google/callback
 ```
-
-Cuando `breakout.lat` apunte a la VM, reemplaza los nombres temporales en Nginx y en `GOOGLE_REDIRECT_URI`, y emite nuevos certificados.
