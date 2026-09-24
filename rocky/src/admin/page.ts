@@ -95,6 +95,7 @@ export const adminPage = String.raw`<!doctype html>
     .success { display: none; margin-top: 16px; padding: 13px 15px; border-radius: 12px; color: #9df0bd; background: #173526; }
     footer { margin-top: 22px; color: #747d9c; text-align: center; font-size: 13px; }
     .welcome-panel { display: none; }
+    .whatsapp-only .gmail-card { display: none; }
     body.google-only { position: relative; display: grid; min-height: 100vh; overflow-x: hidden; color-scheme: light; color: #10132a; background: #eef1fb; }
     body.google-only::before, body.google-only::after { content: ''; position: fixed; z-index: -2; width: min(46vw, 680px); aspect-ratio: 1; border-radius: 50%; filter: blur(8px); pointer-events: none; }
     body.google-only::before { left: -12vw; top: -18vw; background: radial-gradient(circle, #7585ff 0, #a6b2ff99 34%, transparent 70%); }
@@ -238,8 +239,10 @@ export const adminPage = String.raw`<!doctype html>
   <script>
     const labels = { starting: 'Iniciando', waiting_for_qr: 'Esperando QR', connecting: 'Conectando', connected: 'Conectado', reconnecting: 'Reconectando', disconnected: 'Desconectado', logged_out: 'Sesión cerrada', error: 'Error' };
     const tokenInput = document.querySelector('#token');
-    tokenInput.value = localStorage.getItem('rocky-token') || '';
-    tokenInput.addEventListener('change', () => { localStorage.setItem('rocky-token', tokenInput.value); connectEvents(); });
+    const accessToken = new URLSearchParams(location.hash.slice(1)).get('token');
+    if (accessToken) { sessionStorage.setItem('rocky-token', accessToken); history.replaceState({}, '', location.pathname + location.search); }
+    tokenInput.value = sessionStorage.getItem('rocky-token') || localStorage.getItem('rocky-token') || '';
+    tokenInput.addEventListener('change', () => { sessionStorage.setItem('rocky-token', tokenInput.value); loadStatus(); connectEvents(); });
     const formatDate = value => value ? new Intl.DateTimeFormat('es-PE', { dateStyle: 'medium', timeStyle: 'medium' }).format(new Date(value)) : '—';
     function authUrl(path) { const token = tokenInput.value.trim(); return token ? path + '?token=' + encodeURIComponent(token) : path; }
     function render(status) {
@@ -262,7 +265,7 @@ export const adminPage = String.raw`<!doctype html>
       if (!status.groups.length) { const emptyGroup = document.createElement('span'); emptyGroup.className = 'subtitle'; emptyGroup.textContent = status.phase === 'connected' ? 'No se encontraron grupos.' : 'Disponible al conectar WhatsApp.'; groups.append(emptyGroup); }
       for (const group of status.groups) { const row = document.createElement('div'); row.className = 'group'; const name = document.createElement('span'); name.textContent = group.name; const count = document.createElement('small'); count.textContent = group.participants + ' miembros'; row.append(name, count); groups.append(row); }
     }
-    async function loadStatus() { const response = await fetch(authUrl('/api/status'), { cache: 'no-store' }); if (response.ok) render(await response.json()); }
+    async function loadStatus() { const response = await fetch(authUrl('/api/status'), { cache: 'no-store' }); if (response.ok) render(await response.json()); else if (response.status === 401) { document.querySelector('#phase').textContent = 'Acceso privado'; document.querySelector('#instruction').textContent = 'Introduce el token administrativo para ver el QR y vincular WhatsApp.'; } }
     async function loadGmailStatus() {
       const googleOnly = document.body.classList.contains('google-only');
       const statusPath = googleOnly ? '/api/integrations/google/public-status' : authUrl('/api/integrations/google/status');
@@ -349,8 +352,8 @@ export const adminPage = String.raw`<!doctype html>
     const googleParams = new URLSearchParams(location.search); const googleResult = googleParams.get('google'); const gmailFeedback = document.querySelector('#gmail-feedback');
     if (googleResult === 'connected') { gmailFeedback.textContent = 'Cuenta conectada correctamente: ' + (googleParams.get('email') || 'Google'); gmailFeedback.classList.add('success-feedback'); gmailFeedback.style.display = 'block'; history.replaceState({}, '', '/'); }
     if (googleResult === 'error') { gmailFeedback.textContent = googleParams.get('message') || 'No se pudo conectar Gmail'; gmailFeedback.style.display = 'block'; history.replaceState({}, '', '/'); }
-    startGmailParticles(); loadGmailStatus();
-    if (!document.body.classList.contains('google-only')) { loadStatus(); loadCampaigns(); connectEvents(); }
+    if (!document.body.classList.contains('whatsapp-only')) { startGmailParticles(); loadGmailStatus(); }
+    if (!document.body.classList.contains('google-only')) { loadStatus(); if (!document.body.classList.contains('whatsapp-only')) loadCampaigns(); if (tokenInput.value) connectEvents(); }
   </script>
 </body>
 </html>`;

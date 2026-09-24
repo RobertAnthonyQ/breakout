@@ -57,7 +57,7 @@ export function createAdminServer(
     response.setHeader("X-Frame-Options", "DENY");
     response.setHeader("Referrer-Policy", "no-referrer");
 
-    if (request.method === "GET" && url.pathname === "/") {
+    if (request.method === "GET" && (url.pathname === "/" || url.pathname === "/admin/whatsapp")) {
       response.writeHead(200, {
         "Cache-Control": "no-store",
         "Content-Security-Policy": "default-src 'self'; img-src 'self' data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; connect-src 'self'",
@@ -65,7 +65,9 @@ export function createAdminServer(
       });
       const googleOnlyPreview =
         config.host === "127.0.0.1" && url.searchParams.get("view") === "google";
-      response.end(renderAdminPage(config.googleOnlyPage || googleOnlyPreview));
+      response.end(url.pathname === "/admin/whatsapp"
+        ? renderAdminPage(false).replace("<body>", '<body class="whatsapp-only">')
+        : renderAdminPage(config.googleOnlyPage || googleOnlyPreview));
       return;
     }
 
