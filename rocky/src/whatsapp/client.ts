@@ -313,15 +313,21 @@ export class WhatsAppClient {
           this.socket = null;
           const error = update.lastDisconnect?.error;
           const statusCode = error instanceof Boom ? error.output.statusCode : undefined;
+          const errorData = error instanceof Boom ? error.data : undefined;
           const loggedOut = statusCode === DisconnectReason.loggedOut;
           const message = error instanceof Error ? error.message : "Conexión cerrada";
+
+          logger.warn(
+            { statusCode, errorData, message },
+            "WhatsApp cerró la conexión",
+          );
 
           this.status.update({
             phase: loggedOut ? "logged_out" : "disconnected",
             qrDataUrl: null,
             phone: loggedOut ? null : this.status.get().phone,
             lastDisconnectedAt: new Date().toISOString(),
-            lastError: message,
+            lastError: statusCode ? `${message} (código ${statusCode})` : message,
           });
 
           if (!loggedOut && !this.stopped) this.scheduleReconnect();
