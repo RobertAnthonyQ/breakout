@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Breakout — Opportunities Hub (Apple Frosted Glass Edition)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
+      background-color: #F6F8FC;
+      color: #0A0A0A;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      padding-bottom: 70px;
+    }
+
+    /* Ambient atmospheric background glows (Apple light environment) */
+    .ambient-mesh {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1200px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ambient-mesh::before {
+      content: "";
+      position: absolute;
+      width: 750px;
+      height: 750px;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(33, 79, 221, 0.16) 0%, rgba(33, 79, 221, 0.04) 45%, transparent 70%);
+      filter: blur(80px);
+    }
+
+    .ambient-mesh::after {
+      content: "";
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      top: 120px;
+      right: 5%;
+      background: radial-gradient(circle, rgba(108, 229, 232, 0.14) 0%, transparent 65%);
+      filter: blur(90px);
+    }
+
+    .ambient-warm {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      top: 250px;
+      left: 8%;
+      background: radial-gradient(circle, rgba(238, 242, 255, 0.6) 0%, transparent 70%);
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Subtle geometric grid line overlay */
+    .grid-lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1400px;
+      background-image: 
+        linear-gradient(to right, rgba(33, 79, 221, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(33, 79, 221, 0.035) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at 50% 30%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(circle at 50% 30%, black 20%, transparent 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Floating Island Navigation (Apple Dynamic Pill) */
+    .nav-container {
+      padding-top: 24px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-island {
+      width: 100%;
+      max-width: 1132px;
+      height: 64px;
+      background: rgba(255, 255, 255, 0.68);
+      backdrop-filter: blur(32px) saturate(190%);
+      -webkit-backdrop-filter: blur(32px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 9999px;
+      box-shadow: 
+        0 12px 32px -8px rgba(0, 0, 0, 0.04),
+        0 2px 6px -1px rgba(0, 0, 0, 0.02),
+        inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px 0 24px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-wordmark {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: #0A0A0A;
+      display: flex;
+      align-items: center;
+    }
+
+    .triangle-logo {
+      color: #214FDD;
+      margin: 0 1px;
+      font-size: 14px;
+    }
+
+    .hub-pill {
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #214FDD;
+      background: rgba(33, 79, 221, 0.08);
+      border: 1px solid rgba(33, 79, 221, 0.15);
+      padding: 3px 9px;
+      border-radius: 9999px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-link {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #475569;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      color: #0A0A0A;
+    }
+
+    .nav-link.active {
+      color: #214FDD;
+      font-weight: 600;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-apple-primary {
+      font-size: 13px;
+      font-weight: 600;
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #2555EA 0%, #1D45C4 100%);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 9px 18px;
+      border-radius: 9999px;
+      box-shadow: 
+        0 4px 14px rgba(33, 79, 221, 0.28),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-apple-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 
+        0 6px 18px rgba(33, 79, 221, 0.38),
+        inset 0 1px 1px rgba(255, 255, 255, 0.45);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      text-align: center;
+      padding: 68px 16px 36px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .eyebrow-capsule {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 9999px;
+      box-shadow: 0 4px 12px rgba(33, 79, 221, 0.05);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #214FDD;
+      letter-spacing: 0.04em;
+      margin-bottom: 22px;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #214FDD;
+      border-radius: 50%;
+      box-shadow: 0 0 8px rgba(33, 79, 221, 0.7);
+    }
+
+    .hero-title {
+      font-size: 52px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      color: #0A0A0A;
+      margin-bottom: 18px;
+    }
+
+    .hero-title-gradient {
+      background: linear-gradient(135deg, #0A0A0A 40%, #214FDD 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: #64748B;
+      line-height: 1.55;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .stats-ribbon {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 26px;
+      padding: 8px 22px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 9999px;
+      font-size: 12.5px;
+      color: #475569;
+    }
+
+    .stats-ribbon strong {
+      color: #0A0A0A;
+      font-weight: 700;
+    }
+
+    .stats-ribbon .accent-blue {
+      color: #214FDD;
+      font-weight: 700;
+    }
+
+    .stats-dot {
+      color: #CBD5E1;
+    }
+
+    /* Floating Frosted Glass Search & Filter Dock */
+    .dock-container {
+      max-width: 1040px;
+      margin: 28px auto 0;
+    }
+
+    .glass-dock {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(40px) saturate(200%);
+      -webkit-backdrop-filter: blur(40px) saturate(200%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 24px;
+      padding: 10px 14px 10px 20px;
+      box-shadow: 
+        0 20px 48px -12px rgba(33, 79, 221, 0.08),
+        0 4px 12px -2px rgba(0, 0, 0, 0.02),
+        inset 0 1.5px 2px rgba(255, 255, 255, 1);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .search-input-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .search-icon {
+      color: #214FDD;
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    .search-input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      outline: none;
+      font-family: inherit;
+      font-size: 14.5px;
+      font-weight: 400;
+      color: #0A0A0A;
+    }
+
+    .search-input::placeholder {
+      color: #94A3B8;
+    }
+
+    .dock-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(226, 232, 240, 0.8);
+    }
+
+    .dock-select {
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #334155;
+      outline: none;
+      cursor: pointer;
+      padding-right: 8px;
+    }
+
+    .btn-dock-search {
+      background: #214FDD;
+      color: #FFFFFF;
+      border: none;
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 600;
+      padding: 11px 24px;
+      border-radius: 16px;
+      cursor: pointer;
+      box-shadow: 
+        0 4px 14px rgba(33, 79, 221, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+      transition: all 0.15s ease;
+    }
+
+    .btn-dock-search:hover {
+      background: #1B41B5;
+      transform: translateY(-1px);
+    }
+
+    /* Category Filter Pills */
+    .filter-pills-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .pill-filter {
+      font-size: 13px;
+      font-weight: 500;
+      color: #475569;
+      background: rgba(255, 255, 255, 0.62);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      padding: 8px 18px;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      transition: all 0.15s ease;
+    }
+
+    .pill-filter:hover {
+      background: rgba(255, 255, 255, 0.9);
+      color: #0A0A0A;
+      transform: translateY(-1px);
+    }
+
+    .pill-filter.active {
+      background: #214FDD;
+      color: #FFFFFF;
+      font-weight: 600;
+      border-color: #214FDD;
+      box-shadow: 
+        0 4px 14px rgba(33, 79, 221, 0.28),
+        inset 0 1px 1px rgba(255, 255, 255, 0.35);
+    }
+
+    /* Section Subhead */
+    .section-meta {
+      max-width: 1132px;
+      margin: 40px auto 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 0 4px;
+    }
+
+    .section-title {
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #0A0A0A;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: #64748B;
+      margin-top: 2px;
+    }
+
+    .sort-control {
+      font-size: 13px;
+      font-weight: 500;
+      color: #64748B;
+    }
+
+    /* 2-Column Apple Frosted Glass Cards Grid */
+    .cards-grid {
+      max-width: 1132px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .glass-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.6) 100%);
+      backdrop-filter: blur(36px) saturate(180%);
+      -webkit-backdrop-filter: blur(36px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: 
+        0 20px 40px -15px rgba(0, 0, 0, 0.04),
+        0 4px 10px -2px rgba(0, 0, 0, 0.015),
+        inset 0 1px 2px rgba(255, 255, 255, 1);
+      display: flex;
+      flex-col: column;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 26px 50px -18px rgba(33, 79, 221, 0.12),
+        0 6px 14px -2px rgba(0, 0, 0, 0.02),
+        inset 0 1px 2px rgba(255, 255, 255, 1);
+    }
+
+    /* Highlighted card with Cobalt Specular Rim */
+    .glass-card.card-featured {
+      border: 1.5px solid rgba(33, 79, 221, 0.45);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(246, 248, 255, 0.75) 100%);
+      box-shadow: 
+        0 22px 46px -14px rgba(33, 79, 221, 0.14),
+        0 4px 12px -2px rgba(33, 79, 221, 0.04),
+        inset 0 1.5px 2px rgba(255, 255, 255, 1);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .badge-group {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .badge-category {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      padding: 4px 9px;
+      border-radius: 8px;
+    }
+
+    .badge-accelerator {
+      background: rgba(33, 79, 221, 0.08);
+      color: #214FDD;
+      border: 1px solid rgba(33, 79, 221, 0.18);
+    }
+
+    .badge-grant {
+      background: rgba(5, 150, 105, 0.08);
+      color: #059669;
+      border: 1px solid rgba(5, 150, 105, 0.2);
+    }
+
+    .badge-hackathon {
+      background: rgba(124, 58, 237, 0.08);
+      color: #7C3AED;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+    }
+
+    .badge-urgency {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .urgency-high {
+      background: rgba(220, 38, 38, 0.08);
+      color: #DC2626;
+      border: 1px solid rgba(220, 38, 38, 0.18);
+    }
+
+    .urgency-med {
+      background: rgba(217, 119, 6, 0.08);
+      color: #D97706;
+      border: 1px solid rgba(217, 119, 6, 0.18);
+    }
+
+    .modality-indicator {
+      font-size: 12px;
+      font-weight: 500;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      color: #0A0A0A;
+      margin-bottom: 4px;
+    }
+
+    .card-org {
+      font-size: 13px;
+      font-weight: 500;
+      color: #64748B;
+      margin-bottom: 12px;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+
+    /* Card Bottom Bar */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 18px;
+      border-top: 1px solid rgba(226, 232, 240, 0.65);
+    }
+
+    .benefit-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .benefit-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748B;
+      margin-bottom: 2px;
+    }
+
+    .benefit-val {
+      font-size: 17px;
+      font-weight: 700;
+      color: #059669;
+      letter-spacing: -0.02em;
+    }
+
+    .benefit-val.blue-val {
+      color: #214FDD;
+    }
+
+    .btn-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #0A0A0A;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      padding: 9px 18px;
+      border-radius: 9999px;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      transition: all 0.15s ease;
+    }
+
+    .btn-card-cta:hover {
+      background: #0A0A0A;
+      color: #FFFFFF;
+      border-color: #0A0A0A;
+      transform: translateY(-1px);
+    }
+
+    .card-featured .btn-card-cta {
+      background: #214FDD;
+      color: #FFFFFF;
+      border-color: #214FDD;
+      box-shadow: 
+        0 4px 14px rgba(33, 79, 221, 0.3),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3);
+    }
+
+    .card-featured .btn-card-cta:hover {
+      background: #1B41B5;
+    }
+
+    /* Minimal Glass Footer */
+    .footer-container {
+      max-width: 1132px;
+      margin: 54px auto 0;
+      padding: 24px 32px;
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+    }
+
+    .footer-left {
+      font-size: 13px;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-left strong {
+      color: #0A0A0A;
+      font-weight: 700;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .footer-link {
+      font-size: 13px;
+      color: #64748B;
+      text-decoration: none;
+      transition: color 0.15s ease;
+    }
+
+    .footer-link:hover {
+      color: #214FDD;
+    }
+
+    .footer-link.highlight {
+      color: #214FDD;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient background lighting & grid -->
+  <div class="ambient-mesh"></div>
+  <div class="ambient-warm"></div>
+  <div class="grid-lines"></div>
+
+  <div class="wrapper">
+
+    <!-- Floating Island Navigation (Apple visionOS Style) -->
+    <div class="nav-container">
+      <nav class="nav-island">
+        <div class="brand-group">
+          <div class="brand-wordmark">
+            BRE<span class="triangle-logo">▲</span>KOUT
+          </div>
+          <div class="hub-pill">Opportunities</div>
+        </div>
+
+        <div class="nav-links">
+          <a href="#" class="nav-link active">Convocatorias</a>
+          <a href="#" class="nav-link">Martes de Oportunidades</a>
+          <a href="#" class="nav-link">IA Talks</a>
+          <a href="#" class="nav-link">Breakly</a>
+        </div>
+
+        <div class="nav-actions">
+          <a href="#" class="btn-apple-primary">Publicar Convocatoria</a>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="eyebrow-capsule">
+        <span class="pulse-dot"></span>
+        CONVOCATORIAS VERIFICADAS · CICLO 26-2
+      </div>
+
+      <h1 class="hero-title">
+        El radar de oportunidades en <span class="hero-title-gradient">Tech, Startups y Capital</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Grants no reembolsables de ProInnóvate, hackathons internacionales, aceleradoras de clase mundial y becas de especialización. Todo curado en un solo lugar.
+      </p>
+
+      <div class="stats-ribbon">
+        <span><strong>+$850,000 USD</strong> en fondos activos</span>
+        <span class="stats-dot">·</span>
+        <span class="accent-blue">● 100% Verificadas</span>
+        <span class="stats-dot">·</span>
+        <span><strong>5 convocatorias</strong> cierran este mes</span>
+      </div>
+    </section>
+
+    <!-- Floating Frosted Glass Search Dock -->
+    <div class="dock-container">
+      <div class="glass-dock">
+        <div class="search-input-wrap">
+          <svg class="search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input type="text" class="search-input" placeholder="Buscar por startup, tecnología, grant, ProInnóvate, IA...">
+        </div>
+
+        <div class="dock-divider"></div>
+
+        <select class="dock-select">
+          <option>Categoría: Todas</option>
+          <option>Aceleradoras</option>
+          <option>Grants & Fondos</option>
+          <option>Hackathons</option>
+          <option>Becas</option>
+        </select>
+
+        <div class="dock-divider"></div>
+
+        <select class="dock-select">
+          <option>Modalidad: Todas</option>
+          <option>100% Remoto</option>
+          <option>Presencial</option>
+          <option>Híbrido</option>
+        </select>
+
+        <button class="btn-dock-search">Explorar</button>
+      </div>
+    </div>
+
+    <!-- Category Pills Filter Bar -->
+    <div class="filter-pills-row">
+      <button class="pill-filter active">Todas las convocatorias (18)</button>
+      <button class="pill-filter">Aceleradoras (4)</button>
+      <button class="pill-filter">Grants & Fondos (5)</button>
+      <button class="pill-filter">Hackathons (6)</button>
+      <button class="pill-filter">Becas & Pasantías (3)</button>
+    </div>
+
+    <!-- Section Subheading -->
+    <div class="section-meta">
+      <div>
+        <h2 class="section-title">Convocatorias Abiertas</h2>
+        <p class="section-subtitle">Selección prioritaria para miembros de Breakout y postulaciones de la semana</p>
+      </div>
+      <div class="sort-control">
+        Ordenar: <strong>Próximo cierre</strong>
+      </div>
+    </div>
+
+    <!-- 2-Column Cards Grid (Apple Frosted Glass) -->
+    <div class="cards-grid">
+
+      <!-- Card 1: Y Combinator (Featured with Cobalt Rim) -->
+      <article class="glass-card card-featured">
+        <div>
+          <div class="card-top">
+            <div class="badge-group">
+              <span class="badge-category badge-accelerator">ACELERADORA</span>
+              <span class="badge-urgency urgency-high">⏰ CIERRA 15 OCT</span>
+            </div>
+            <div class="modality-indicator">📍 San Francisco (Presencial)</div>
+          </div>
+
+          <h3 class="card-title">Y Combinator Batch W27</h3>
+          <div class="card-org">Y Combinator · Silicon Valley, EE. UU.</div>
+          <p class="card-desc">
+            Inversión estándar de $500,000 USD bajo acuerdo SAFE y 3 meses de aceleración intensiva en California con la red de fundadores más influyente del mundo.
+          </p>
+        </div>
+
+        <div class="card-footer">
+          <div class="benefit-wrap">
+            <span class="benefit-label">Financiamiento disponible</span>
+            <span class="benefit-val">$500,000 USD <small style="font-weight:400; color:#64748B;">· SAFE</small></span>
+          </div>
+          <a href="#" class="btn-card-cta">
+            Ver Convocatoria
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2: StartUp Perú 11G -->
+      <article class="glass-card">
+        <div>
+          <div class="card-top">
+            <div class="badge-group">
+              <span class="badge-category badge-grant">GRANT NO REEMBOLSABLE</span>
+              <span class="badge-urgency urgency-med">⏰ CIERRA 30 OCT</span>
+            </div>
+            <div class="modality-indicator">🌐 Perú (100% Remoto)</div>
+          </div>
+
+          <h3 class="card-title">StartUp Perú 11G (Innovadores)</h3>
+          <div class="card-org">ProInnóvate Perú · Ministerio de la Producción</div>
+          <p class="card-desc">
+            Cofinanciamiento no reembolsable del Estado Peruano para acelerar la validación comercial y tracción de prototipos con alto mérito innovador.
+          </p>
+        </div>
+
+        <div class="card-footer">
+          <div class="benefit-wrap">
+            <span class="benefit-label">Monto no reembolsable</span>
+            <span class="benefit-val">Hasta S/. 60,000 PEN <small style="font-weight:400; color:#64748B;">· Capital semilla</small></span>
+          </div>
+          <a href="#" class="btn-card-cta">
+            Ver Convocatoria
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3: Platanus Ventures -->
+      <article class="glass-card">
+        <div>
+          <div class="card-top">
+            <div class="badge-group">
+              <span class="badge-category badge-accelerator">ACELERADORA TÉCNICA</span>
+              <span class="badge-urgency urgency-med">⏰ CIERRA 01 NOV</span>
+            </div>
+            <div class="modality-indicator">⚡ LatAm (Híbrido)</div>
+          </div>
+
+          <h3 class="card-title">Platanus Ventures Batch 2026</h3>
+          <div class="card-org">Platanus Ventures · Santiago / Remoto</div>
+          <p class="card-desc">
+            Aceleradora fundada por ingenieros para ingenieros. Invierte $100,000 USD por el 7% de equity conectando founders con el mejor talento técnico de la región.
+          </p>
+        </div>
+
+        <div class="card-footer">
+          <div class="benefit-wrap">
+            <span class="benefit-label">Inversión por 7% equity</span>
+            <span class="benefit-val">$100,000 USD <small style="font-weight:400; color:#64748B;">· Early stage</small></span>
+          </div>
+          <a href="#" class="btn-card-cta">
+            Ver Convocatoria
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 4: ETHGlobal Autumn -->
+      <article class="glass-card">
+        <div>
+          <div class="card-top">
+            <div class="badge-group">
+              <span class="badge-category badge-hackathon">HACKATHON GLOBAL</span>
+              <span class="badge-urgency urgency-med">⏰ CIERRA 24 OCT</span>
+            </div>
+            <div class="modality-indicator">🌐 Online (36 horas)</div>
+          </div>
+
+          <h3 class="card-title">ETHGlobal Autumn 2026</h3>
+          <div class="card-org">ETHGlobal · Comunidad Internacional</div>
+          <p class="card-desc">
+            Construcción intensiva de agentes de inteligencia artificial y aplicaciones descentralizadas en 36 horas con mentores de primer nivel y bounties por tracks.
+          </p>
+        </div>
+
+        <div class="card-footer">
+          <div class="benefit-wrap">
+            <span class="benefit-label">Premios por tracks</span>
+            <span class="benefit-val">+$150,000 USD <small style="font-weight:400; color:#64748B;">· Bounties</small></span>
+          </div>
+          <a href="#" class="btn-card-cta">
+            Ver Convocatoria
+            <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Minimal Apple-Style Floating Footer -->
+    <div class="footer-container">
+      <div class="footer-left">
+        <strong>BRE<span class="triangle-logo">▲</span>KOUT</strong>
+        <span>Break the limits. Build the future.</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="#" class="footer-link">Landing</a>
+        <a href="#" class="footer-link">Breakly Ticketing</a>
+        <a href="#" class="footer-link highlight">Martes de Oportunidades</a>
+        <a href="#" class="footer-link">IA Talks</a>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

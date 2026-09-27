@@ -1,0 +1,174 @@
+# SPECIFICATION: BREAKOUT OPPORTUNITIES HUB (SIMPLIFIED & COBALT BRANDED)
+# File: opportunities-hub.pen
+# Artboard: Desktop Web Canvas, Width 1440pt, Height 1750pt
+# Output scale: 2 (2880 x 3500 px)
+
+================================================================================
+1. DESIGN DIRECTION & SIMPLIFICATION GOALS
+================================================================================
+Feedback from Freddy:
+1. "Make it more simple": Eliminate visual noise, reduce nested rails, remove decorative sidebars, and focus on one clear, fast, frictionless discovery flow.
+2. "Add more of the brand blue": Cobalt #214FDD is the core of Breakout's identity (per official brandbook: "The brand. Hero backgrounds, cover slides, primary buttons...").
+
+We adopt a bold, immersive Cobalt Blue (#214FDD) Hero Header that immediately anchors the brand, followed by a clean, spacious, modern card catalog on light ground (#F8FAFC).
+
+Color Palette:
+- Brand Cobalt (Hero ground, primary accents): #214FDD
+- Dark Cobalt (Top navigation bar ground): #183EB5
+- Spark Cyan (Accent tags & highlights on blue): #6CE5E8
+- White: #FFFFFF
+- Light Ground (Body section): #F8FAFC
+- Card Surface: #FFFFFF
+- Card Borders: #E2E8F0 (1px solid)
+- Text on Cobalt: #FFFFFF (Primary), #D7DFF9 (Secondary / muted), #6CE5E8 (Cyan accent)
+- Text on Light Ground: #0A0A0A (Headings), #475569 (Body), #64748B (Muted)
+- Status / Tag colors:
+  - Grant / Subvención: #059669 (Text), #ECFDF5 (Bg), #A7F3D0 (Border)
+  - Aceleradora: #214FDD (Text), #EFF6FF (Bg), #BFDBFE (Border)
+  - Hackathon: #7C3AED (Text), #F5F3FF (Bg), #DDD6FE (Border)
+  - Beca: #D97706 (Text), #FFFBEB (Bg), #FDE68A (Border)
+
+Typography:
+- System Font: Inter / Inter Tight
+- High contrast, clean whitespace, zero clutter.
+
+================================================================================
+2. COMPONENT STRUCTURE (Simplified 3-Tier Layout)
+================================================================================
+
+--------------------------------------------------------------------------------
+A. COBALT BRAND HERO & TOP NAV (Width 1440pt, Total Height 420pt)
+--------------------------------------------------------------------------------
+- Background: Solid Azul Breakout #214FDD.
+- Top Nav Bar (Height 68pt, Padding 0 64pt, border-bottom 1px solid rgba(255,255,255,0.12)):
+  - Left:
+    - Logo wordmark: "BRE▲KOUT" in bold white #FFFFFF 20pt, with the triangle ▲ in Spark Cyan #6CE5E8.
+    - Divider: Vertical hairline 14pt, rgba(255,255,255,0.2), margin 0 16pt.
+    - Pill label: "HUB DE OPORTUNIDADES" in semi-bold 11pt, text #6CE5E8, bg rgba(108,229,232,0.12), border 1px solid rgba(108,229,232,0.25), radius 6pt, padding 4pt 10pt.
+  - Center/Right Links:
+    - "Convocatorias" (14pt SemiBold, #FFFFFF).
+    - "Martes de Oportunidades" (14pt Medium, #D7DFF9).
+    - "IA Talks" (14pt Medium, #D7DFF9).
+    - "Breakly" (14pt Medium, #D7DFF9).
+  - Far Right Action:
+    - Button: "Publicar Convocatoria" (13pt SemiBold, text #214FDD, bg #FFFFFF, padding 9pt 18pt, radius 8pt).
+
+- Hero Body (Height 352pt, Centered column, max-width 860pt, padding 44pt 64pt 0 64pt):
+  - Eyebrow Pill:
+    - "⚡ CONVOCATORIAS VERIFICADAS 26-2" (11pt Bold, text #6CE5E8, bg rgba(108,229,232,0.14), border 1px solid rgba(108,229,232,0.3), padding 5pt 14pt, radius 999pt, align center, margin-bottom 16pt).
+  - Main Headline:
+    - "Las mejores oportunidades en Tech, Innovación y Startups" (42pt Bold, text #FFFFFF, letter-spacing -0.035em, line-height 1.15, align center).
+  - Subtitle:
+    - "Grants no reembolsables de ProInnóvate, hackathons internacionales, aceleradoras de clase mundial y becas de especialización. Todo curado en un solo lugar." (16pt Regular, text #D7DFF9, line-height 1.5, align center, margin-top 12pt).
+  - Stats Strip (Horizontal row, align center, justify center, gap 36pt, margin-top 24pt):
+    - Stat 1: "+$850,000 USD en fondos y premios activos" (13pt SemiBold, text #FFFFFF)
+    - Separator: "·" (text #7E99EB)
+    - Stat 2: "100% Verificadas por equipo Tech" (13pt SemiBold, text #6CE5E8)
+    - Separator: "·" (text #7E99EB)
+    - Stat 3: "5 cierres este mes" (13pt SemiBold, text #FFFFFF)
+
+--------------------------------------------------------------------------------
+B. FLOATING SEARCH & FILTER DOCK (Width 1120pt, Height 76pt, Overlapping Hero)
+--------------------------------------------------------------------------------
+- Placement: Centered horizontally at width 1120pt, margin-top -38pt (overlapping the cobalt hero boundary seamlessly).
+- Container: Surface #FFFFFF, border 1px solid #E2E8F0, radius 14pt, padding 14pt 18pt, shadow: 0 10px 25px rgba(33,79,221,0.08).
+- Layout: Single clean horizontal row, align center, gap 12pt:
+  - Search Input: Flex 1 (width approx 520pt), height 48pt, bg #F8FAFC, border 1px solid #E2E8F0, radius 8pt, padding left 16pt. Text: "🔍 Buscar por startup, tecnología, grant, ProInnóvate, IA..." (14pt Regular, #94A3B8).
+  - Dropdown Filter 1: "Categoría: Todas" (13pt Medium, text #334155, border 1px #E2E8F0, bg #FFFFFF, height 48pt, padding 0 16pt, radius 8pt).
+  - Dropdown Filter 2: "Modalidad: Todas" (13pt Medium, text #334155, border 1px #E2E8F0, bg #FFFFFF, height 48pt, padding 0 16pt, radius 8pt).
+  - Action Button: "Buscar" (13pt SemiBold, text #FFFFFF, bg #214FDD, height 48pt, padding 0 24pt, radius 8pt).
+
+--------------------------------------------------------------------------------
+C. CATEGORY PILLS BAR (Width 1120pt, Height 44pt, Margin-top 32pt)
+--------------------------------------------------------------------------------
+- Centered row, horizontal gap 8pt:
+  - Pill Active: "Todas las convocatorias (18)" (13pt SemiBold, bg #214FDD, text #FFFFFF, radius 999pt, padding 8pt 18pt).
+  - Pill: "Aceleradoras (4)" (13pt Medium, bg #FFFFFF, border 1px #E2E8F0, text #475569, radius 999pt, padding 8pt 16pt).
+  - Pill: "Grants & Fondos (5)" (13pt Medium, bg #FFFFFF, border 1px #E2E8F0, text #475569, radius 999pt, padding 8pt 16pt).
+  - Pill: "Hackathons (6)" (13pt Medium, bg #FFFFFF, border 1px #E2E8F0, text #475569, radius 999pt, padding 8pt 16pt).
+  - Pill: "Becas & Pasantías (3)" (13pt Medium, bg #FFFFFF, border 1px #E2E8F0, text #475569, radius 999pt, padding 8pt 16pt).
+
+--------------------------------------------------------------------------------
+D. OPPORTUNITIES FEED (Width 1120pt, Margin-top 24pt)
+--------------------------------------------------------------------------------
+Layout: 2-column responsive card grid (2 columns, each card 548pt wide, gap 24pt).
+Clean, airy, card-based cards with clear visual hierarchy:
+
+- CARD 1 (Featured: Y Combinator):
+  - Width 548pt, Height 260pt, bg #FFFFFF, border 2px solid #214FDD, radius 14pt, padding 24pt, shadow 0 4px 14px rgba(33,79,221,0.06).
+  - Header line:
+    - Badge: "ACELERADORA" (11pt Bold, bg #EFF6FF, text #214FDD, padding 4pt 8pt, radius 4pt).
+    - Urgency Badge: "⏰ CIERRA 15 OCT" (11pt Bold, bg #FEF2F2, text #DC2626, padding 4pt 8pt, radius 4pt).
+    - Spacer
+    - Modality: "📍 San Francisco (Presencial)" (12pt Medium, text #64748B).
+  - Title: "Y Combinator Batch W27" (20pt Bold, text #0A0A0A, margin-top 12pt).
+  - Org: "Y Combinator · Silicon Valley" (13pt Medium, text #64748B, margin-top 2pt).
+  - Description: "Inversión estándar de $500,000 USD bajo acuerdo SAFE y 3 meses intensivos en California con mentores fundadores." (13pt Regular, text #475569, margin-top 8pt).
+  - Bottom Bar (margin-top 18pt, border-top 1px solid #F1F5F9, padding-top 14pt, align center, space-between):
+    - Highlight: "$500,000 USD" (17pt Bold, text #059669) " · SAFE" (13pt Regular, text #64748B).
+    - Button: "Ver Convocatoria →" (13pt SemiBold, bg #214FDD, text #FFFFFF, padding 8pt 16pt, radius 6pt).
+
+- CARD 2 (Featured: StartUp Perú 11G):
+  - Width 548pt, Height 260pt, bg #FFFFFF, border 1px solid #E2E8F0, radius 14pt, padding 24pt.
+  - Header line:
+    - Badge: "GRANT NO REEMBOLSABLE" (11pt Bold, bg #ECFDF5, text #059669, padding 4pt 8pt, radius 4pt).
+    - Urgency Badge: "⏰ CIERRA 30 OCT" (11pt Bold, bg #FFFBEB, text #D97706, padding 4pt 8pt, radius 4pt).
+    - Spacer
+    - Modality: "🌐 Perú (100% Remoto)" (12pt Medium, text #64748B).
+  - Title: "StartUp Perú 11G (Innovadores)" (20pt Bold, text #0A0A0A, margin-top 12pt).
+  - Org: "ProInnóvate Perú · Ministerio de la Producción" (13pt Medium, text #64748B, margin-top 2pt).
+  - Description: "Cofinanciamiento no reembolsable del Estado Peruano para acelerar la validación comercial de productos y servicios innovadores." (13pt Regular, text #475569, margin-top 8pt).
+  - Bottom Bar (margin-top 18pt, border-top 1px solid #F1F5F9, padding-top 14pt, align center, space-between):
+    - Highlight: "Hasta S/. 60,000 PEN" (17pt Bold, text #059669) " · Fondo público" (13pt Regular, text #64748B).
+    - Button: "Ver Convocatoria →" (13pt SemiBold, bg #0A0A0A, text #FFFFFF, padding 8pt 16pt, radius 6pt).
+
+- CARD 3 (Featured: Platanus Ventures):
+  - Width 548pt, Height 260pt, bg #FFFFFF, border 1px solid #E2E8F0, radius 14pt, padding 24pt, margin-top 24pt.
+  - Header line:
+    - Badge: "ACELERADORA" (11pt Bold, bg #EFF6FF, text #214FDD, padding 4pt 8pt, radius 4pt).
+    - Urgency Badge: "⏰ CIERRA 01 NOV" (11pt Bold, bg #F1F5F9, text #475569, padding 4pt 8pt, radius 4pt).
+    - Spacer
+    - Modality: "⚡ LatAm (Híbrido)" (12pt Medium, text #64748B).
+  - Title: "Platanus Ventures Batch 2026" (20pt Bold, text #0A0A0A, margin-top 12pt).
+  - Org: "Platanus Ventures · Santiago / Remoto" (13pt Medium, text #64748B, margin-top 2pt).
+  - Description: "Inversión de $100,000 USD por el 7% de equity conectando founders con los mejores ingenieros de software de América Latina." (13pt Regular, text #475569, margin-top 8pt).
+  - Bottom Bar (margin-top 18pt, border-top 1px solid #F1F5F9, padding-top 14pt, align center, space-between):
+    - Highlight: "$100,000 USD" (17pt Bold, text #059669) " · 7% Equity" (13pt Regular, text #64748B).
+    - Button: "Ver Convocatoria →" (13pt SemiBold, bg #0A0A0A, text #FFFFFF, padding 8pt 16pt, radius 6pt).
+
+- CARD 4 (Hackathon: ETHGlobal Autumn):
+  - Width 548pt, Height 260pt, bg #FFFFFF, border 1px solid #E2E8F0, radius 14pt, padding 24pt, margin-top 24pt.
+  - Header line:
+    - Badge: "HACKATHON" (11pt Bold, bg #F5F3FF, text #7C3AED, padding 4pt 8pt, radius 4pt).
+    - Urgency Badge: "⏰ CIERRA 24 OCT" (11pt Bold, bg #FFFBEB, text #D97706, padding 4pt 8pt, radius 4pt).
+    - Spacer
+    - Modality: "🌐 Online (36 horas)" (12pt Medium, text #64748B).
+  - Title: "ETHGlobal Autumn 2026" (20pt Bold, text #0A0A0A, margin-top 12pt).
+  - Org: "ETHGlobal · Internacional" (13pt Medium, text #64748B, margin-top 2pt).
+  - Description: "Hackathon internacional para construir agentes inteligentes y dApps con mentorías de ingenieros top a nivel mundial." (13pt Regular, text #475569, margin-top 8pt).
+  - Bottom Bar (margin-top 18pt, border-top 1px solid #F1F5F9, padding-top 14pt, align center, space-between):
+    - Highlight: "+$150,000 USD" (17pt Bold, text #059669) " · Premios por tracks" (13pt Regular, text #64748B).
+    - Button: "Ver Convocatoria →" (13pt SemiBold, bg #0A0A0A, text #FFFFFF, padding 8pt 16pt, radius 6pt).
+
+--------------------------------------------------------------------------------
+E. COMMUNITY FOOTER STRIP (Width 1440pt, Height 140pt, Margin-top 64pt)
+--------------------------------------------------------------------------------
+- Background: #FFFFFF, border-top 1px solid #E2E8F0, padding 40pt 64pt.
+- Layout: Horizontal flex row, align center, space-between.
+- Left:
+  - Wordmark: "BRE▲KOUT" in bold #0A0A0A 18pt (triangle in #214FDD).
+  - Copy: "Break the limits. Build the future. © 2026 Breakout Tech Team." (13pt Regular, text #64748B, margin-top 4pt).
+- Right:
+  - Links row (gap 24pt):
+    - "Landing breakout.lat" (13pt Medium, #64748B)
+    - "Breakly Ticketing" (13pt Medium, #64748B)
+    - "Martes de Oportunidades" (13pt Medium, #214FDD)
+    - "GitHub" (13pt Medium, #64748B)
+
+================================================================================
+3. CONSTRAINTS
+================================================================================
+- Strictly use #214FDD as the prominent hero background and brand identity anchor.
+- Clean 1px solid borders, no fuzzy shadows, no fake purple.
+- Exactly 1120pt centered main content container.
+- Clean typography and ample breathing room.
