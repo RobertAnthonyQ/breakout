@@ -274,3 +274,25 @@ export async function createOpportunity(
   return newOpportunity;
 }
 
+export function getAllOpportunitiesIncludingPending(): Opportunity[] {
+  return [...inMemoryStore];
+}
+
+export function approveOpportunityById(id: string): boolean {
+  const opp = inMemoryStore.find(o => o.id === id);
+  if (opp) {
+    opp.verified = true;
+    return true;
+  }
+  return false;
+}
+
+export function rejectOpportunityById(id: string): boolean {
+  const idx = inMemoryStore.findIndex(o => o.id === id);
+  if (idx !== -1) {
+    inMemoryStore.splice(idx, 1);
+    return true;
+  }
+  return false;
+}
+
