@@ -561,7 +561,7 @@ body {
 
 .badge-grant {
   background: rgba(5, 150, 105, 0.08);
-  color: #059669;
+  color: #214FDD;
   border: 1px solid rgba(5, 150, 105, 0.2);
 }
 
@@ -681,7 +681,7 @@ body {
 .benefit-val {
   font-size: 17px;
   font-weight: 700;
-  color: #059669;
+  color: #214FDD;
   letter-spacing: -0.02em;
 }
 
@@ -1051,3 +1051,42 @@ body {
 }
 
 
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 28px !important;
+  }
+  .hero-subtitle {
+    font-size: 15px !important;
+  }
+  .glass-card {
+    padding: 20px !important;
+  }
+  .benefit-label {
+    font-size: 9px !important;
+  }
+  .benefit-val {
+    font-size: 15px !important;
+  }
+  .footer-container {
+    border-radius: 16px !important;
+  }
+  .nav-island {
+    padding: 8px 12px !important;
+  }
+  .brand-wordmark {
+    font-size: 14px !important;
+  }
+  .stats-ribbon {
+    flex-wrap: wrap;
+    gap: 12px !important;
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 16px;
+    border-radius: 16px !important;
+  }
+}

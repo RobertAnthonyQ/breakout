@@ -1,4 +1,5 @@
 import React from "react";
+import { Instagram, Linkedin } from "./BrandIcons";
 
 interface FooterIslandProps {
   onOpenSubmit?: () => void;
@@ -9,43 +10,37 @@ export function FooterIsland({ onOpenSubmit }: FooterIslandProps) {
     <footer className="footer-container">
       <div className="footer-left">
         <strong>BRE▲KOUT</strong>
-        <span>·</span>
+        <span className="hidden sm:inline">·</span>
         <span>Tech Area · Ciclo 26-2</span>
-        <span>·</span>
+        <span className="hidden sm:inline">·</span>
         <span>Director: Freddy Ñañez</span>
       </div>
 
       <div className="footer-links">
         <a
-          href="https://breakout.lat"
+          href="https://www.instagram.com/breakout_community/"
           target="_blank"
           rel="noreferrer"
-          className="footer-link"
+          className="footer-link flex items-center gap-2 hover:text-[#214FDD]"
         >
-          Landing Principal
+          <Instagram className="w-4 h-4" />
+          <span className="hidden sm:inline">Instagram</span>
         </a>
         <a
-          href="https://breakly.breakout.lat"
+          href="https://www.linkedin.com/company/breakoutperu/"
           target="_blank"
           rel="noreferrer"
-          className="footer-link"
+          className="footer-link flex items-center gap-2 hover:text-[#214FDD]"
         >
-          Breakly
-        </a>
-        <a
-          href="https://instagram.com/breakoutlatam"
-          target="_blank"
-          rel="noreferrer"
-          className="footer-link"
-        >
-          Martes de Oportunidades
+          <Linkedin className="w-4 h-4" />
+          <span className="hidden sm:inline">LinkedIn</span>
         </a>
         <button
           type="button"
           onClick={onOpenSubmit}
           className="footer-link highlight bg-transparent border-none cursor-pointer p-0"
         >
-          Sugerir Convocatoria
+          Sugerir oportunidad
         </button>
       </div>
     </footer>

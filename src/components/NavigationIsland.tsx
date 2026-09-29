@@ -12,8 +12,15 @@ export function NavigationIsland({ onOpenSubmit }: NavigationIslandProps) {
     <div className="nav-container">
       <nav className="nav-island">
         <div className="brand-group">
-          <Link href="/" className="brand-wordmark">
-            BRE<span className="triangle-logo">▲</span>KOUT
+          <Link href="/" className="flex items-center gap-2">
+            <img 
+              src="/logo-breakout.svg" 
+              alt="Breakout Logo" 
+              className="h-[28px] w-auto" 
+            />
+            <span className="brand-wordmark">
+              BRE<span className="triangle-logo">▲</span>KOUT
+            </span>
           </Link>
           <div className="hub-pill">Opportunities</div>
         </div>
@@ -31,14 +38,6 @@ export function NavigationIsland({ onOpenSubmit }: NavigationIslandProps) {
             Martes de Oportunidades
           </a>
           <a
-            href="https://breakout.lat"
-            target="_blank"
-            rel="noreferrer"
-            className="nav-link"
-          >
-            IA Talks
-          </a>
-          <a
             href="https://breakly.breakout.lat"
             target="_blank"
             rel="noreferrer"
@@ -54,7 +53,7 @@ export function NavigationIsland({ onOpenSubmit }: NavigationIslandProps) {
             onClick={onOpenSubmit}
             className="btn-apple-primary"
           >
-            <span>Publicar Convocatoria</span>
+            <span>Sugerir oportunidad</span>
           </button>
         </div>
       </nav>

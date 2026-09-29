@@ -71,7 +71,7 @@ export function SubmitOpportunityModal({
       application_url: formData.application_url,
       tags: tagsArray.length > 0 ? tagsArray : ["tech", "startups"],
       featured: false,
-      verified: true,
+      verified: false,
     };
 
     const ok = await onSubmitOpportunity(payload);
@@ -126,20 +126,20 @@ export function SubmitOpportunityModal({
         </div>
 
         <h3 className="text-xl sm:text-2xl font-extrabold text-neutral-950 tracking-tight mb-2 pr-8">
-          Publicar Convocatoria en el Hub
+          Sugerir oportunidad
         </h3>
         <p className="text-sm text-slate-600 mb-6">
-          Curamos hackathons, subsidios no reembolsables, becas y programas de aceleración para builders de América Latina.
+          Aporta una oportunidad que conozcas. Un administrador la revisará antes de publicarla.
         </p>
 
         {success ? (
-          <div className="p-8 text-center bg-emerald-50 rounded-2xl border border-emerald-200 my-4">
-            <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto mb-3" />
-            <h4 className="font-extrabold text-emerald-900 text-lg mb-1">
-              ¡Convocatoria publicada con éxito!
+          <div className="p-8 text-center bg-blue-50 rounded-2xl border border-blue-200 my-4">
+            <CheckCircle2 className="w-12 h-12 text-[#214FDD] mx-auto mb-3" />
+            <h4 className="font-extrabold text-blue-900 text-lg mb-1">
+              ¡Sugerencia enviada con éxito!
             </h4>
-            <p className="text-sm text-emerald-700">
-              La oportunidad ha sido indexada en el Hub y ya está disponible para toda la comunidad.
+            <p className="text-sm text-[#1B41B5]">
+              Tu sugerencia será revisada por un administrador antes de ser publicada. ¡Gracias por contribuir!
             </p>
           </div>
         ) : (
@@ -343,7 +343,7 @@ export function SubmitOpportunityModal({
                 style={{ flex: "initial", padding: "12px 28px" }}
               >
                 <Send className="w-4 h-4" />
-                <span>{isSubmitting ? "Publicando..." : "Publicar Convocatoria"}</span>
+                <span>{isSubmitting ? "Enviando..." : "Enviar sugerencia"}</span>
               </button>
             </div>
           </form>

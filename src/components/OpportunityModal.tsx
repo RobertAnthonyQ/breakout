@@ -127,7 +127,7 @@ export function OpportunityModal({
               <Award className="w-3.5 h-3.5 text-[#214FDD]" />
               Financiamiento / Premio
             </span>
-            <p className="text-[16px] sm:text-[18px] font-bold text-emerald-600">
+            <p className="text-[16px] sm:text-[18px] font-bold text-[#214FDD]">
               {opportunity.funding_or_prize}
             </p>
           </div>
@@ -195,8 +195,8 @@ export function OpportunityModal({
           >
             {copied ? (
               <>
-                <Check className="w-4 h-4 text-emerald-600" />
-                <span className="text-emerald-700 font-semibold">¡Enlace Copiado!</span>
+                <Check className="w-4 h-4 text-[#214FDD]" />
+                <span className="text-[#1B41B5] font-semibold">¡Enlace Copiado!</span>
               </>
             ) : (
               <>
