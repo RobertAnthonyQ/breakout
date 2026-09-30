@@ -1,7 +1,6 @@
 import { readFileSync, writeFileSync } from "fs";
 import { resolve } from "path";
 import { opportunitySchema, type Opportunity, type OpportunityCategory, type OpportunityModality } from "../types";
-import { getSupabaseClient } from "../src/lib/supabase";
 
 /**
  * CSV Parser supporting quoted fields and multiline entries
@@ -443,46 +442,8 @@ export async function seedOpportunities(): Promise<{
   console.log(`\n💾 Archivo consolidado guardado en: data/opportunities.json`);
   console.log(`Total oportunidades activas indexadas: ${consolidated.length}`);
 
-  // -------------------------------------------------------------------------
-  // 5. OPTIONAL SUPABASE REMOTE SYNC
-  // -------------------------------------------------------------------------
-  const supabase = getSupabaseClient();
-  if (supabase) {
-    console.log("\n⚡ Conexión a Supabase detectada. Sincronizando con base de datos remota...");
-    try {
-      const recordsToUpsert = consolidated.map((opp) => ({
-        slug: opp.slug || opp.id.replace("opp-", ""),
-        title: opp.title,
-        organization: opp.organization,
-        category: opp.category,
-        description: opp.description,
-        deadline: opp.deadline,
-        funding_or_prize: opp.funding_or_prize,
-        eligibility: opp.eligibility,
-        modality: opp.modality,
-        location: opp.location,
-        application_url: opp.application_url,
-        tags: opp.tags,
-        featured: opp.featured,
-        verified: opp.verified,
-        status: "active",
-      }));
-
-      const { data, error } = await supabase
-        .from("opportunities")
-        .upsert(recordsToUpsert, { onConflict: "slug" });
-
-      if (error) {
-        console.warn("Aviso Supabase upsert:", error.message);
-      } else {
-        console.log(`✓ Sincronizadas ${recordsToUpsert.length} oportunidades en Supabase.`);
-      }
-    } catch (dbErr: any) {
-      console.warn("Aviso: No se pudo completar el sync remoto con Supabase:", dbErr.message);
-    }
-  } else {
-    console.log("\nℹ️ Modo Dual-Storage: Supabase no configurado en entorno local; dataset 100% disponible mediante almacenamiento validado local.");
-  }
+  // Supabase is loaded separately with `bun run db:sync` (scripts/sync-supabase.ts)
+  console.log("Para publicarlo en Supabase: bun run db:sync");
 
   return {
     totalLoaded: consolidated.length,
