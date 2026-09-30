@@ -1,5 +1,6 @@
 import React from "react";
 import { Instagram, Linkedin } from "./BrandIcons";
+import { withBasePath } from "../lib/base-path";
 
 interface FooterIslandProps {
   onOpenSubmit?: () => void;
@@ -10,7 +11,7 @@ export function FooterIsland({ onOpenSubmit }: FooterIslandProps) {
     <footer className="footer-band">
       <div className="footer-inner">
         <div className="footer-brand">
-          <img src="/logo-breakout-white.png" alt="Breakout" className="footer-logo" />
+          <img src={withBasePath("/logo-breakout-white.png")} alt="Breakout" className="footer-logo" />
           <p className="footer-motto" aria-label="Break the limits.">
             <span className="footer-motto-outline">Break the</span> limits.
           </p>

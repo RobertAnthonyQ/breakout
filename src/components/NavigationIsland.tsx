@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { withBasePath } from "../lib/base-path";
 
 interface NavigationIslandProps {
   onOpenSubmit?: () => void;
@@ -12,7 +13,7 @@ export function NavigationIsland({ onOpenSubmit }: NavigationIslandProps) {
     <nav className="nav-bar">
       <div className="brand-group">
         <Link href="/" className="brand-link" aria-label="Breakout — inicio">
-          <img src="/logo-breakout-white.png" alt="Breakout" className="brand-logo" />
+          <img src={withBasePath("/logo-breakout-white.png")} alt="Breakout" className="brand-logo" />
         </Link>
         <span className="hub-pill">Opportunities</span>
       </div>

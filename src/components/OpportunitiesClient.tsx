@@ -16,6 +16,7 @@ import { OpportunityModal } from "./OpportunityModal";
 import { SubmitOpportunityModal } from "./SubmitOpportunityModal";
 import { FooterIsland } from "./FooterIsland";
 import { RefreshCcw, Bookmark } from "lucide-react";
+import { withBasePath } from "../lib/base-path";
 
 interface OpportunitiesClientProps {
   initialOpportunities: Opportunity[];
@@ -173,7 +174,7 @@ export function OpportunitiesClient({
 
   const handleCreateOpportunity = async (payload: any): Promise<boolean> => {
     try {
-      const res = await fetch("/api/opportunities", {
+      const res = await fetch(withBasePath("/api/opportunities"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

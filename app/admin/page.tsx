@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import './admin.css';
 import { Opportunity } from '@/types';
+import { withBasePath } from '@/src/lib/base-path';
 
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -24,7 +25,7 @@ export default function AdminPage() {
   const fetchOpportunities = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/admin/opportunities');
+      const res = await fetch(withBasePath('/api/admin/opportunities'));
       const data = await res.json();
       setOpportunities(data);
     } catch (err) {
@@ -36,7 +37,7 @@ export default function AdminPage() {
 
   const handleAction = async (id: string, action: 'approve' | 'reject') => {
     try {
-      const res = await fetch('/api/admin/opportunities', {
+      const res = await fetch(withBasePath('/api/admin/opportunities'), {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, action }),
