@@ -1,0 +1,195 @@
+# SPECIFICATION: BREAKOUT OPPORTUNITIES HUB (WEB PLATFORM)
+# File: opportunities-hub.pen
+# Artboard: Desktop Web Canvas, Width 1440pt, Height 2600pt
+# Output scale: 2 (2880 x 5200 px)
+
+================================================================================
+1. DESIGN PHILOSOPHY & BRAND SYSTEM
+================================================================================
+Breakout is a high-ambition technology and innovation organization based in Peru and Latin America.
+Tagline: "Break the limits. Build the future."
+
+Brand Color Tokens (Strictly applied, no deviating hex codes):
+- Primary Brand Blue (Cobalto): #214FDD
+- Accent Electric Blue (Hover / Highlights): #2430FF
+- Support Spark Cyan (Badges / High energy): #6CE5E8
+- Dark Neutral / Ink Headings: #0A0A0A
+- Body Text / Secondary: #363639
+- Muted Text / Subtitles: #71717A
+- Canvas Background: #F8FAFC (clean light tech ground)
+- Card Surfaces: #FFFFFF (crisp white)
+- Borders & Dividers: #E2E8F0 (1px solid crisp hairlines)
+- Pill Backgrounds: #EEF2F6
+- Category Colors:
+  - Grant / Subvención: Background #ECFDF5, Text #047857, Border #A7F3D0
+  - Accelerator / Startup: Background #EFF6FF, Text #1D4ED8, Border #BFDBFE
+  - Hackathon / Tech: Background #F5F3FF, Text #6D28D9, Border #DDD6FE
+  - Scholarship / Beca: Background #FFFBEB, Text #B45309, Border #FDE68A
+
+Typography:
+- System Font: Inter / Inter Tight (Clean geometric grotesk)
+- Title Display: Bold / SemiBold 700 / 600, letter-spacing -0.035em
+- Body: Regular 400 / Medium 500, line-height 1.55
+
+Rationale:
+The interface must inspire immediate trust, ambition, and actionable clarity. It is not an entertainment blog or a bureaucratic portal. It is a premier launching pad for students and founders to find real money ($500k YC, S/. 60k ProInnóvate), prizes ($150k ETHGlobal), and elite acceleration programs. Every card must answer 4 questions in under 3 seconds: WHAT is it, WHO gives it, HOW MUCH / WHAT BENEFIT, and WHEN does it close.
+
+================================================================================
+2. COMPONENT & SECTION BREAKDOWN (Top to Bottom)
+================================================================================
+
+--------------------------------------------------------------------------------
+A. TOP NAVIGATION BAR (Fixed Width 1440pt, Height 72pt, Padding 0 64pt)
+--------------------------------------------------------------------------------
+- Background: #FFFFFF with 1px bottom border #E2E8F0.
+- Layout: Horizontal flex row, align center, space-between.
+- Left Group:
+  - Brand Mark: "BRE▲KOUT" in bold Equitan/Inter 20pt, color #0A0A0A with the triangle ▲ in #214FDD.
+  - Divider: Vertical hairline 16pt tall, color #CBD5E1, margin left 16pt, margin right 16pt.
+  - Badge: "OPPORTUNITIES HUB" in semi-bold 11pt uppercase, letter-spacing 0.08em, background #EEF2FF, text #214FDD, padding 4pt 10pt, radius 6pt.
+- Center Links (Horizontal gap 28pt):
+  - "Explorar Convocatorias" (14pt Medium, #0A0A0A, active indicator underline 2pt #214FDD).
+  - "Martes de Oportunidades" (14pt Medium, #71717A).
+  - "IA Talks" (14pt Medium, #71717A).
+  - "Breakly Ticketing" (14pt Medium, #71717A).
+- Right Action Group (Horizontal gap 12pt):
+  - Secondary Button: "Alertas Telegram" (13pt SemiBold, text #363639, border 1px #E2E8F0, bg #FFFFFF, padding 9pt 16pt, radius 8pt).
+  - Primary CTA Button: "Publicar Convocatoria" (13pt SemiBold, text #FFFFFF, bg #214FDD, padding 9pt 18pt, radius 8pt).
+
+--------------------------------------------------------------------------------
+B. HERO SECTION (Width 1440pt, Height 360pt, Padding 56pt 64pt 40pt 64pt)
+--------------------------------------------------------------------------------
+- Layout: Centered column, max-width 920pt.
+- Eyebrow Pill:
+  - Text: "⚡ CICLO 26-2 · CONVOCATORIAS VERIFICADAS"
+  - Styling: 12pt Bold, color #214FDD, bg #EFF6FF, border 1px #BFDBFE, padding 5pt 14pt, radius 999pt, align center, margin-bottom 18pt.
+- Main Headline:
+  - Text: "El radar de oportunidades en Tech, Innovación y Startups"
+  - Styling: 48pt Bold, line-height 1.1, color #0A0A0A, letter-spacing -0.04em, align center.
+- Subtitle:
+  - Text: "Becas de estudio, grants no reembolsables de ProInnóvate, hackathons globales y programas como Y Combinator y Platanus. Curadas e impulsadas por el equipo de Breakout para conectar talento de alto rendimiento."
+  - Styling: 18pt Regular, line-height 1.5, color #71717A, max-width 780pt, align center, margin-top 14pt.
+- Quick Stats Ticker (Horizontal row, align center, gap 32pt, margin-top 24pt):
+  - Item 1: "+$850,000 USD" (Bold 16pt #0A0A0A) " en financiamiento y premios" (14pt #71717A)
+  - Item 2: "● 100% Verificadas" (Bold 16pt #047857) " por el equipo Tech" (14pt #71717A)
+  - Item 3: "5 cierres este mes" (Bold 16pt #D97706) " en calendario activo" (14pt #71717A)
+
+--------------------------------------------------------------------------------
+C. SEARCH & FILTER DOCK (Width 1312pt, Height 110pt, Margin 0 64pt)
+--------------------------------------------------------------------------------
+- Container: Surface #FFFFFF, border 1px solid #E2E8F0, radius 16pt, padding 18pt 24pt, shadow subtle (0 4px 12px rgba(0,0,0,0.03)).
+- Top Row:
+  - Search Input: Width 580pt, height 44pt, radius 8pt, bg #F8FAFC, border 1px solid #E2E8F0, padding left 40pt. Placeholder: "Buscar por tecnología, startup, beca, ProInnóvate, IA..." (14pt Regular, #94A3B8). Search icon magnifying glass on left.
+  - Dropdown Filter 1: "Modalidad: Todas" (13pt Medium, border 1px #E2E8F0, bg #FFFFFF, padding 10pt 16pt, radius 8pt).
+  - Dropdown Filter 2: "Plazo: Próximos 60 días" (13pt Medium, border 1px #E2E8F0, bg #FFFFFF, padding 10pt 16pt, radius 8pt).
+  - Clear Filters Link: "Limpiar filtros" (13pt Medium, text #71717A, padding 10pt).
+- Bottom Row (Category Pills Row, margin-top 12pt, gap 8pt):
+  - Pill Active: "Todas (18)" (13pt SemiBold, bg #0A0A0A, text #FFFFFF, radius 999pt, padding 6pt 16pt).
+  - Pill: "Aceleradoras (4)" (13pt Medium, bg #F1F5F9, text #475569, radius 999pt, padding 6pt 16pt).
+  - Pill: "Grants & Fondos (5)" (13pt Medium, bg #F1F5F9, text #475569, radius 999pt, padding 6pt 16pt).
+  - Pill: "Hackathons (6)" (13pt Medium, bg #F1F5F9, text #475569, radius 999pt, padding 6pt 16pt).
+  - Pill: "Becas & Pasantías (3)" (13pt Medium, bg #F1F5F9, text #475569, radius 999pt, padding 6pt 16pt).
+
+--------------------------------------------------------------------------------
+D. SECTION: CONVOCATORIAS DESTACADAS (Width 1312pt, Margin 48pt 64pt 0 64pt)
+--------------------------------------------------------------------------------
+- Section Header:
+  - Title: "Convocatorias Destacadas de la Semana" (24pt SemiBold, #0A0A0A).
+  - Subtitle: "Seleccionadas para el segmento 'Martes de Oportunidades' y difusión en IA Talks." (14pt Regular, #71717A).
+- 3 Featured Cards Grid (3 columns, card width 424pt, height 380pt, gap 20pt, margin-top 20pt):
+
+  * CARD 1: Y Combinator Batch (Early Application)
+    - Border: 2px solid #214FDD (highlighted primary outline), radius 16pt, bg #FFFFFF, padding 24pt.
+    - Badges Row:
+      - Category: "ACELERADORA" (11pt Bold, bg #EFF6FF, text #1D4ED8, padding 4pt 8pt, radius 4pt).
+      - Deadline urgency: "⏰ CIERRA: 15 OCT 2026" (11pt Bold, bg #FEF2F2, text #DC2626, padding 4pt 8pt, radius 4pt).
+    - Organization: "Y Combinator · Silicon Valley" (13pt Medium, text #71717A, margin-top 12pt).
+    - Title: "Batch W27 Early Application" (20pt Bold, text #0A0A0A, line-height 1.25, margin-top 4pt).
+    - Summary: "Inversión estándar de $500,000 USD bajo acuerdo SAFE y 3 meses intensivos en San Francisco con la red de mentores fundadores más potente del mundo." (13pt Regular, text #475569, margin-top 10pt).
+    - Highlight Box (bg #F8FAFC, border 1px #E2E8F0, radius 8pt, padding 10pt 14pt, margin-top 16pt):
+      - Label: "INVERSIÓN DISPONIBLE" (10pt Bold, text #71717A)
+      - Value: "$500,000 USD" (18pt Bold, text #047857)
+    - Footer Row (margin-top 16pt, space-between, align center):
+      - Modality: "📍 Presencial (San Francisco)" (12pt Medium, text #64748B)
+      - Button: "Ver Convocatoria →" (13pt SemiBold, bg #214FDD, text #FFFFFF, padding 8pt 16pt, radius 6pt).
+
+  * CARD 2: StartUp Perú 11G — Emprendimientos Innovadores
+    - Border: 1px solid #E2E8F0, radius 16pt, bg #FFFFFF, padding 24pt.
+    - Badges Row:
+      - Category: "GRANT NO REEMBOLSABLE" (11pt Bold, bg #ECFDF5, text #047857, padding 4pt 8pt, radius 4pt).
+      - Deadline: "⏰ CIERRA: 30 OCT 2026" (11pt Bold, bg #FFFBEB, text #D97706, padding 4pt 8pt, radius 4pt).
+    - Organization: "ProInnóvate Perú (Produce)" (13pt Medium, text #71717A, margin-top 12pt).
+    - Title: "StartUp Perú 11G (Innovadores)" (20pt Bold, text #0A0A0A, line-height 1.25, margin-top 4pt).
+    - Summary: "Cofinanciamiento no reembolsable del Estado para acelerar el despegue comercial y consolidación de prototipos funcionales en mercado peruano." (13pt Regular, text #475569, margin-top 10pt).
+    - Highlight Box (bg #F8FAFC, border 1px #E2E8F0, radius 8pt, padding 10pt 14pt, margin-top 16pt):
+      - Label: "MONTO NO REEMBOLSABLE" (10pt Bold, text #71717A)
+      - Value: "Hasta S/. 60,000 PEN" (18pt Bold, text #047857)
+    - Footer Row (margin-top 16pt, space-between, align center):
+      - Modality: "🌐 100% Remoto (Nacional)" (12pt Medium, text #64748B)
+      - Button: "Ver Convocatoria →" (13pt SemiBold, bg #0A0A0A, text #FFFFFF, padding 8pt 16pt, radius 6pt).
+
+  * CARD 3: Platanus Ventures Batch 2026
+    - Border: 1px solid #E2E8F0, radius 16pt, bg #FFFFFF, padding 24pt.
+    - Badges Row:
+      - Category: "ACELERADORA TÉCNICA" (11pt Bold, bg #EFF6FF, text #1D4ED8, padding 4pt 8pt, radius 4pt).
+      - Deadline: "⏰ CIERRA: 01 NOV 2026" (11pt Bold, bg #F1F5F9, text #475569, padding 4pt 8pt, radius 4pt).
+    - Organization: "Platanus Ventures · LatAm" (13pt Medium, text #71717A, margin-top 12pt).
+    - Title: "Platanus Cohorte 2026" (20pt Bold, text #0A0A0A, line-height 1.25, margin-top 4pt).
+    - Summary: "Aceleradora de programadores para programadores. Invierte $100,000 USD por el 7% de equity conectando founders con los mejores ingenieros de LatAm." (13pt Regular, text #475569, margin-top 10pt).
+    - Highlight Box (bg #F8FAFC, border 1px #E2E8F0, radius 8pt, padding 10pt 14pt, margin-top 16pt):
+      - Label: "INVERSIÓN POR 7% EQUITY" (10pt Bold, text #71717A)
+      - Value: "$100,000 USD" (18pt Bold, text #047857)
+    - Footer Row (margin-top 16pt, space-between, align center):
+      - Modality: "⚡ Híbrido (Santiago / Remoto)" (12pt Medium, text #64748B)
+      - Button: "Ver Convocatoria →" (13pt SemiBold, bg #0A0A0A, text #FFFFFF, padding 8pt 16pt, radius 6pt).
+
+--------------------------------------------------------------------------------
+E. TWO-COLUMN WORKSTREAM SECTION (Width 1312pt, Margin 56pt 64pt 0 64pt)
+--------------------------------------------------------------------------------
+- Left Column: All Opportunities Catalog Table & Cards (Width 880pt)
+  - Subheader: "Explora todas las convocatorias activas (18)" (20pt SemiBold, #0A0A0A)
+  - Row Card 1 (ETHGlobal Hackathon Autumn, Width 880pt, Height 140pt, bg #FFFFFF, border 1px #E2E8F0, radius 12pt, padding 20pt):
+    - Top line: Category "HACKATHON" (bg #F5F3FF, text #6D28D9) | Organization "ETHGlobal" | Modalidad "Remoto · Online" | Deadline "24 Oct 2026"
+    - Middle: Title "ETHGlobal Autumn 2026 — Web3 & AI Agents" (17pt SemiBold, #0A0A0A)
+    - Bottom line: Prize "+$150,000 USD en premios por tracks" (14pt Bold, #047857) | Tags: #ai #web3 #hackathon | Button "Postular" (bg #214FDD, text #FFFFFF, 12pt SemiBold, padding 6pt 14pt, radius 6pt).
+  - Row Card 2 (Becas Santander Tech & AI, Width 880pt, Height 140pt, margin-top 16pt, bg #FFFFFF, border 1px #E2E8F0, radius 12pt, padding 20pt):
+    - Top line: Category "BECA INTEGRAL" (bg #FFFBEB, text #B45309) | Organization "Banco Santander & Universidades" | Modalidad "Remoto" | Deadline "15 Nov 2026"
+    - Middle: Title "Becas Santander Tech & Generative AI" (17pt SemiBold, #0A0A0A)
+    - Bottom line: Benefit "100% Subvencionado + Certificación Oficial" (14pt Bold, #047857) | Tags: #becas #ai #prompt-engineering | Button "Postular" (bg #214FDD, text #FFFFFF, 12pt SemiBold, padding 6pt 14pt, radius 6pt).
+  - Row Card 3 (Google Solution Challenge 2027, Width 880pt, Height 140pt, margin-top 16pt, bg #FFFFFF, border 1px #E2E8F0, radius 12pt, padding 20pt):
+    - Top line: Category "CONCURSO UNIVERSITARIO" (bg #EFF6FF, text #1D4ED8) | Organization "Google Developer Student Clubs" | Modalidad "Remoto" | Deadline "20 Dic 2026"
+    - Middle: Title "Google Solution Challenge — Impacto Social con Tech de Google" (17pt SemiBold, #0A0A0A)
+    - Bottom line: Benefit "$12,000 USD por equipo ganador + Mentoría Google" (14pt Bold, #047857) | Tags: #google #estudiantes #ods | Button "Postular" (bg #214FDD, text #FFFFFF, 12pt SemiBold, padding 6pt 14pt, radius 6pt).
+
+- Right Column: Social Media & Cross-Area Integrations Rail (Width 400pt)
+  - Card 1: Social Media Hub — "Martes de Oportunidades" (Width 400pt, bg #0A0A0A, radius 16pt, padding 24pt, text #FFFFFF):
+    - Eyebrow: "GROWTH / SOCIAL MEDIA" (10pt Bold, text #6CE5E8)
+    - Heading: "Martes de Oportunidades" (20pt Bold, text #FFFFFF, margin-top 6pt)
+    - Description: "Nayely y Axel producen cada martes el resumen vertical en TikTok e Instagram Reels con las 3 convocatorias clave de la semana." (13pt Regular, text #A1A1AA, margin-top 8pt)
+    - Video Preview Mock Box (Height 160pt, bg #18181B, border 1px #27272A, radius 10pt, margin-top 14pt, align center):
+      - Reel Icon + Play button in Spark Cyan #6CE5E8
+      - Label: "Episodio #04: '3 fondos de S/. 60k que cierran este mes'" (12pt SemiBold, text #FFFFFF)
+    - Button: "Ver en Instagram Reels →" (13pt SemiBold, bg #214FDD, text #FFFFFF, width 100%, padding 10pt, radius 8pt, margin-top 14pt).
+
+  - Card 2: IA Talks Sync (Width 400pt, margin-top 20pt, bg #FFFFFF, border 1px #E2E8F0, radius 16pt, padding 24pt):
+    - Eyebrow: "GROWTH / IA TALKS" (10pt Bold, text #214FDD)
+    - Heading: "Juntas Semanales de IA" (18pt Bold, text #0A0A0A, margin-top 4pt)
+    - Text: "En cada junta semanal con Andrea y Robert revisamos cómo postular con éxito y preparamos postulaciones en equipo." (13pt Regular, text #475569, margin-top 6pt)
+    - Action Link: "Inscribirse en Breakly a la próxima junta →" (13pt SemiBold, text #214FDD, margin-top 12pt).
+
+--------------------------------------------------------------------------------
+F. FOOTER (Width 1440pt, Height 200pt, Margin-top 64pt, Padding 48pt 64pt)
+--------------------------------------------------------------------------------
+- Background: #FFFFFF, border-top 1px solid #E2E8F0.
+- Left: "BRE▲KOUT" wordmark, tagline "Break the limits. Build the future.", copyright "© 2026 Breakout. Organización de Innovación y Emprendimiento."
+- Center: Quick navigation links: "Landing breakout.lat", "Breakly SaaS", "Lineamientos 26-2", "GitHub".
+- Right: Contact and team signature: "Desarrollado por el equipo Tech (Saymon & Freddy)".
+
+================================================================================
+3. TASTE BANS & PRODUCTION CONSTRAINTS
+================================================================================
+- Strictly NO blurred drop-shadows or glow effects.
+- Strictly NO fake purple (#6C63FF). Primary brand color is #214FDD (Cobalto Breakout).
+- Strictly NO lorem ipsum; all text must be real, high-signal Spanish copy.
+- Crisp 1px solid borders (#E2E8F0) on white cards (#FFFFFF).
+- Clean spacing hierarchy: 8pt grid (8, 16, 24, 32, 48, 64pt).

@@ -1,0 +1,40 @@
+{
+  "name": "breakout-opportunities-hub",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "bun@1.3.13",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "test": "bun test",
+    "seed": "bun run scripts/seed-opportunities.ts",
+    "db:sync": "bun run scripts/sync-supabase.ts",
+    "digest": "bun run scripts/digest.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.48.0",
+    "next": "16.3.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tailwind-merge": "^3.0.2",
+    "zod": "3.24.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/bun": "1.4.1",
+    "@types/node": "26.4.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "eslint": "9.39.2",
+    "eslint-config-next": "16.3.4",
+    "postcss": "^8.5.3",
+    "supabase": "^2.118.0",
+    "tailwindcss": "4.3.3",
+    "typescript": "5.9.3"
+  }
+}
