@@ -6,38 +6,20 @@ interface StatCardProps {
   index: number;
 }
 
-const gradientStyle = {
-  background: "linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%)",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  backgroundClip: "text",
-  filter: "drop-shadow(0 0 20px rgba(59, 130, 246, 0.6))",
-} as const;
-
+// Big Bebas numbers: white on cobalt, cobalt once the page flips to white (see globals.css)
 const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(
   ({ stat }, ref) => {
     return (
       <div
         ref={ref}
-        className="flex flex-col items-center justify-center text-center space-y-3"
+        className="flex flex-col items-center justify-center text-center gap-2"
       >
-        {/* Number with glow effect */}
-        <div className="relative">
-          <div className="text-5xl sm:text-6xl md:text-7xl font-black flex items-center justify-center gap-1">
-            <span className="stat-number" style={gradientStyle}>
-              0
-            </span>
-            <span style={gradientStyle}>{stat.suffix}</span>
-          </div>
+        <div className="stat-value font-display text-7xl sm:text-8xl md:text-9xl leading-none flex items-center justify-center">
+          <span className="stat-number">0</span>
+          <span>{stat.suffix}</span>
         </div>
 
-        {/* Label */}
-        <p
-          className="stat-label text-lg sm:text-xl md:text-2xl font-medium text-white/80 tracking-wide"
-          style={{
-            transition: "color 900ms cubic-bezier(0.22, 1, 0.36, 1)",
-          }}
-        >
+        <p className="stat-label text-xs sm:text-sm font-semibold uppercase tracking-[0.16em] text-white/80">
           {stat.label}
         </p>
       </div>

@@ -114,40 +114,18 @@ export default function Stats() {
       className="relative w-full bg-transparent text-white py-24 md:py-32"
       aria-label="Estadísticas de Breakout"
     >
-      {/* Content with minimal glassmorphism */}
       <div className="container mx-auto px-6 md:px-10 relative z-10">
-        {/* Minimal glass container */}
-        <div
-          className="p-8 md:p-12 rounded-3xl"
-          style={{
-            background: "rgba(255, 255, 255, 0.02)",
-            backdropFilter: "blur(6px)",
-            border: "1px solid rgba(255, 255, 255, 0.08)",
-          }}
-        >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-6xl mx-auto">
-            {stats.map((stat, index) => (
-              <StatCard
-                key={stat.label}
-                ref={(el) => {
-                  statsRef.current[index] = el;
-                }}
-                stat={stat}
-                index={index}
-              />
-            ))}
-          </div>
-
-          {/* Decorative line */}
-          <div className="mt-12 max-w-4xl mx-auto">
-            <div
-              className="h-[2px] w-full rounded-full"
-              style={{
-                background:
-                  "linear-gradient(90deg, transparent 0%, rgba(59, 130, 246, 0.5) 50%, transparent 100%)",
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-14 gap-x-8 md:gap-12 max-w-6xl mx-auto">
+          {stats.map((stat, index) => (
+            <StatCard
+              key={stat.label}
+              ref={(el) => {
+                statsRef.current[index] = el;
               }}
+              stat={stat}
+              index={index}
             />
-          </div>
+          ))}
         </div>
       </div>
     </section>

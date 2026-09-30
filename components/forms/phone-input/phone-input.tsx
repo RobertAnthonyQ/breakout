@@ -50,7 +50,7 @@ export default function PhoneInput({
         <button
           type="button"
           onClick={() => setIsCountryOpen((v) => !v)}
-          className="flex items-center gap-2 px-3 bg-black/50 border border-gray-700 rounded-l-md rounded-r-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#214fdd] focus:border-[#214fdd]"
+          className="flex items-center gap-2 px-3 bg-white border border-[var(--bo-line)] rounded-l-md rounded-r-none text-[var(--bo-ink)] text-sm focus:outline-none focus:ring-2 focus:ring-[#214fdd] focus:border-[#214fdd]"
           style={{ height: "48px" }}
           aria-haspopup="listbox"
           aria-expanded={isCountryOpen}
@@ -75,7 +75,7 @@ export default function PhoneInput({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder ?? `976 543 210`}
-          className={`w-full bg-black/50 border-gray-700 border-l-0 rounded-l-none text-white placeholder:text-gray-500 focus:border-[#214fdd] focus:ring-[#214fdd] transition-all duration-300 ${
+          className={`w-full bg-white border-[var(--bo-line)] border-l-0 rounded-l-none text-[var(--bo-ink)] placeholder:text-[var(--bo-muted)] focus:border-[#214fdd] focus:ring-[#214fdd] transition-all duration-300 ${
             !isValid && value
               ? "border-red-500 focus:border-red-500 focus:ring-red-500"
               : ""

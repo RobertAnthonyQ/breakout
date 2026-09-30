@@ -6,7 +6,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-sans: var(--font-poppins), "Poppins", system-ui, sans-serif;
+  --font-display: var(--font-bebas), "Bebas Neue", "Oswald", Impact, sans-serif;
   --font-mono: ui-monospace, monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -44,15 +45,26 @@
 }
 
 :root {
+  /* Breakout brand tokens (same as opportunities/ — see design-system.md) */
+  --bo-cobalt: #214fdd;
+  --bo-cobalt-700: #1b41b5;
+  --bo-cobalt-50: #edf1fc;
+  --bo-ink: #0a0a0a;
+  --bo-text: #363639;
+  --bo-muted: #6b6f7b;
+  --bo-line: #e3e8f3;
+  --bo-paper: #f7f8fb;
+
   --radius: 0.625rem;
-  --background: oklch(0.1 0 0);
-  --foreground: oklch(0.985 0 0);
+  /* The page is cobalt by default (brand register); sections flip the body to white */
+  --background: #214fdd;
+  --foreground: #ffffff;
   --card: oklch(0.15 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.15 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.85 0.1 290);
-  --primary-foreground: oklch(0.1 0 0);
+  --primary: #214fdd;
+  --primary-foreground: #ffffff;
   --secondary: oklch(0.25 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.25 0 0);
@@ -126,79 +138,41 @@
 
 /* Estado global durante la sección de Eventos */
 body.events-light {
-  /* Usar OKLCH para evitar artefactos rojizos en la interpolación */
-  background-color: oklch(0.985 0 0); /* casi blanco */
-  color: oklch(0.1 0 0); /* casi negro */
+  background-color: #ffffff;
+  color: var(--bo-ink);
 }
 
 /* Cambiar color de las etiquetas de Stats cuando el fondo es blanco */
-body.events-light .stat-label {
-  color: oklch(0.1 0 0) !important; /* casi negro */
+body.events-light .stat-value {
+  color: var(--bo-cobalt);
   transition: color 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Estado global para la sección WhatIsBreakout */
-body.breakout-dark {
-  background-color: oklch(0.1 0 0); /* casi negro */
-  color: oklch(0.985 0 0); /* casi blanco */
+body.events-light .stat-label {
+  color: var(--bo-muted) !important;
+  transition: color 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* WhatIsBreakout: white register while the section is pinned */
+body.about-light {
+  background-color: #ffffff;
+  color: var(--bo-ink);
 }
 
 @layer utilities {
-  .gradient-bg {
-    background: #000000;
-    overflow: hidden;
-    /* No posicionar aquí para no sobreescribir la utilidad Tailwind `absolute` */
-    /* position intentionally omitted */
-    pointer-events: none;
+  /* Display headline in Bebas; pair an outlined line with a solid one (Open World) */
+  .font-display {
+    /* @theme inline does not emit --font-display at runtime, so point at next/font directly */
+    font-family: var(--font-bebas), "Bebas Neue", "Oswald", Impact, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
   }
 
-  .gradient-bg::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-        ellipse 80% 50% at 50% -20%,
-        rgba(140, 140, 160, 0.4) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        ellipse 60% 40% at 80% 50%,
-        rgba(120, 120, 150, 0.35) 0%,
-        transparent 50%
-      ),
-      radial-gradient(
-        ellipse 60% 40% at 20% 50%,
-        rgba(100, 100, 130, 0.35) 0%,
-        transparent 50%
-      );
-    animation: smoke1 15s ease-in-out infinite;
-    filter: blur(80px);
-    z-index: 0;
-  }
-
-  .gradient-bg::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(
-        circle at 30% 20%,
-        rgba(130, 130, 150, 0.25) 0%,
-        transparent 40%
-      ),
-      radial-gradient(
-        circle at 70% 80%,
-        rgba(150, 150, 170, 0.25) 0%,
-        transparent 40%
-      );
-    animation: smoke2 18s ease-in-out infinite reverse;
-    filter: blur(90px);
-    z-index: 0;
+  .text-outline {
+    /* Empty only the fill: color stays, so the stroke can use it */
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1.5px currentColor;
   }
 
   .text-gradient {
@@ -227,34 +201,6 @@ body.breakout-dark {
   }
   50% {
     background-position: 100% 50%;
-  }
-}
-
-@keyframes smoke1 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.6;
-  }
-  33% {
-    transform: translate(-10%, 5%) scale(1.1);
-    opacity: 0.8;
-  }
-  66% {
-    transform: translate(10%, -5%) scale(0.95);
-    opacity: 0.7;
-  }
-}
-
-@keyframes smoke2 {
-  0%,
-  100% {
-    transform: translate(0, 0) scale(1) rotate(0deg);
-    opacity: 0.5;
-  }
-  50% {
-    transform: translate(5%, 10%) scale(1.15) rotate(2deg);
-    opacity: 0.7;
   }
 }
 

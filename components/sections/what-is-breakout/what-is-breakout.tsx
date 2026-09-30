@@ -59,6 +59,14 @@ export default function WhatIsBreakout() {
     const ctx = gsap.context(() => {
       gsap.set([title, one, two], { autoAlpha: 0 });
 
+      // Start the white register while the section scrolls in, not only once it pins
+      ScrollTrigger.create({
+        trigger: container,
+        start: "top 55%",
+        onEnter: () => document.body.classList.add("about-light"),
+        onLeaveBack: () => document.body.classList.remove("about-light"),
+      });
+
       const tl = gsap.timeline({
         defaults: { duration: 0.6, ease: "power2.out" },
         scrollTrigger: {
@@ -68,10 +76,10 @@ export default function WhatIsBreakout() {
           scrub: 1, // slight smoothing for more fluid feel
           pin: true,
           anticipatePin: 1,
-          onEnter: () => document.body.classList.add("breakout-dark"),
-          onEnterBack: () => document.body.classList.add("breakout-dark"),
-          onLeave: () => document.body.classList.remove("breakout-dark"),
-          onLeaveBack: () => document.body.classList.remove("breakout-dark"),
+          onEnter: () => document.body.classList.add("about-light"),
+          onEnterBack: () => document.body.classList.add("about-light"),
+          onLeave: () => document.body.classList.remove("about-light"),
+          // scrolling back up is handled by the earlier "top 55%" trigger
         },
       });
 
@@ -145,20 +153,20 @@ export default function WhatIsBreakout() {
           },
           "+=0.25"
         )
-        // 3) Line two enters from bottom with powerful bounce and glowing effect
+        // 3) Line two enters from bottom with a bounce
         .fromTo(
           two,
           {
             y: 250,
             autoAlpha: 0,
-            filter: "blur(15px) brightness(0.5)",
+            filter: "blur(15px)",
             scale: 0.6,
             rotationZ: -5,
           },
           {
             y: 0,
             autoAlpha: 1,
-            filter: "blur(0px) brightness(1.3)",
+            filter: "blur(0px)",
             scale: 1,
             rotationZ: 0,
             ease: "elastic.out(1, 0.5)",

@@ -6,6 +6,7 @@ interface AnimatedLayersProps {
   layerTwoRef: React.RefObject<HTMLDivElement | null>;
 }
 
+// White register: ink text, key words in solid cobalt (no glow, no gradients)
 export default function AnimatedLayers({
   titleRef,
   layerOneRef,
@@ -13,70 +14,40 @@ export default function AnimatedLayers({
 }: AnimatedLayersProps) {
   return (
     <div className="relative h-[40vh] md:h-[48vh]">
-      {/* Title */}
       <div
         ref={titleRef}
         className="absolute inset-0 flex items-center justify-center"
       >
         <h2
           id="what-is-breakout-heading"
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
-          style={{
-            color: "currentColor",
-            textShadow:
-              "0 0 20px rgba(255,255,255,0.3), 0 0 40px rgba(255,255,255,0.1)",
-          }}
+          className="font-display text-7xl sm:text-8xl md:text-[9rem] lg:text-[11rem] leading-[0.88] text-center"
         >
-          What is Breakout?
+          <span className="block text-outline">What is</span>
+          <span className="block text-[var(--bo-cobalt)]">Breakout?</span>
         </h2>
       </div>
 
-      {/* Line 1 - diagonal entrance with rotation, clean type */}
       <div
         ref={layerOneRef}
         className="absolute inset-0 flex items-center justify-center"
       >
-        <p
-          className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-center max-w-6xl leading-tight font-medium"
-          style={{ color: "currentColor" }}
-        >
-          <span className="font-bold">Breakout</span> connects talented
-          founders with{" "}
-          <span className="font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+        <p className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-center max-w-6xl leading-tight font-medium text-[var(--bo-ink)]">
+          <span className="font-bold">Breakout</span> connects talented founders
+          with{" "}
+          <span className="font-bold text-[var(--bo-cobalt)]">
             world-class opportunities
           </span>
           .
         </p>
       </div>
 
-      {/* Line 2 - bottom entrance with bounce, glowing blue accent */}
       <div
         ref={layerTwoRef}
         className="absolute inset-0 flex items-center justify-center"
       >
-        <p
-          className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-center max-w-6xl leading-tight font-medium"
-          style={{ color: "currentColor" }}
-        >
-          <span className="align-middle"> From exclusive programs</span>
-          <span
-            className="mx-3 align-middle"
-            style={{ color: "currentColor", opacity: 0.8 }}
-          >
-            to
-          </span>
-          <span
-            className="align-middle font-black"
-            style={{
-              color: "#214fdd",
-              textShadow:
-                "0 0 30px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.4), 0 0 90px rgba(59, 130, 246, 0.2)",
-              filter: "brightness(1.2)",
-            }}
-          >
-            powerful fellowships
-          </span>
-          <span className="align-middle text-white">.</span>
+        <p className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl text-center max-w-6xl leading-tight font-medium text-[var(--bo-ink)]">
+          From exclusive programs to{" "}
+          <span className="font-bold text-[var(--bo-cobalt)]">powerful fellowships</span>.
         </p>
       </div>
     </div>

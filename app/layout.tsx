@@ -1,11 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Bebas_Neue, Poppins } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Breakout design system: Bebas Neue for display headlines, Poppins for everything else
+// (breakout-info/org-hub/identity/brand/design-system.md)
+const display = Bebas_Neue({
+  variable: "--font-bebas",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: "400",
+  display: "swap",
+});
+
+const sans = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -69,7 +79,7 @@ export default function RootLayout({
   return (
     <html lang="es" className="overflow-x-hidden">
       <body
-        className={`${inter.variable} font-sans antialiased overflow-x-hidden`}
+        className={`${display.variable} ${sans.variable} font-sans antialiased overflow-x-hidden`}
       >
         {children}
       </body>

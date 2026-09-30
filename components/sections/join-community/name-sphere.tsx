@@ -137,7 +137,7 @@ export default function NameSphere({
           {names.map((name, index) => (
             <div
               key={index}
-              className="sphere-word absolute left-1/2 top-1/2 text-white font-bold cursor-pointer select-none whitespace-nowrap transition-colors duration-300 will-change-transform"
+              className="sphere-word absolute left-1/2 top-1/2 text-[var(--bo-cobalt)] font-semibold cursor-pointer select-none whitespace-nowrap transition-colors duration-300 will-change-transform"
               style={{
                 fontSize: `${(isMobile
                   ? 0.9 + Math.random() * 0.4
@@ -145,15 +145,13 @@ export default function NameSphere({
                 ).toFixed(2)}rem`,
                 transform: "translate(-50%, -50%)",
                 transformStyle: "preserve-3d",
-                fontFamily: "system-ui, -apple-system, sans-serif",
-                textShadow: "0 2px 10px rgba(0,0,0,0.5)",
               }}
             >
               {name}
             </div>
           ))}
           {names.length === 0 && !loadingNames && (
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-gray-500">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-[var(--bo-muted)]">
               Sin nombres aún
             </div>
           )}
