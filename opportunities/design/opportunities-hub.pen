@@ -1,0 +1,1360 @@
+{
+  "version": "2.18",
+  "children": [
+    {
+      "type": "frame",
+      "id": "Ih6y7",
+      "x": 0,
+      "y": 0,
+      "name": "Opportunities Hub",
+      "clip": true,
+      "width": 1440,
+      "fill": "$ground",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "d2aUVq",
+          "name": "Cobalt Hero",
+          "width": "fill_container",
+          "height": 420,
+          "fill": "$cobalt",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "JdorU",
+              "name": "Top Nav",
+              "width": "fill_container",
+              "height": 68,
+              "fill": "$cobalt-dark",
+              "gap": 16,
+              "padding": [
+                0,
+                64
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "LJCm3",
+                  "name": "Logo",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "hUfNk",
+                      "name": "BRE",
+                      "fill": "$white",
+                      "content": "BRE",
+                      "fontFamily": "$font",
+                      "fontSize": 20,
+                      "fontWeight": "bold",
+                      "letterSpacing": -0.01
+                    },
+                    {
+                      "type": "text",
+                      "id": "IOjcL",
+                      "name": "Triangle",
+                      "fill": "$cyan",
+                      "content": "▲",
+                      "fontFamily": "$font",
+                      "fontSize": 16,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "bsbTU",
+                      "name": "KOUT",
+                      "fill": "$white",
+                      "content": "KOUT",
+                      "fontFamily": "$font",
+                      "fontSize": 20,
+                      "fontWeight": "bold",
+                      "letterSpacing": -0.01
+                    }
+                  ]
+                },
+                {
+                  "type": "rectangle",
+                  "id": "XtL1f",
+                  "name": "Divider",
+                  "fill": "#FFFFFF33",
+                  "width": 1,
+                  "height": 14
+                },
+                {
+                  "type": "frame",
+                  "id": "p9TegJ",
+                  "name": "Hub Pill",
+                  "fill": "#6CE5E81F",
+                  "cornerRadius": 6,
+                  "stroke": "#6CE5E840",
+                  "strokeWidth": 1,
+                  "padding": [
+                    4,
+                    10
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Nb1oT",
+                      "name": "Pill Label",
+                      "fill": "$cyan",
+                      "content": "HUB DE OPORTUNIDADES",
+                      "fontFamily": "$font",
+                      "fontSize": 11,
+                      "fontWeight": "600",
+                      "letterSpacing": 0.04
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "e0dLvv",
+                  "name": "Nav Links",
+                  "width": "fill_container",
+                  "gap": 28,
+                  "justifyContent": "end",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "uvYZL",
+                      "name": "Convocatorias",
+                      "fill": "$white",
+                      "content": "Convocatorias",
+                      "fontFamily": "$font",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "mfkec",
+                      "name": "Martes de Oportunidades",
+                      "fill": "$on-cobalt-muted",
+                      "content": "Martes de Oportunidades",
+                      "fontFamily": "$font",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "tnhaM",
+                      "name": "IA Talks",
+                      "fill": "$on-cobalt-muted",
+                      "content": "IA Talks",
+                      "fontFamily": "$font",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "text",
+                      "id": "BTFSh",
+                      "name": "Breakly",
+                      "fill": "$on-cobalt-muted",
+                      "content": "Breakly",
+                      "fontFamily": "$font",
+                      "fontSize": 14,
+                      "fontWeight": "500"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "MiLmM",
+                      "name": "CTA Publicar",
+                      "fill": "$white",
+                      "cornerRadius": 8,
+                      "padding": [
+                        9,
+                        18
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Pdwci",
+                          "name": "CTA Label",
+                          "fill": "$cobalt",
+                          "content": "Publicar Convocatoria",
+                          "fontFamily": "$font",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ffCR0",
+              "name": "Hero Body",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "padding": [
+                44,
+                64,
+                0,
+                64
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "PRHar",
+                  "name": "Hero Column",
+                  "width": 860,
+                  "layout": "vertical",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "K6txfR",
+                      "name": "Eyebrow",
+                      "fill": "#6CE5E824",
+                      "cornerRadius": 999,
+                      "stroke": "#6CE5E84D",
+                      "strokeWidth": 1,
+                      "padding": [
+                        5,
+                        14
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ZSAIX",
+                          "name": "Eyebrow Label",
+                          "fill": "$cyan",
+                          "content": "⚡ CONVOCATORIAS VERIFICADAS 26-2",
+                          "fontFamily": "$font",
+                          "fontSize": 11,
+                          "fontWeight": "bold",
+                          "letterSpacing": 0.06
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "bc3y9",
+                      "name": "Headline Wrap",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "padding": [
+                        16,
+                        0,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "Ik02w",
+                          "name": "Headline",
+                          "fill": "$white",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Las mejores oportunidades en Tech, Innovación y Startups",
+                          "lineHeight": 1.15,
+                          "textAlign": "center",
+                          "fontFamily": "$font",
+                          "fontSize": 42,
+                          "fontWeight": "bold",
+                          "letterSpacing": -0.035
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "L3F8fb",
+                      "name": "Subtitle Wrap",
+                      "width": 760,
+                      "layout": "vertical",
+                      "padding": [
+                        12,
+                        0,
+                        0,
+                        0
+                      ],
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "kmQ01",
+                          "name": "Subtitle",
+                          "fill": "$on-cobalt-muted",
+                          "textGrowth": "fixed-width",
+                          "width": "fill_container",
+                          "content": "Grants no reembolsables de ProInnóvate, hackathons internacionales, aceleradoras de clase mundial y becas de especialización. Todo curado en un solo lugar.",
+                          "lineHeight": 1.5,
+                          "textAlign": "center",
+                          "fontFamily": "$font",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "Vrj2g",
+                      "name": "Stats Wrap",
+                      "width": "fill_container",
+                      "padding": [
+                        24,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "z8z01B",
+                          "name": "Stats",
+                          "gap": 36,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "gnAob",
+                              "name": "Stat 1",
+                              "fill": "$white",
+                              "content": "+$850,000 USD en fondos y premios activos",
+                              "fontFamily": "$font",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "uQpZN",
+                              "name": "Sep 1",
+                              "fill": "#7E99EB",
+                              "content": "·",
+                              "fontFamily": "$font",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "fjDWW",
+                              "name": "Stat 2",
+                              "fill": "$cyan",
+                              "content": "100% Verificadas por equipo Tech",
+                              "fontFamily": "$font",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "zpn5D",
+                              "name": "Sep 2",
+                              "fill": "#7E99EB",
+                              "content": "·",
+                              "fontFamily": "$font",
+                              "fontSize": 13,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "text",
+                              "id": "qLxGw",
+                              "name": "Stat 3",
+                              "fill": "$white",
+                              "content": "5 cierres este mes",
+                              "fontFamily": "$font",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Y7MUq",
+          "name": "Main Content",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            70,
+            160,
+            0,
+            160
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "w6yEC",
+              "name": "Category Pills",
+              "width": "fill_container",
+              "height": 44,
+              "gap": 8,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ex6dL",
+                  "name": "Pill Todas las convocatorias (18)",
+                  "fill": "$cobalt",
+                  "cornerRadius": 999,
+                  "padding": [
+                    8,
+                    18
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "W41rr",
+                      "name": "Label",
+                      "fill": "$white",
+                      "content": "Todas las convocatorias (18)",
+                      "fontFamily": "$font",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Wriip",
+                  "name": "Pill Aceleradoras (4)",
+                  "fill": "$white",
+                  "cornerRadius": 999,
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "dPPU1",
+                      "name": "Label",
+                      "fill": "$body",
+                      "content": "Aceleradoras (4)",
+                      "fontFamily": "$font",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "nbIds",
+                  "name": "Pill Grants & Fondos (5)",
+                  "fill": "$white",
+                  "cornerRadius": 999,
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aW7qw",
+                      "name": "Label",
+                      "fill": "$body",
+                      "content": "Grants & Fondos (5)",
+                      "fontFamily": "$font",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SebCW",
+                  "name": "Pill Hackathons (6)",
+                  "fill": "$white",
+                  "cornerRadius": 999,
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YSBVi",
+                      "name": "Label",
+                      "fill": "$body",
+                      "content": "Hackathons (6)",
+                      "fontFamily": "$font",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "kD7sl",
+                  "name": "Pill Becas & Pasantías (3)",
+                  "fill": "$white",
+                  "cornerRadius": 999,
+                  "stroke": "$border",
+                  "strokeWidth": 1,
+                  "padding": [
+                    8,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "YXzCT",
+                      "name": "Label",
+                      "fill": "$body",
+                      "content": "Becas & Pasantías (3)",
+                      "fontFamily": "$font",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "S8Db3h",
+              "name": "Opportunities Feed",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "V4CJJc",
+                  "name": "Feed Row 1",
+                  "width": "fill_container",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "id": "OO18C",
+                      "type": "ref",
+                      "ref": "jG4Uz",
+                      "name": "Card YC",
+                      "width": "fill_container",
+                      "stroke": "$cobalt",
+                      "strokeWidth": 2,
+                      "effect": {
+                        "type": "shadow",
+                        "shadowType": "outer",
+                        "color": "#214FDD0F",
+                        "offset": {
+                          "x": 0,
+                          "y": 4
+                        },
+                        "blur": 14
+                      },
+                      "descendants": {
+                        "EgRiW": {
+                          "fill": "#EFF6FF"
+                        },
+                        "LMYXm": {
+                          "content": "ACELERADORA",
+                          "fill": "#214FDD"
+                        },
+                        "LOPVq": {
+                          "fill": "#FEF2F2"
+                        },
+                        "qzAaF": {
+                          "content": "⏰ CIERRA 15 OCT",
+                          "fill": "#DC2626"
+                        },
+                        "Glsr7": {
+                          "content": "📍 San Francisco (Presencial)"
+                        },
+                        "BlSS0": {
+                          "content": "Y Combinator Batch W27"
+                        },
+                        "Ufj06": {
+                          "content": "Y Combinator · Silicon Valley"
+                        },
+                        "v5Cgx": {
+                          "content": "Inversión estándar de $500,000 USD bajo acuerdo SAFE y 3 meses intensivos en California con mentores fundadores."
+                        },
+                        "Fbz3X": {
+                          "content": "$500,000 USD"
+                        },
+                        "KZbYJ": {
+                          "content": "· SAFE"
+                        },
+                        "wzT9k": {
+                          "fill": "#214FDD"
+                        }
+                      }
+                    },
+                    {
+                      "id": "sfD1P",
+                      "type": "ref",
+                      "ref": "jG4Uz",
+                      "name": "Card StartUp Peru",
+                      "width": "fill_container",
+                      "descendants": {
+                        "EgRiW": {
+                          "fill": "#ECFDF5"
+                        },
+                        "LMYXm": {
+                          "content": "GRANT NO REEMBOLSABLE",
+                          "fill": "#059669"
+                        },
+                        "LOPVq": {
+                          "fill": "#FFFBEB"
+                        },
+                        "qzAaF": {
+                          "content": "⏰ CIERRA 30 OCT",
+                          "fill": "#D97706"
+                        },
+                        "Glsr7": {
+                          "content": "🌐 Perú (100% Remoto)"
+                        },
+                        "BlSS0": {
+                          "content": "StartUp Perú 11G (Innovadores)"
+                        },
+                        "Ufj06": {
+                          "content": "ProInnóvate Perú · Ministerio de la Producción"
+                        },
+                        "v5Cgx": {
+                          "content": "Cofinanciamiento no reembolsable del Estado Peruano para acelerar la validación comercial de productos y servicios innovadores."
+                        },
+                        "Fbz3X": {
+                          "content": "Hasta S/. 60,000 PEN"
+                        },
+                        "KZbYJ": {
+                          "content": "· Fondo público"
+                        },
+                        "wzT9k": {
+                          "fill": "#0A0A0A"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "H0OiQ",
+                  "name": "Feed Row 2",
+                  "width": "fill_container",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "id": "d3YeQb",
+                      "type": "ref",
+                      "ref": "jG4Uz",
+                      "name": "Card Platanus",
+                      "width": "fill_container",
+                      "descendants": {
+                        "EgRiW": {
+                          "fill": "#EFF6FF"
+                        },
+                        "LMYXm": {
+                          "content": "ACELERADORA",
+                          "fill": "#214FDD"
+                        },
+                        "LOPVq": {
+                          "fill": "#F1F5F9"
+                        },
+                        "qzAaF": {
+                          "content": "⏰ CIERRA 01 NOV",
+                          "fill": "#475569"
+                        },
+                        "Glsr7": {
+                          "content": "⚡ LatAm (Híbrido)"
+                        },
+                        "BlSS0": {
+                          "content": "Platanus Ventures Batch 2026"
+                        },
+                        "Ufj06": {
+                          "content": "Platanus Ventures · Santiago / Remoto"
+                        },
+                        "v5Cgx": {
+                          "content": "Inversión de $100,000 USD por el 7% de equity conectando founders con los mejores ingenieros de software de América Latina."
+                        },
+                        "Fbz3X": {
+                          "content": "$100,000 USD"
+                        },
+                        "KZbYJ": {
+                          "content": "· 7% Equity"
+                        },
+                        "wzT9k": {
+                          "fill": "#0A0A0A"
+                        }
+                      }
+                    },
+                    {
+                      "id": "j0YzBK",
+                      "type": "ref",
+                      "ref": "jG4Uz",
+                      "name": "Card ETHGlobal",
+                      "width": "fill_container",
+                      "descendants": {
+                        "EgRiW": {
+                          "fill": "#F5F3FF"
+                        },
+                        "LMYXm": {
+                          "content": "HACKATHON",
+                          "fill": "#7C3AED"
+                        },
+                        "LOPVq": {
+                          "fill": "#FFFBEB"
+                        },
+                        "qzAaF": {
+                          "content": "⏰ CIERRA 24 OCT",
+                          "fill": "#D97706"
+                        },
+                        "Glsr7": {
+                          "content": "🌐 Online (36 horas)"
+                        },
+                        "BlSS0": {
+                          "content": "ETHGlobal Autumn 2026"
+                        },
+                        "Ufj06": {
+                          "content": "ETHGlobal · Internacional"
+                        },
+                        "v5Cgx": {
+                          "content": "Hackathon internacional para construir agentes inteligentes y dApps con mentorías de ingenieros top a nivel mundial."
+                        },
+                        "Fbz3X": {
+                          "content": "+$150,000 USD"
+                        },
+                        "KZbYJ": {
+                          "content": "· Premios por tracks"
+                        },
+                        "wzT9k": {
+                          "fill": "#0A0A0A"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "R63u3",
+          "layoutPosition": "absolute",
+          "x": 160,
+          "y": 382,
+          "name": "Search Dock",
+          "width": 1120,
+          "height": 76,
+          "fill": "$white",
+          "cornerRadius": 14,
+          "stroke": "$border",
+          "strokeWidth": 1,
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#214FDD14",
+            "offset": {
+              "x": 0,
+              "y": 10
+            },
+            "blur": 25
+          },
+          "gap": 12,
+          "padding": [
+            14,
+            18
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "K67yf",
+              "name": "Search Input",
+              "width": "fill_container",
+              "height": 48,
+              "fill": "$ground",
+              "cornerRadius": 8,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "padding": [
+                0,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gSkIQ",
+                  "name": "Placeholder",
+                  "fill": "#94A3B8",
+                  "content": "🔍  Buscar por startup, tecnología, grant, ProInnóvate, IA...",
+                  "fontFamily": "$font",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "F7fJS",
+              "name": "Categoría: Todas",
+              "height": 48,
+              "fill": "$white",
+              "cornerRadius": 8,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "gap": 8,
+              "padding": [
+                0,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "PopZ9",
+                  "name": "Label",
+                  "fill": "#334155",
+                  "content": "Categoría: Todas",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "icon",
+                  "id": "Lmdjk",
+                  "name": "Chevron",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-down",
+                  "library": "lucide",
+                  "fill": "$muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "coKEm",
+              "name": "Modalidad: Todas",
+              "height": 48,
+              "fill": "$white",
+              "cornerRadius": 8,
+              "stroke": "$border",
+              "strokeWidth": 1,
+              "gap": 8,
+              "padding": [
+                0,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "gXF2v",
+                  "name": "Label",
+                  "fill": "#334155",
+                  "content": "Modalidad: Todas",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "icon",
+                  "id": "C5ZRO",
+                  "name": "Chevron",
+                  "width": 14,
+                  "height": 14,
+                  "icon": "chevron-down",
+                  "library": "lucide",
+                  "fill": "$muted"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "jZF1G",
+              "name": "Buscar Button",
+              "height": 48,
+              "fill": "$cobalt",
+              "cornerRadius": 8,
+              "padding": [
+                0,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "jET5E",
+                  "name": "Label",
+                  "fill": "$white",
+                  "content": "Buscar",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "D26vY",
+          "name": "Footer Spacer",
+          "width": "fill_container",
+          "height": 64
+        },
+        {
+          "type": "frame",
+          "id": "G66Bcc",
+          "name": "Community Footer",
+          "width": "fill_container",
+          "height": 140,
+          "fill": "$white",
+          "stroke": "$border",
+          "strokeWidth": {
+            "top": 1
+          },
+          "padding": [
+            40,
+            64
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "X10Oi",
+              "name": "Footer Brand",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "J78mQ",
+                  "name": "Footer Wordmark",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "v0soD",
+                      "name": "BRE",
+                      "fill": "$ink",
+                      "content": "BRE",
+                      "fontFamily": "$font",
+                      "fontSize": 18,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "L8ZlMS",
+                      "name": "Triangle",
+                      "fill": "$cobalt",
+                      "content": "▲",
+                      "fontFamily": "$font",
+                      "fontSize": 14,
+                      "fontWeight": "bold"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TQGaI",
+                      "name": "KOUT",
+                      "fill": "$ink",
+                      "content": "KOUT",
+                      "fontFamily": "$font",
+                      "fontSize": 18,
+                      "fontWeight": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "id": "g2cDER",
+                  "name": "Footer Copy",
+                  "fill": "$muted",
+                  "content": "Break the limits. Build the future. © 2026 Breakout Tech Team.",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ljMob",
+              "name": "Footer Links",
+              "gap": 24,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "rMH2j",
+                  "name": "Landing breakout.lat",
+                  "fill": "$muted",
+                  "content": "Landing breakout.lat",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "UB5CI",
+                  "name": "Breakly Ticketing",
+                  "fill": "$muted",
+                  "content": "Breakly Ticketing",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "oxeGx",
+                  "name": "Martes de Oportunidades",
+                  "fill": "$cobalt",
+                  "content": "Martes de Oportunidades",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                },
+                {
+                  "type": "text",
+                  "id": "Ag0fK",
+                  "name": "GitHub",
+                  "fill": "$muted",
+                  "content": "GitHub",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "jG4Uz",
+      "x": 0,
+      "y": -340,
+      "name": "Opportunity Card",
+      "reusable": true,
+      "width": 548,
+      "height": 260,
+      "fill": "$white",
+      "cornerRadius": 14,
+      "stroke": "$border",
+      "strokeWidth": 1,
+      "layout": "vertical",
+      "padding": 24,
+      "children": [
+        {
+          "type": "frame",
+          "id": "fckry",
+          "name": "Card Header",
+          "width": "fill_container",
+          "gap": 8,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "EgRiW",
+              "name": "Category Badge",
+              "fill": "#EFF6FF",
+              "cornerRadius": 4,
+              "padding": [
+                4,
+                8
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "LMYXm",
+                  "name": "Category Badge Label",
+                  "fill": "$cobalt",
+                  "content": "ACELERADORA",
+                  "fontFamily": "$font",
+                  "fontSize": 11,
+                  "fontWeight": "bold",
+                  "letterSpacing": 0.03
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "LOPVq",
+              "name": "Urgency Badge",
+              "fill": "#FEF2F2",
+              "cornerRadius": 4,
+              "padding": [
+                4,
+                8
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "qzAaF",
+                  "name": "Urgency Badge Label",
+                  "fill": "#DC2626",
+                  "content": "⏰ CIERRA 15 OCT",
+                  "fontFamily": "$font",
+                  "fontSize": 11,
+                  "fontWeight": "bold",
+                  "letterSpacing": 0.03
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "KdiFq",
+              "name": "Spacer",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "text",
+              "id": "Glsr7",
+              "name": "Modality",
+              "fill": "$muted",
+              "content": "📍 San Francisco (Presencial)",
+              "fontFamily": "$font",
+              "fontSize": 12,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Amr44",
+          "name": "Title Wrap",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            12,
+            0,
+            0,
+            0
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "BlSS0",
+              "name": "Title",
+              "fill": "$ink",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Y Combinator Batch W27",
+              "fontFamily": "$font",
+              "fontSize": 20,
+              "fontWeight": "bold",
+              "letterSpacing": -0.02
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "pW98W",
+          "name": "Org Wrap",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            2,
+            0,
+            0,
+            0
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "Ufj06",
+              "name": "Org",
+              "fill": "$muted",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Y Combinator · Silicon Valley",
+              "fontFamily": "$font",
+              "fontSize": 13,
+              "fontWeight": "500"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Kx7sf",
+          "name": "Description Wrap",
+          "width": "fill_container",
+          "layout": "vertical",
+          "padding": [
+            8,
+            0,
+            0,
+            0
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "v5Cgx",
+              "name": "Description",
+              "fill": "$body",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Inversión estándar de $500,000 USD bajo acuerdo SAFE y 3 meses intensivos en California con mentores fundadores.",
+              "lineHeight": 1.5,
+              "fontFamily": "$font",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "soIJO",
+          "name": "Flex Spacer",
+          "width": "fill_container",
+          "height": "fill_container"
+        },
+        {
+          "type": "frame",
+          "id": "sJlGq",
+          "name": "Card Footer",
+          "width": "fill_container",
+          "stroke": "#F1F5F9",
+          "strokeWidth": {
+            "top": 1
+          },
+          "padding": [
+            14,
+            0,
+            0,
+            0
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "I940Y",
+              "name": "Highlight Group",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Fbz3X",
+                  "name": "Amount",
+                  "fill": "$green",
+                  "content": "$500,000 USD",
+                  "fontFamily": "$font",
+                  "fontSize": 17,
+                  "fontWeight": "bold",
+                  "letterSpacing": -0.02
+                },
+                {
+                  "type": "text",
+                  "id": "KZbYJ",
+                  "name": "Amount Suffix",
+                  "fill": "$muted",
+                  "content": "· SAFE",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "wzT9k",
+              "name": "Card Button",
+              "fill": "$cobalt",
+              "cornerRadius": 6,
+              "padding": [
+                8,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "nrYmf",
+                  "name": "Card Button Label",
+                  "fill": "$white",
+                  "content": "Ver Convocatoria →",
+                  "fontFamily": "$font",
+                  "fontSize": 13,
+                  "fontWeight": "600"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "cobalt": {
+      "type": "color",
+      "value": "#214FDD"
+    },
+    "cobalt-dark": {
+      "type": "color",
+      "value": "#183EB5"
+    },
+    "cyan": {
+      "type": "color",
+      "value": "#6CE5E8"
+    },
+    "white": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "ground": {
+      "type": "color",
+      "value": "#F8FAFC"
+    },
+    "border": {
+      "type": "color",
+      "value": "#E2E8F0"
+    },
+    "ink": {
+      "type": "color",
+      "value": "#0A0A0A"
+    },
+    "body": {
+      "type": "color",
+      "value": "#475569"
+    },
+    "muted": {
+      "type": "color",
+      "value": "#64748B"
+    },
+    "on-cobalt-muted": {
+      "type": "color",
+      "value": "#D7DFF9"
+    },
+    "green": {
+      "type": "color",
+      "value": "#059669"
+    },
+    "font": {
+      "type": "string",
+      "value": "Inter"
+    }
+  },
+  "fileToken": "42494b77-9376-4f95-bbc6-e60958c1d9db"
+}

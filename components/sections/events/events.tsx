@@ -41,24 +41,26 @@ export default function Events() {
       // Aplicar clase global al body mientras la sección esté visible
       ScrollTrigger.create({
         trigger: section,
-        start: "top bottom", // cuando el top de la sección toca la parte baja de la ventana
+        start: "top 65%", // after Stats has had its cobalt moment
         end: "bottom top", // hasta que el bottom pase por el top
         toggleClass: { targets: document.body, className: "events-light" },
       });
 
-      // Animación del título con split text effect
-      const titleChars = title.textContent?.split("") || [];
-      title.innerHTML = titleChars
-        .map(
-          (char) =>
-            `<span class="inline-block">${
-              char === " " ? "&nbsp;" : char
-            }</span>`
-        )
-        .join("");
+      // Split text effect: letters animate one by one, but stay grouped inside their word
+      // span (keeps the outline/cobalt styling and lets lines break between words only)
+      if (!title.dataset.split) {
+        title.querySelectorAll<HTMLElement>(":scope > span").forEach((word) => {
+          word.innerHTML = (word.textContent ?? "")
+            .split("")
+            .map((char) => `<span class="split-char inline-block">${char}</span>`)
+            .join("");
+          word.classList.add("whitespace-nowrap");
+        });
+        title.dataset.split = "true";
+      }
 
       gsap.fromTo(
-        title.children,
+        title.querySelectorAll(".split-char"),
         {
           opacity: 0,
           y: 50,
@@ -174,16 +176,11 @@ export default function Events() {
         {/* Título */}
         <h2
           ref={titleRef}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-center mb-10 md:mb-16 tracking-tight uppercase"
-          style={{
-            color: "#1a1a1a",
-            perspective: "1000px",
-            fontFamily: "system-ui, -apple-system, sans-serif",
-            letterSpacing: "-0.04em",
-            lineHeight: "0.95",
-          }}
+          className="font-display text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] text-center mb-10 md:mb-16 leading-[0.9] text-[var(--bo-ink)]"
+          style={{ perspective: "1000px" }}
         >
-          Eventos
+          <span className="text-outline inline-block">Nuestros</span>{" "}
+          <span className="text-[var(--bo-cobalt)] inline-block">Eventos</span>
         </h2>
 
         {/* Evento Principal */}

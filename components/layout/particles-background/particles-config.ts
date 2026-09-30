@@ -1,6 +1,8 @@
 import type { ISourceOptions } from "@tsparticles/engine";
 
 export const particlesOptions: ISourceOptions = {
+  // Stay inside the hero instead of a fixed full-page canvas
+  fullScreen: { enable: false },
   background: {
     color: {
       value: "transparent",
@@ -37,13 +39,13 @@ export const particlesOptions: ISourceOptions = {
   },
   particles: {
     color: {
-      value: ["#214fdd", "#94a3b8", "#1a3a8a"],
+      value: "#ffffff",
     },
     links: {
       color: "#ffffff",
       distance: 200,
       enable: true,
-      opacity: 0.5,
+      opacity: 0.35,
       width: 1,
     },
     move: {

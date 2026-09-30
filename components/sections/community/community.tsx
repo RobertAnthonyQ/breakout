@@ -125,23 +125,17 @@ export default function Community() {
       ref={sectionRef}
       className="relative w-full min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        backgroundColor: "#000000",
+        backgroundColor: "var(--bo-cobalt)",
       }}
       aria-label="Comunidad Breakout"
     >
       {/* Título principal */}
       <h2
         ref={titleRef}
-        className="text-5xl sm:text-7xl md:text-8xl lg:text-[11rem] font-black text-center tracking-tighter uppercase select-none relative z-50"
-        style={{
-          color: "#ffffff",
-          fontFamily: "system-ui, -apple-system, sans-serif",
-          letterSpacing: "-0.05em",
-          lineHeight: "0.9",
-          perspective: "1000px",
-        }}
+        className="font-display text-8xl sm:text-9xl md:text-[11rem] lg:text-[15rem] text-center leading-[0.85] select-none relative z-50 text-white"
+        style={{ perspective: "1000px" }}
       >
-        COMMUNITY
+        Community
       </h2>
 
       {/* Capa para "sellar" imágenes dentro de la sección */}
@@ -155,7 +149,7 @@ export default function Community() {
       <div className="absolute bottom-8 left-0 right-0 flex justify-center z-50 md:hidden">
         <button
           onClick={() => setIsGalleryOpen(true)}
-          className="bg-[#214fdd] text-white font-bold px-6 py-4 rounded-full text-sm tracking-wider uppercase shadow-lg active:scale-[0.98]"
+          className="bg-white text-[var(--bo-cobalt)] font-semibold px-6 py-4 rounded-full text-sm tracking-wider uppercase active:scale-[0.98]"
         >
           Explorar Comunidad
         </button>

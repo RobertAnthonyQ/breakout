@@ -105,11 +105,8 @@ export default function JoinForm({ onNameAdded, sphereRef }: JoinFormProps) {
 
   return (
     <div className="w-full max-w-md mx-auto lg:mx-0">
-      <h3 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
-        <span role="img" aria-label="apunta a la izquierda">
-          👈
-        </span>
-        Únete Ahora
+      <h3 className="font-display text-5xl text-[var(--bo-ink)] mb-4">
+        Únete ahora
       </h3>
 
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -117,7 +114,7 @@ export default function JoinForm({ onNameAdded, sphereRef }: JoinFormProps) {
         <div>
           <label
             htmlFor="name"
-            className="block text-sm font-medium text-gray-300 mb-2"
+            className="block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bo-muted)] mb-2"
           >
             Primer Nombre
           </label>
@@ -129,7 +126,7 @@ export default function JoinForm({ onNameAdded, sphereRef }: JoinFormProps) {
             value={formData.name}
             onChange={handleChange}
             placeholder="Juan"
-            className="w-full bg-black/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-[#214fdd] focus:ring-[#214fdd] transition-all duration-300"
+            className="w-full bg-white border-[var(--bo-line)] text-[var(--bo-ink)] placeholder:text-[var(--bo-muted)] focus:border-[#214fdd] focus:ring-[#214fdd] transition-all duration-300"
             style={{
               height: "48px",
               fontSize: "16px",
@@ -141,7 +138,7 @@ export default function JoinForm({ onNameAdded, sphereRef }: JoinFormProps) {
         <div>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-300 mb-2"
+            className="block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bo-muted)] mb-2"
           >
             Correo Electrónico
           </label>
@@ -153,7 +150,7 @@ export default function JoinForm({ onNameAdded, sphereRef }: JoinFormProps) {
             value={formData.email}
             onChange={handleChange}
             placeholder="tu@email.com"
-            className="w-full bg-black/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-[#214fdd] focus:ring-[#214fdd] transition-all duration-300"
+            className="w-full bg-white border-[var(--bo-line)] text-[var(--bo-ink)] placeholder:text-[var(--bo-muted)] focus:border-[#214fdd] focus:ring-[#214fdd] transition-all duration-300"
             style={{
               height: "48px",
               fontSize: "16px",
@@ -165,7 +162,7 @@ export default function JoinForm({ onNameAdded, sphereRef }: JoinFormProps) {
         <div>
           <label
             htmlFor="phone"
-            className="block text-sm font-medium text-gray-300 mb-2"
+            className="block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bo-muted)] mb-2"
           >
             Número de Teléfono
           </label>
@@ -174,7 +171,7 @@ export default function JoinForm({ onNameAdded, sphereRef }: JoinFormProps) {
             <button
               type="button"
               onClick={() => setIsCountryOpen((v) => !v)}
-              className="flex items-center gap-2 px-3 bg-black/50 border border-gray-700 rounded-l-md rounded-r-none text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#214fdd] focus:border-[#214fdd]"
+              className="flex items-center gap-2 px-3 bg-white border border-[var(--bo-line)] rounded-l-md rounded-r-none text-[var(--bo-ink)] text-sm focus:outline-none focus:ring-2 focus:ring-[#214fdd] focus:border-[#214fdd]"
               style={{ height: "48px" }}
               aria-haspopup="listbox"
               aria-expanded={isCountryOpen}
@@ -201,7 +198,7 @@ export default function JoinForm({ onNameAdded, sphereRef }: JoinFormProps) {
               value={formData.phone}
               onChange={handleChange}
               placeholder={`+${country.dialCode} 976 543 210`}
-              className={`w-full bg-black/50 border-gray-700 border-l-0 rounded-l-none text-white placeholder:text-gray-500 focus:border-[#214fdd] focus:ring-[#214fdd] transition-all duration-300 ${
+              className={`w-full bg-white border-[var(--bo-line)] border-l-0 rounded-l-none text-[var(--bo-ink)] placeholder:text-[var(--bo-muted)] focus:border-[#214fdd] focus:ring-[#214fdd] transition-all duration-300 ${
                 isPhoneValid
                   ? ""
                   : "border-red-500 focus:border-red-500 focus:ring-red-500"
@@ -214,12 +211,12 @@ export default function JoinForm({ onNameAdded, sphereRef }: JoinFormProps) {
 
             {/* Dropdown países */}
             {isCountryOpen && (
-              <div className="absolute z-50 left-0 top-[52px] w-[320px] max-h-[300px] overflow-auto bg-black/95 border border-gray-800 rounded-md shadow-xl p-2">
+              <div className="absolute z-50 left-0 top-[52px] w-[320px] max-h-[300px] overflow-auto bg-white border border-gray-800 rounded-md shadow-xl p-2">
                 <input
                   value={countryQuery}
                   onChange={(e) => setCountryQuery(e.target.value)}
                   placeholder="Buscar país o código"
-                  className="w-full mb-2 px-3 py-2 rounded-md bg-black/60 border border-gray-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#214fdd]"
+                  className="w-full mb-2 px-3 py-2 rounded-md bg-[var(--bo-paper)] border border-[var(--bo-line)] text-[var(--bo-ink)] text-sm focus:outline-none focus:ring-2 focus:ring-[#214fdd]"
                 />
                 <ul role="listbox" className="space-y-1">
                   {countries
@@ -242,7 +239,7 @@ export default function JoinForm({ onNameAdded, sphereRef }: JoinFormProps) {
                             setCountry(c);
                             setIsCountryOpen(false);
                           }}
-                          className="w-full flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white/5 text-white text-sm"
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[var(--bo-cobalt-50)] text-[var(--bo-ink)] text-sm"
                           role="option"
                           aria-selected={country.iso2 === c.iso2}
                         >
@@ -279,10 +276,7 @@ export default function JoinForm({ onNameAdded, sphereRef }: JoinFormProps) {
             !formData.email.trim() ||
             !formData.phone.trim()
           }
-          className="w-full bg-[#214fdd] disabled:opacity-60 disabled:cursor-not-allowed hover:bg-[#1a3fb8] text-white font-bold py-6 rounded-xl text-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
-          style={{
-            boxShadow: "0 4px 20px rgba(33, 79, 221, 0.4)",
-          }}
+          className="w-full bg-[var(--bo-cobalt)] disabled:opacity-60 disabled:cursor-not-allowed hover:bg-[var(--bo-cobalt-700)] !text-white font-semibold py-6 rounded-full text-lg transition-colors"
         >
           {isSubmitting
             ? "Enviando…"
@@ -293,7 +287,7 @@ export default function JoinForm({ onNameAdded, sphereRef }: JoinFormProps) {
       </form>
 
       {/* Texto adicional */}
-      <p className="text-gray-500 text-xs text-center mt-6">
+      <p className="text-[var(--bo-muted)] text-xs text-center mt-6">
         Al unirte, aceptas formar parte de una comunidad de innovadores
         y emprendedores
       </p>

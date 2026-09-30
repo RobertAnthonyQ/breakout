@@ -57,6 +57,13 @@ export default function JoinCommunity() {
         onLeave: () => document.body.classList.remove("disable-particles"),
         onLeaveBack: () => document.body.classList.remove("disable-particles"),
       });
+      // White register while the section fills the screen (header switches to cobalt)
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top 10%",
+        end: "bottom 10%",
+        toggleClass: { targets: document.body, className: "join-light" },
+      });
       // Animación del título
       gsap.from(title, {
         scrollTrigger: {
@@ -136,35 +143,23 @@ export default function JoinCommunity() {
       ref={sectionRef}
       className="relative w-full min-h-screen flex items-center justify-center overflow-hidden py-20"
       style={{
-        backgroundColor: "#000000",
+        backgroundColor: "#ffffff",
       }}
       aria-label="Únete a la Comunidad"
     >
       <div className="container mx-auto px-4 relative z-10">
         <div
           ref={formRef}
-          className="max-w-7xl mx-auto p-8 md:p-12 rounded-2xl"
-          style={{
-            background: "rgba(15, 15, 15, 0.75)",
-            backdropFilter: "blur(20px)",
-            border: "1px solid rgba(255, 255, 255, 0.08)",
-            boxShadow: "0 8px 32px rgba(33, 79, 221, 0.12)",
-          }}
+          className="max-w-7xl mx-auto p-2 md:p-6"
         >
           <h2
             ref={titleRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white text-center mb-4 tracking-tight leading-tight"
-            style={{
-              fontFamily: "system-ui, -apple-system, sans-serif",
-              letterSpacing: "-0.02em",
-            }}
+            className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-center mb-4 leading-[0.9] text-[var(--bo-ink)]"
           >
-            ÚNETE A LA{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#214fdd] to-[#4a6fff]">
-              COMUNIDAD
-            </span>
+            <span className="text-outline inline-block">Únete a la</span>{" "}
+            <span className="text-[var(--bo-cobalt)] inline-block">comunidad</span>
           </h2>
-          <p className="text-center text-gray-400 mb-8 md:mb-10 text-sm md:text-base">
+          <p className="text-center text-[var(--bo-muted)] mb-8 md:mb-10 text-sm md:text-base">
             Llena el formulario para que tu nombre aparezca en la esfera.
           </p>
 
@@ -188,7 +183,6 @@ export default function JoinCommunity() {
         </div>
       </div>
 
-      {/* Sin partículas ni efectos extra: fondo liso negro */}
     </section>
   );
 }

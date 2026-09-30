@@ -1,85 +1,84 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight, Menu, X } from "lucide-react";
+import { useLightSection } from "@/hooks/use-light-section";
 import NavLinks from "./nav-links";
 import MobileMenu from "./mobile-menu";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const isLight = useLightSection();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  // White logo and links on cobalt sections, cobalt/ink on white ones; solid bar once scrolled
+  const onLight = isLight && !isMenuOpen;
+  const barClass = isScrolled && !isMenuOpen
+    ? onLight
+      ? "bg-white/95 border-b border-[var(--bo-line)]"
+      : "bg-[var(--bo-cobalt)]/95 border-b border-white/15"
+    : "bg-transparent border-b border-transparent";
 
   return (
     <motion.header
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="fixed top-0 left-0 right-0 z-50 px-8 py-8"
+      className={`fixed top-0 left-0 right-0 z-50 px-6 sm:px-10 lg:px-16 py-4 transition-colors duration-500 ${barClass}`}
     >
-      <div className="max-w-[1600px] mx-auto flex items-center justify-between">
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
-          className="text-white font-bold text-base tracking-tight"
-        >
-          BREAKOUT®
-        </motion.div>
+      <div className="max-w-[1600px] mx-auto grid grid-cols-[auto_1fr_auto] items-center gap-6">
+        <Link href="/" className="relative z-[100]" aria-label="Breakout — inicio">
+          <Image
+            src={onLight ? "/logo-breakout-cobalt.png" : "/logo-breakout-white.png"}
+            alt="Breakout"
+            width={640}
+            height={104}
+            priority
+            className="h-6 sm:h-7 w-auto"
+          />
+        </Link>
 
-        {/* Navigation */}
-        <nav className="hidden lg:flex items-center gap-40">
-          <NavLinks />
+        <nav className="hidden lg:flex items-center justify-center gap-10 xl:gap-14">
+          <NavLinks
+            linkClassName={`text-xs font-semibold uppercase tracking-[0.16em] transition-colors ${
+              onLight ? "text-[var(--bo-text)] hover:text-[var(--bo-cobalt)]" : "text-white/85 hover:text-white"
+            }`}
+          />
         </nav>
 
-        {/* CTA Button */}
-        <Button
-          asChild
-          className="bg-[#214fdd] hover:bg-[#1a3fb8] text-white font-bold px-6 py-2.5 rounded-full text-sm transition-all duration-300 group hidden lg:flex items-center gap-2"
+        <a
+          href="/form"
+          className={`group hidden lg:inline-flex items-center gap-2 font-semibold px-6 py-2.5 rounded-full text-sm transition-colors ${
+            onLight
+              ? "bg-[var(--bo-cobalt)] text-white hover:bg-[var(--bo-cobalt-700)]"
+              : "bg-white text-[var(--bo-cobalt)] hover:bg-[var(--bo-cobalt-50)]"
+          }`}
         >
-          <a href="/form">
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            Aplicar al Fellowship
-          </a>
-        </Button>
+          Aplicar al Fellowship
+          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+        </a>
 
-        {/* Mobile menu button */}
         <button
-          onClick={toggleMenu}
-          className="lg:hidden text-white relative z-[100]"
-          aria-label="Toggle menu"
+          onClick={() => setIsMenuOpen((open) => !open)}
+          className={`lg:hidden justify-self-end relative z-[100] ${onLight ? "text-[var(--bo-ink)]" : "text-white"}`}
+          aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={isMenuOpen}
         >
-          {isMenuOpen ? (
-            <X className="w-6 h-6" />
-          ) : (
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          )}
+          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} />
+      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </motion.header>
   );
 }

@@ -17,7 +17,7 @@ export default function CountryDropdown({
   onClose,
 }: CountryDropdownProps) {
   return (
-    <div className="absolute z-50 left-0 top-[52px] w-[320px] max-h-[300px] overflow-auto bg-black/95 border border-gray-800 rounded-md shadow-xl p-2">
+    <div className="absolute z-50 left-0 top-[52px] w-[320px] max-h-[300px] overflow-auto bg-white border border-gray-800 rounded-md shadow-xl p-2">
       <SearchableCountryList
         countries={countryList}
         selectedCountry={selectedCountry}
@@ -58,7 +58,7 @@ function SearchableCountryList({
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Buscar país o código"
-        className="w-full mb-2 px-3 py-2 rounded-md bg-black/60 border border-gray-700 text-white text-sm focus:outline-none focus:ring-2 focus:ring-[#214fdd]"
+        className="w-full mb-2 px-3 py-2 rounded-md bg-[var(--bo-paper)] border border-[var(--bo-line)] text-[var(--bo-ink)] text-sm focus:outline-none focus:ring-2 focus:ring-[#214fdd]"
       />
       <ul role="listbox" className="space-y-1">
         {filtered.map((c) => (
@@ -66,7 +66,7 @@ function SearchableCountryList({
             <button
               type="button"
               onClick={() => onSelect(c)}
-              className="w-full flex items-center gap-3 px-3 py-2 rounded-md hover:bg-white/5 text-white text-sm"
+              className="w-full flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[var(--bo-cobalt-50)] text-[var(--bo-ink)] text-sm"
               role="option"
               aria-selected={selectedCountry.iso2 === c.iso2}
             >
