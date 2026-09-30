@@ -1,4 +1,4 @@
-import OpportunitiesPage from "@/components/sections/opportunities"
+import OpportunitiesPage from "@/components/_archive/opportunities-v1"
 
 export const metadata = {
   title: "Opportunity Finder | BREAKOUT",
