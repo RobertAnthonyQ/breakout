@@ -157,17 +157,11 @@ export default function FellowshipForm() {
 
       {/* Formulario */}
       <div
-        className="p-4 sm:p-6 md:p-8 lg:p-12 rounded-xl sm:rounded-2xl"
-        style={{
-          background: "rgba(15, 15, 15, 0.85)",
-          backdropFilter: "blur(20px)",
-          border: "1px solid rgba(255, 255, 255, 0.08)",
-          boxShadow: "0 8px 32px rgba(33, 79, 221, 0.12)",
-        }}
+        className="p-4 sm:p-6 md:p-8 lg:p-12 rounded-xl sm:rounded-2xl bg-white border border-[var(--bo-line)]"
       >
         {submitStatus === "error" && (
           <div className="mb-4 sm:mb-6 p-4 sm:p-5 bg-red-500/10 border-2 border-red-500/40 rounded-lg animate-in fade-in slide-in-from-top-4 duration-500">
-            <p className="text-red-400 text-center text-base sm:text-lg font-semibold">
+            <p className="text-red-600 text-center text-base sm:text-lg font-semibold">
               {errorMessage}
             </p>
           </div>
@@ -178,9 +172,9 @@ export default function FellowshipForm() {
           <div>
             <label
               htmlFor="nombre"
-              className="block text-sm font-medium text-gray-300 mb-2"
+              className="block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bo-muted)] mb-2"
             >
-              Nombre <span className="text-red-400">*</span>
+              Nombre <span className="text-red-600">*</span>
             </label>
             <Input
               id="nombre"
@@ -190,7 +184,7 @@ export default function FellowshipForm() {
               value={formData.nombre}
               onChange={handleChange}
               placeholder="Juan"
-              className="w-full bg-black/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-[#214fdd] focus:ring-[#214fdd]"
+              className="w-full bg-white border-[var(--bo-line)] text-[var(--bo-ink)] placeholder:text-[var(--bo-muted)] focus:border-[var(--bo-cobalt)] focus:ring-[var(--bo-cobalt)]"
               style={{ height: "48px", fontSize: "16px" }}
             />
           </div>
@@ -199,9 +193,9 @@ export default function FellowshipForm() {
           <div>
             <label
               htmlFor="apellidos"
-              className="block text-sm font-medium text-gray-300 mb-2"
+              className="block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bo-muted)] mb-2"
             >
-              Apellidos <span className="text-red-400">*</span>
+              Apellidos <span className="text-red-600">*</span>
             </label>
             <Input
               id="apellidos"
@@ -211,7 +205,7 @@ export default function FellowshipForm() {
               value={formData.apellidos}
               onChange={handleChange}
               placeholder="Pérez García"
-              className="w-full bg-black/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-[#214fdd] focus:ring-[#214fdd]"
+              className="w-full bg-white border-[var(--bo-line)] text-[var(--bo-ink)] placeholder:text-[var(--bo-muted)] focus:border-[var(--bo-cobalt)] focus:ring-[var(--bo-cobalt)]"
               style={{ height: "48px", fontSize: "16px" }}
             />
           </div>
@@ -220,9 +214,9 @@ export default function FellowshipForm() {
           <div>
             <label
               htmlFor="cel"
-              className="block text-sm font-medium text-gray-300 mb-2"
+              className="block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bo-muted)] mb-2"
             >
-              Celular <span className="text-red-400">*</span>
+              Celular <span className="text-red-600">*</span>
             </label>
             <PhoneInput
               id="cel"
@@ -241,9 +235,9 @@ export default function FellowshipForm() {
           <div>
             <label
               htmlFor="facultad"
-              className="block text-sm font-medium text-gray-300 mb-2"
+              className="block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bo-muted)] mb-2"
             >
-              Facultad <span className="text-red-400">*</span>
+              Facultad <span className="text-red-600">*</span>
             </label>
             <Input
               id="facultad"
@@ -253,7 +247,7 @@ export default function FellowshipForm() {
               value={formData.facultad}
               onChange={handleChange}
               placeholder="Ej: Ingeniería, Ciencias Sociales, etc."
-              className="w-full bg-black/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-[#214fdd] focus:ring-[#214fdd]"
+              className="w-full bg-white border-[var(--bo-line)] text-[var(--bo-ink)] placeholder:text-[var(--bo-muted)] focus:border-[var(--bo-cobalt)] focus:ring-[var(--bo-cobalt)]"
               style={{ height: "48px", fontSize: "16px" }}
             />
           </div>
@@ -262,9 +256,9 @@ export default function FellowshipForm() {
           <div>
             <label
               htmlFor="semestre"
-              className="block text-sm font-medium text-gray-300 mb-2"
+              className="block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bo-muted)] mb-2"
             >
-              Semestre <span className="text-red-400">*</span>
+              Semestre <span className="text-red-600">*</span>
             </label>
             <select
               id="semestre"
@@ -272,14 +266,14 @@ export default function FellowshipForm() {
               required
               value={formData.semestre}
               onChange={handleChange}
-              className="w-full bg-black/50 border border-gray-700 text-white rounded-md px-3 focus:border-[#214fdd] focus:ring-[#214fdd] focus:outline-none focus:ring-2"
+              className="w-full bg-white border border-[var(--bo-line)] text-[var(--bo-ink)] rounded-md px-3 focus:border-[var(--bo-cobalt)] focus:ring-[var(--bo-cobalt)] focus:outline-none focus:ring-2"
               style={{ height: "48px", fontSize: "16px" }}
             >
-              <option value="" className="bg-black">
+              <option value="" className="bg-white">
                 Selecciona tu semestre
               </option>
               {SEMESTRES.map((sem) => (
-                <option key={sem} value={sem} className="bg-black">
+                <option key={sem} value={sem} className="bg-white">
                   {sem}
                 </option>
               ))}
@@ -290,9 +284,9 @@ export default function FellowshipForm() {
           <div>
             <label
               htmlFor="correoPUCP"
-              className="block text-sm font-medium text-gray-300 mb-2"
+              className="block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bo-muted)] mb-2"
             >
-              Correo PUCP <span className="text-red-400">*</span>
+              Correo PUCP <span className="text-red-600">*</span>
             </label>
             <Input
               id="correoPUCP"
@@ -302,10 +296,10 @@ export default function FellowshipForm() {
               value={formData.correoPUCP}
               onChange={handleChange}
               placeholder="nombre.apellido@pucp.edu.pe"
-              className="w-full bg-black/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-[#214fdd] focus:ring-[#214fdd]"
+              className="w-full bg-white border-[var(--bo-line)] text-[var(--bo-ink)] placeholder:text-[var(--bo-muted)] focus:border-[var(--bo-cobalt)] focus:ring-[var(--bo-cobalt)]"
               style={{ height: "48px", fontSize: "16px" }}
             />
-            <p className="mt-1 text-xs text-gray-500">
+            <p className="mt-1 text-xs text-[var(--bo-muted)]">
               Debe ser un correo institucional PUCP
             </p>
           </div>
@@ -314,9 +308,9 @@ export default function FellowshipForm() {
           <div>
             <label
               htmlFor="linkedin"
-              className="block text-sm font-medium text-gray-300 mb-2"
+              className="block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bo-muted)] mb-2"
             >
-              LinkedIn <span className="text-gray-500">(opcional)</span>
+              LinkedIn <span className="text-[var(--bo-muted)]">(opcional)</span>
             </label>
             <Input
               id="linkedin"
@@ -325,7 +319,7 @@ export default function FellowshipForm() {
               value={formData.linkedin}
               onChange={handleChange}
               placeholder="https://linkedin.com/in/tu-perfil"
-              className="w-full bg-black/50 border-gray-700 text-white placeholder:text-gray-500 focus:border-[#214fdd] focus:ring-[#214fdd]"
+              className="w-full bg-white border-[var(--bo-line)] text-[var(--bo-ink)] placeholder:text-[var(--bo-muted)] focus:border-[var(--bo-cobalt)] focus:ring-[var(--bo-cobalt)]"
               style={{ height: "48px", fontSize: "16px" }}
             />
           </div>
@@ -334,9 +328,9 @@ export default function FellowshipForm() {
           <div>
             <label
               htmlFor="cvPortafolio"
-              className="block text-sm font-medium text-gray-300 mb-2"
+              className="block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bo-muted)] mb-2"
             >
-              CV o Portafolio <span className="text-red-400">*</span>
+              CV o Portafolio <span className="text-red-600">*</span>
             </label>
             <Input
               id="cvPortafolio"
@@ -346,10 +340,10 @@ export default function FellowshipForm() {
               value={formData.cvPortafolio}
               onChange={handleChange}
               placeholder="https://drive.google.com/... o tu portafolio web"
-              className="w-full bg-black/50 border-gray-p700 text-white placeholder:text-gray-500 focus:border-[#214fdd] focus:ring-[#214fdd]"
+              className="w-full bg-white border-[var(--bo-line)] text-[var(--bo-ink)] placeholder:text-[var(--bo-muted)] focus:border-[var(--bo-cobalt)] focus:ring-[var(--bo-cobalt)]"
               style={{ height: "48px", fontSize: "16px" }}
             />
-            <p className="mt-1 text-xs text-gray-500">
+            <p className="mt-1 text-xs text-[var(--bo-muted)]">
               Comparte un enlace a tu CV o portafolio (Google Drive, Notion, web
               personal, etc.)
             </p>
@@ -359,10 +353,10 @@ export default function FellowshipForm() {
           <div>
             <label
               htmlFor="proyectoIdea"
-              className="block text-sm font-medium text-gray-300 mb-2"
+              className="block text-xs font-semibold uppercase tracking-[0.12em] text-[var(--bo-muted)] mb-2"
             >
               Cuéntanos porqué quieres unirte al Fellowship{" "}
-              <span className="text-red-400">*</span>
+              <span className="text-red-600">*</span>
             </label>
             <textarea
               id="proyectoIdea"
@@ -372,10 +366,10 @@ export default function FellowshipForm() {
               onChange={handleChange}
               placeholder="Me gustaría unirme al Fellowship porque..."
               rows={6}
-              className="w-full bg-black/50 border border-gray-700 text-white placeholder:text-gray-500 rounded-md px-3 py-3 focus:border-[#214fdd] focus:ring-[#214fdd] focus:outline-none focus:ring-2 resize-none"
+              className="w-full bg-white border border-[var(--bo-line)] text-[var(--bo-ink)] placeholder:text-[var(--bo-muted)] rounded-md px-3 py-3 focus:border-[var(--bo-cobalt)] focus:ring-[var(--bo-cobalt)] focus:outline-none focus:ring-2 resize-none"
               style={{ fontSize: "16px" }}
             />
-            <p className="mt-1 text-xs text-gray-500">
+            <p className="mt-1 text-xs text-[var(--bo-muted)]">
               Mínimo 100 caracteres ({formData.proyectoIdea.length}/100)
             </p>
           </div>
@@ -384,10 +378,7 @@ export default function FellowshipForm() {
           <Button
             type="submit"
             disabled={isSubmitting || formData.proyectoIdea.length < 100}
-            className="w-full bg-[#214fdd] disabled:opacity-60 disabled:cursor-not-allowed hover:bg-[#1a3fb8] text-white font-bold py-6 rounded-xl text-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
-            style={{
-              boxShadow: "0 4px 20px rgba(33, 79, 221, 0.4)",
-            }}
+            className="w-full bg-[var(--bo-cobalt)] disabled:opacity-60 disabled:cursor-not-allowed hover:bg-[var(--bo-cobalt-700)] !text-white font-semibold py-6 rounded-full text-lg transition-colors"
           >
             {isSubmitting ? "Enviando..." : "Aplicar al Fellowship"}
           </Button>
