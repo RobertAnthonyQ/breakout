@@ -1,38 +1,36 @@
 import React from "react";
-import { OpportunityStats } from "../../types";
+import { WireGlobe } from "./WireGlobe";
 
-interface HeroSectionProps {
-  stats: OpportunityStats;
-}
-
-export function HeroSection({ stats }: HeroSectionProps) {
+export function HeroSection() {
   return (
     <section className="hero-section">
-      <div className="eyebrow-capsule">
-        <span className="pulse-dot"></span>
-        CONVOCATORIAS VERIFICADAS · CICLO 26-2
+      <div className="hero-copy">
+        <p className="hero-eyebrow">Convocatorias verificadas</p>
+
+        <h1 className="hero-title">
+          <span className="hero-title-outline">El radar de</span>
+          <span className="hero-title-solid">Oportunidades</span>
+        </h1>
+        <span className="hero-bar" aria-hidden="true" />
+
+        <p className="hero-topics">Startups · IA · Becas · Capital</p>
+        <p className="hero-subtitle">
+          Grants no reembolsables, hackathons, aceleradoras, becas y programas de research, curados por Breakout en un solo lugar.
+        </p>
       </div>
 
-      <h1 className="hero-title">
-        El radar de oportunidades en{" "}
-        <span className="hero-title-gradient">Tech, Startups y Capital</span>
-      </h1>
+      <dl className="hero-stats">
+        <div>
+          <dt>Convocatorias</dt>
+          <dd>+300</dd>
+        </div>
+        <div>
+          <dt>De dólares en fondos activos</dt>
+          <dd>Millones</dd>
+        </div>
+      </dl>
 
-      <p className="hero-subtitle">
-        Grants no reembolsables de ProInnóvate, hackathons internacionales, aceleradoras de clase mundial y becas de especialización. Todo curado en un solo lugar.
-      </p>
-
-      <div className="stats-ribbon">
-        <span>
-          <strong>+$850,000 USD</strong> en fondos activos
-        </span>
-        <span className="stats-dot">·</span>
-        <span className="accent-blue">● 100% Verificadas</span>
-        <span className="stats-dot">·</span>
-        <span>
-          <strong>{stats.total} convocatorias</strong> activas para builders
-        </span>
-      </div>
+      <WireGlobe className="hero-globe" />
     </section>
   );
 }

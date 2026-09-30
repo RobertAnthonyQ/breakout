@@ -1,17 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Bebas_Neue, Poppins } from "next/font/google";
 import "./globals.css";
-import { AmbientBackground } from "../src/components/AmbientBackground";
 
-const inter = Inter({
+const display = Bebas_Neue({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: "400",
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-display",
+});
+
+const sans = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
-  title: "Breakout — Opportunities Hub (Apple Frosted Glass Edition)",
+  title: "Breakout — Opportunities Hub",
   description:
     "El hub de oportunidades de Breakout (ciclo 26-2): convocatorias verificadas de hackathons, subsidios no reembolsables, becas y aceleradoras para founders y builders de Latinoamérica.",
   keywords: [
@@ -39,9 +45,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} scroll-smooth`}>
-      <body className={inter.className}>
-        <AmbientBackground />
+    <html lang="es" className={`${display.variable} ${sans.variable} scroll-smooth`}>
+      <body>
         {children}
       </body>
     </html>

@@ -15,6 +15,8 @@ import {
   Share2,
 } from "lucide-react";
 import { Opportunity } from "../../types";
+import { getCategoryLabel } from "../lib/labels";
+import { formatLongDate, getDeadlineBadge } from "../lib/deadline";
 
 interface OpportunityModalProps {
   opportunity: Opportunity | null;
@@ -22,17 +24,6 @@ interface OpportunityModalProps {
   isBookmarked?: boolean;
   onToggleBookmark?: (id: string) => void;
 }
-
-const CATEGORY_MAP: Record<string, { label: string; className: string }> = {
-  accelerator: { label: "ACELERADORA", className: "badge-category badge-accelerator" },
-  grant: { label: "GRANT NO REEMBOLSABLE", className: "badge-category badge-grant" },
-  hackathon: { label: "HACKATHON GLOBAL", className: "badge-category badge-hackathon" },
-  fellowship: { label: "FELLOWSHIP & RESIDENCIA", className: "badge-category badge-fellowship" },
-  scholarship: { label: "BECA & BOOTCAMP", className: "badge-category badge-scholarship" },
-  internship: { label: "PASANTÍA TECH / EMPLEO", className: "badge-category badge-internship" },
-  incubator: { label: "INCUBADORA", className: "badge-category badge-incubator" },
-  contest: { label: "CONCURSO", className: "badge-category badge-contest" },
-};
 
 export function OpportunityModal({
   opportunity,
@@ -59,10 +50,8 @@ export function OpportunityModal({
 
   if (!opportunity) return null;
 
-  const cat = CATEGORY_MAP[opportunity.category] || {
-    label: opportunity.category.toUpperCase(),
-    className: "badge-category badge-accelerator",
-  };
+  const deadline = getDeadlineBadge(opportunity.deadline, opportunity.deadline_display);
+
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(opportunity.application_url);
@@ -92,8 +81,8 @@ export function OpportunityModal({
 
         {/* Category & Modality Bar */}
         <div className="flex items-center gap-2.5 mb-3.5 pr-12 flex-wrap">
-          <span className={cat.className}>
-            {cat.label}
+          <span className="badge-category">
+            {getCategoryLabel(opportunity.category)}
           </span>
           <span className="modality-indicator">
             <MapPin className="w-3.5 h-3.5 text-slate-400" />
@@ -137,9 +126,12 @@ export function OpportunityModal({
               <Calendar className="w-3.5 h-3.5 text-[#214FDD]" />
               Fecha Límite
             </span>
-            <p className="text-[16px] sm:text-[18px] font-bold text-neutral-900">
-              {opportunity.deadline_display || opportunity.deadline}
+            <p className="text-[16px] sm:text-[18px] font-bold text-neutral-900 mb-2">
+              {deadline.state === "rolling" ? "Abierta todo el año" : formatLongDate(opportunity.deadline)}
             </p>
+            {deadline.state !== "rolling" && (
+              <span className={`badge-deadline deadline-${deadline.state}`}>{deadline.label}</span>
+            )}
           </div>
         </div>
 

@@ -22,7 +22,7 @@ export function SearchDock({
 }: SearchDockProps) {
   return (
     <div className="dock-container">
-      <div className="glass-dock">
+      <div className="search-dock">
         <div className="search-input-wrap">
           <svg
             className="search-icon"

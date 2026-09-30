@@ -50,8 +50,6 @@ export function CategoryFilterRow({
           return null;
         }
 
-        const countText = typeof count === "number" ? ` (${count})` : "";
-
         return (
           <button
             key={cat.key}
@@ -65,7 +63,7 @@ export function CategoryFilterRow({
             className={`pill-filter ${isActive ? "active" : ""}`}
           >
             {cat.label}
-            {countText}
+            {typeof count === "number" && <span className="pill-count">{count}</span>}
           </button>
         );
       })}
@@ -75,16 +73,9 @@ export function CategoryFilterRow({
         <button
           type="button"
           onClick={() => onToggleSavedOnly(!showSavedOnly)}
-          className={`pill-filter flex items-center gap-1.5 ${
-            showSavedOnly ? "active" : ""
-          }`}
-          style={
-            showSavedOnly
-              ? { background: "#214FDD", color: "#FFFFFF" }
-              : { borderColor: "rgba(33, 79, 221, 0.3)", color: "#214FDD" }
-          }
+          className={`pill-filter pill-saved ${showSavedOnly ? "active" : ""}`}
         >
-          <Bookmark className={`w-3.5 h-3.5 ${showSavedOnly ? "fill-white" : "fill-[#214FDD]"}`} />
+          <Bookmark className="w-3.5 h-3.5" fill="currentColor" />
           <span>Guardadas ({savedCount})</span>
         </button>
       )}

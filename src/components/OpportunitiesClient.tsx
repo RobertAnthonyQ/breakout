@@ -204,115 +204,116 @@ export function OpportunitiesClient({
   };
 
   return (
-    <div className="wrapper">
-      {/* Floating Island Navigation */}
-      <NavigationIsland onOpenSubmit={() => setIsSubmitOpen(true)} />
+    <div className="page">
+      {/* Blue brand band: navigation + hero */}
+      <header className="hero-band">
+        <NavigationIsland onOpenSubmit={() => setIsSubmitOpen(true)} />
+        <HeroSection />
+      </header>
 
-      {/* Hero Section */}
-      <HeroSection stats={stats} />
+      <main className="content">
+        {/* Search dock floats over the edge of the blue band */}
+        <SearchDock
+          query={query}
+          onQueryChange={setQuery}
+          category={category}
+          onCategoryChange={setCategory}
+          modality={modality}
+          onModalityChange={setModality}
+        />
 
-      {/* Floating Frosted Glass Search Dock */}
-      <SearchDock
-        query={query}
-        onQueryChange={setQuery}
-        category={category}
-        onCategoryChange={setCategory}
-        modality={modality}
-        onModalityChange={setModality}
-      />
+        {/* Category Filter Pills & Bookmarks */}
+        <CategoryFilterRow
+          activeCategory={category}
+          onSelectCategory={setCategory}
+          stats={stats}
+          savedCount={savedIds.length}
+          showSavedOnly={showSavedOnly}
+          onToggleSavedOnly={setShowSavedOnly}
+        />
 
-      {/* Category Filter Pills & Bookmarks */}
-      <CategoryFilterRow
-        activeCategory={category}
-        onSelectCategory={setCategory}
-        stats={stats}
-        savedCount={savedIds.length}
-        showSavedOnly={showSavedOnly}
-        onToggleSavedOnly={setShowSavedOnly}
-      />
-
-      {/* Section Subheading */}
-      <div className="section-meta" id="convocatorias">
-        <div>
-          <h2 className="section-title">
-            {showSavedOnly ? "Convocatorias Guardadas" : "Convocatorias Abiertas"}
-          </h2>
-          <p className="section-subtitle">
-            {showSavedOnly
-              ? "Tus oportunidades favoritas guardadas para postulación o seguimiento"
-              : "Selección prioritaria para miembros de Breakout y postulaciones de la semana"}
-          </p>
+        {/* Section Subheading */}
+        <div className="section-meta" id="convocatorias">
+          <div>
+            <h2 className="section-title">
+              Convocatorias <em>{showSavedOnly ? "guardadas" : "abiertas"}</em>
+            </h2>
+            <p className="section-subtitle">
+              {showSavedOnly
+                ? "Tus oportunidades favoritas guardadas para postulación o seguimiento"
+                : "Selección prioritaria para miembros de Breakout y postulaciones de la semana"}
+            </p>
+          </div>
+          <div className="sort-control">
+            <span>Ordenar:</span>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as any)}
+            >
+              <option value="deadline_asc">Próximo cierre</option>
+              <option value="deadline_desc">Cierre más lejano</option>
+              <option value="newest">Más recientes</option>
+            </select>
+          </div>
         </div>
-        <div className="sort-control">
-          <span>Ordenar:</span>
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as any)}
+
+        {/* 2-Column Cards Grid */}
+        {filteredOpportunities.length > 0 ? (
+          <div className="cards-grid">
+            {filteredOpportunities.map((opportunity) => (
+              <OpportunityCard
+                key={opportunity.id}
+                opportunity={opportunity}
+                onOpenDetails={setSelectedOpportunity}
+                isBookmarked={savedIds.includes(opportunity.id)}
+                onToggleBookmark={toggleBookmark}
+              />
+            ))}
+          </div>
+        ) : (
+          <div
+            className="opportunity-card empty-state"
           >
-            <option value="deadline_asc">Próximo cierre</option>
-            <option value="deadline_desc">Cierre más lejano</option>
-            <option value="newest">Más recientes</option>
-          </select>
-        </div>
-      </div>
+            {showSavedOnly ? (
+              <>
+                <div className="empty-state-icon">
+                  <Bookmark className="w-6 h-6" />
+                </div>
+                <h3 className="card-title" style={{ marginBottom: "8px" }}>
+                  No tienes convocatorias guardadas
+                </h3>
+                <p className="card-desc" style={{ marginBottom: "20px" }}>
+                  Haz clic en el icono de marcador en cualquier tarjeta para guardarla en esta lista de favoritos.
+                </p>
+              </>
+            ) : (
+              <>
+                <h3 className="card-title" style={{ marginBottom: "8px" }}>
+                  No se encontraron convocatorias
+                </h3>
+                <p className="card-desc" style={{ marginBottom: "20px" }}>
+                  Prueba ajustando los términos de búsqueda o restableciendo los filtros de categoría y modalidad.
+                </p>
+              </>
+            )}
 
-      {/* 2-Column Cards Grid */}
-      {filteredOpportunities.length > 0 ? (
-        <div className="cards-grid">
-          {filteredOpportunities.map((opportunity) => (
-            <OpportunityCard
-              key={opportunity.id}
-              opportunity={opportunity}
-              onOpenDetails={setSelectedOpportunity}
-              isBookmarked={savedIds.includes(opportunity.id)}
-              onToggleBookmark={toggleBookmark}
-            />
-          ))}
-        </div>
-      ) : (
-        <div
-          className="glass-card text-center"
-          style={{ maxWidth: "560px", margin: "40px auto", padding: "48px 24px" }}
-        >
-          {showSavedOnly ? (
-            <>
-              <div className="w-12 h-12 rounded-full bg-blue-50 text-[#214FDD] flex items-center justify-center mx-auto mb-3">
-                <Bookmark className="w-6 h-6" />
-              </div>
-              <h3 className="card-title" style={{ marginBottom: "8px" }}>
-                No tienes convocatorias guardadas
-              </h3>
-              <p className="card-desc" style={{ marginBottom: "20px" }}>
-                Haz clic en el icono de marcador en cualquier tarjeta para guardarla en esta lista de favoritos.
-              </p>
-            </>
-          ) : (
-            <>
-              <h3 className="card-title" style={{ marginBottom: "8px" }}>
-                No se encontraron convocatorias
-              </h3>
-              <p className="card-desc" style={{ marginBottom: "20px" }}>
-                Prueba ajustando los términos de búsqueda o restableciendo los filtros de categoría y modalidad.
-              </p>
-            </>
-          )}
+            <button
+              type="button"
+              onClick={resetFilters}
+              className="btn-card-cta"
+              style={{ margin: "0 auto" }}
+            >
+              <RefreshCcw className="w-4 h-4" />
+              <span>Ver todas las convocatorias</span>
+            </button>
+          </div>
+        )}
 
-          <button
-            type="button"
-            onClick={resetFilters}
-            className="btn-card-cta"
-            style={{ margin: "0 auto" }}
-          >
-            <RefreshCcw className="w-4 h-4" />
-            <span>Ver todas las convocatorias</span>
-          </button>
-        </div>
-      )}
+      </main>
 
-      {/* Minimal Glass Footer */}
       <FooterIsland onOpenSubmit={() => setIsSubmitOpen(true)} />
 
-      {/* VisionOS Detail Modal (Solid Opaque Sheet, Non-clipping) */}
+      {/* Detail modal (solid white sheet) */}
       <OpportunityModal
         opportunity={selectedOpportunity}
         onClose={() => setSelectedOpportunity(null)}

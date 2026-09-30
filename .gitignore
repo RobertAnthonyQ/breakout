@@ -17,6 +17,7 @@
 .DS_Store
 *.pem
 *.png
+!public/**/*.png
 
 # debug
 npm-debug.log*
