@@ -7,7 +7,7 @@ Páginas retiradas que se conservan para consulta. Las carpetas que empiezan con
 
 El primer "Opportunity Finder" de `/opportunities`: globo 3D con `react-globe.gl` y el catálogo
 de `opportunities-enriched.json`. Lo reemplazó el **Opportunities Hub**
-(repo `Loopmind-hub/breakout-opportunities`), que la landing sirve en `/opportunities` mediante
+(app propia en `opportunities/` de este repo), que la landing sirve en `/opportunities` mediante
 un rewrite en `next.config.ts`.
 
 - Página: `app/_archive/opportunities-v1/page.tsx`
