@@ -43,6 +43,31 @@ export const opportunitySchema = z.object({
 
 export type Opportunity = z.infer<typeof opportunitySchema>;
 
+/**
+ * What a visitor may send through "Sugerir oportunidad". Unknown keys (verified, featured, status…)
+ * are stripped, and every field is bounded so the table cannot be flooded.
+ */
+export const suggestionInputSchema = z.object({
+  title: z.string().trim().min(3).max(200),
+  organization: z.string().trim().min(2).max(200),
+  category: opportunityCategorySchema,
+  modality: opportunityModalitySchema,
+  location: z.string().trim().max(200).optional(),
+  funding_or_prize: z.string().trim().min(1).max(300),
+  deadline: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Must be YYYY-MM-DD"),
+  description: z.string().trim().min(10).max(5000),
+  eligibility: z.string().trim().min(3).max(2000),
+  application_url: z
+    .string()
+    .trim()
+    .max(500)
+    .url()
+    .refine((url) => /^https?:\/\//i.test(url), "Must be an http(s) link"),
+  tags: z.array(z.string().trim().min(1).max(40)).max(20).default([]),
+});
+
+export type SuggestionInput = z.infer<typeof suggestionInputSchema>;
+
 export interface OpportunityFilters {
   category?: OpportunityCategory | "all";
   modality?: OpportunityModality | "all";

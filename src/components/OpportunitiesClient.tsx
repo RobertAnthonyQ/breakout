@@ -172,35 +172,20 @@ export function OpportunitiesClient({
     setShowSavedOnly(false);
   };
 
-  const handleCreateOpportunity = async (payload: any): Promise<boolean> => {
+  // Suggestions go to the admin review queue; they never enter the public list from here.
+  // Returns null on success, or a message to show in the form.
+  const handleSuggestOpportunity = async (payload: unknown): Promise<string | null> => {
     try {
       const res = await fetch(withBasePath("/api/opportunities"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-
-      if (!res.ok) {
-        throw new Error("Error en servidor al guardar convocatoria");
-      }
-
-      const json = await res.json();
-      if (json.success && json.data) {
-        setOpportunities((prev) => [json.data, ...prev]);
-        return true;
-      }
-      return false;
-    } catch (err) {
-      console.error("Error creating opportunity:", err);
-      // Fallback local insertion
-      const mockCreated = {
-        ...payload,
-        id: `opp-client-${Date.now()}`,
-        slug: payload.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
-        created_at: new Date().toISOString(),
-      };
-      setOpportunities((prev) => [mockCreated, ...prev]);
-      return true;
+      if (res.ok) return null;
+      const json = await res.json().catch(() => ({}));
+      return json.error ?? "No pudimos enviar tu sugerencia. Intenta de nuevo.";
+    } catch {
+      return "No pudimos conectarnos. Revisa tu conexión e intenta de nuevo.";
     }
   };
 
@@ -328,7 +313,7 @@ export function OpportunitiesClient({
       <SubmitOpportunityModal
         isOpen={isSubmitOpen}
         onClose={() => setIsSubmitOpen(false)}
-        onSubmitOpportunity={handleCreateOpportunity}
+        onSubmitOpportunity={handleSuggestOpportunity}
       />
     </div>
   );

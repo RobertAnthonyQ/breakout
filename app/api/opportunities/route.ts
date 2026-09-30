@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ZodError } from "zod";
 import {
-  createOpportunity,
   getOpportunities,
   getOpportunityStats,
+  submitSuggestion,
+  SuggestionRejectedError,
+  SuggestionsUnavailableError,
 } from "../../../src/lib/opportunities";
 import { OpportunityCategory, OpportunityModality } from "../../../types";
 
@@ -45,26 +48,36 @@ export async function GET(request: NextRequest) {
   }
 }
 
+/** "Sugerir oportunidad": stores a draft for admin review; nothing is published from here. */
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const created = await createOpportunity(body);
 
+    // Honeypot: the form has a hidden "website" field people never fill; bots do. Pretend success.
+    if (typeof body?.website === "string" && body.website.trim() !== "") {
+      return NextResponse.json({ success: true, message: "Sugerencia recibida" }, { status: 201 });
+    }
+
+    await submitSuggestion(body);
     return NextResponse.json(
-      {
-        success: true,
-        message: "Convocatoria publicada exitosamente",
-        data: created,
-      },
+      { success: true, message: "Sugerencia recibida. Un administrador la revisará antes de publicarla." },
       { status: 201 }
     );
-  } catch (error: any) {
+  } catch (error) {
+    if (error instanceof SuggestionsUnavailableError) {
+      return NextResponse.json(
+        { success: false, error: "Las sugerencias no están disponibles en este momento." },
+        { status: 503 }
+      );
+    }
+    if (error instanceof ZodError || error instanceof SuggestionRejectedError || error instanceof SyntaxError) {
+      const message = error instanceof SuggestionRejectedError ? error.message : "Revisa los campos del formulario.";
+      return NextResponse.json({ success: false, error: message }, { status: 400 });
+    }
+    console.error("[opportunities] suggestion insert failed:", error);
     return NextResponse.json(
-      {
-        success: false,
-        error: error.message || "Invalid opportunity payload",
-      },
-      { status: 400 }
+      { success: false, error: "No pudimos guardar tu sugerencia. Intenta de nuevo." },
+      { status: 500 }
     );
   }
 }

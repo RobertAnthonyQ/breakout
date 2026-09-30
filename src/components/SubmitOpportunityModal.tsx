@@ -17,7 +17,8 @@ import { OpportunityCategory, OpportunityModality } from "../../types";
 interface SubmitOpportunityModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSubmitOpportunity: (newOpp: any) => Promise<boolean>;
+  /** Resolves to null on success, or an error message to show in the form. */
+  onSubmitOpportunity: (suggestion: unknown) => Promise<string | null>;
 }
 
 export function SubmitOpportunityModal({
@@ -27,6 +28,8 @@ export function SubmitOpportunityModal({
 }: SubmitOpportunityModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [website, setWebsite] = useState(""); // honeypot: hidden from people, filled by bots
   const [formData, setFormData] = useState({
     title: "",
     organization: "",
@@ -52,6 +55,7 @@ export function SubmitOpportunityModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
     const tagsArray = formData.tags
       .split(",")
@@ -69,34 +73,36 @@ export function SubmitOpportunityModal({
       description: formData.description,
       eligibility: formData.eligibility,
       application_url: formData.application_url,
-      tags: tagsArray.length > 0 ? tagsArray : ["tech", "startups"],
-      featured: false,
-      verified: false,
+      tags: tagsArray,
+      website,
     };
 
-    const ok = await onSubmitOpportunity(payload);
+    const submitError = await onSubmitOpportunity(payload);
     setIsSubmitting(false);
 
-    if (ok) {
-      setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
-        onClose();
-        setFormData({
-          title: "",
-          organization: "",
-          category: "accelerator",
-          modality: "remoto",
-          location: "Online / Global",
-          funding_or_prize: "",
-          deadline: "",
-          description: "",
-          eligibility: "",
-          application_url: "",
-          tags: "",
-        });
-      }, 2000);
+    if (submitError) {
+      setError(submitError);
+      return;
     }
+
+    setSuccess(true);
+    setTimeout(() => {
+      setSuccess(false);
+      onClose();
+      setFormData({
+        title: "",
+        organization: "",
+        category: "accelerator",
+        modality: "remoto",
+        location: "Online / Global",
+        funding_or_prize: "",
+        deadline: "",
+        description: "",
+        eligibility: "",
+        application_url: "",
+        tags: "",
+      });
+    }, 2000);
   };
 
   return (
@@ -144,6 +150,18 @@ export function SubmitOpportunityModal({
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4 text-left">
+            {/* Honeypot: off-screen and skipped by keyboard and screen readers; only bots fill it */}
+            <input
+              type="text"
+              name="website"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              style={{ position: "absolute", left: "-10000px", width: "1px", height: "1px", opacity: 0 }}
+            />
+
             <div>
               <label className="form-label">
                 Título de la convocatoria *
@@ -327,6 +345,12 @@ export function SubmitOpportunityModal({
                 className="form-input"
               />
             </div>
+
+            {error && (
+              <p role="alert" className="text-sm text-[#B42318]">
+                {error}
+              </p>
+            )}
 
             <div className="flex items-center justify-end gap-3 pt-3 border-t border-slate-100">
               <button

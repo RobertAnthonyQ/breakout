@@ -4,9 +4,17 @@ import {
   OpportunityCategory,
   OpportunityFilters,
   OpportunityStats,
+  SuggestionInput,
   opportunitySchema,
+  suggestionInputSchema,
 } from "../../types";
+import { daysUntil } from "./deadline";
 import { getSupabaseClient } from "./supabase";
+
+const TABLE = "opportunities";
+/** Columns the app reads; keeps admin-only fields (status, source) out of public responses. */
+const PUBLIC_COLUMNS =
+  "id, slug, title, organization, category, description, deadline, deadline_display, funding_or_prize, eligibility, modality, location, application_url, tags, featured, verified, created_at";
 
 /**
  * Normalizes text for accent-insensitive search
@@ -18,7 +26,8 @@ function normalizeSearchText(text: string): string {
     .replace(/[\u0300-\u036f]/g, "");
 }
 
-let inMemoryStore: Opportunity[] = (rawSeedData as unknown[]).map((item) => {
+// Read-only catalog bundled with the app: the fallback when Supabase is not configured or fails
+const localOpportunities: Opportunity[] = (rawSeedData as unknown[]).map((item) => {
   const parsed = opportunitySchema.parse(item);
   return {
     ...parsed,
@@ -26,11 +35,14 @@ let inMemoryStore: Opportunity[] = (rawSeedData as unknown[]).map((item) => {
   };
 });
 
-/**
- * Loads and validates local fallback data
- */
 function getLocalOpportunities(): Opportunity[] {
-  return inMemoryStore;
+  return [...localOpportunities];
+}
+
+/** Maps a database row (nulls for empty columns) onto the app's Opportunity shape. */
+export function fromRow(row: Record<string, unknown>): Opportunity {
+  const withoutNulls = Object.fromEntries(Object.entries(row).filter(([, value]) => value !== null));
+  return opportunitySchema.parse({ tags: [], ...withoutNulls });
 }
 
 
@@ -46,8 +58,8 @@ export async function getOpportunities(
   if (supabase) {
     try {
       let query = supabase
-        .from("opportunities")
-        .select("*")
+        .from(TABLE)
+        .select(PUBLIC_COLUMNS)
         .eq("status", "active")
         .eq("verified", true);
 
@@ -64,7 +76,8 @@ export async function getOpportunities(
       }
 
       if (filters.query && filters.query.trim().length > 0) {
-        const cleanQuery = filters.query.trim();
+        // Strip PostgREST filter syntax (commas, parentheses, wildcards) so a search term cannot inject filters
+        const cleanQuery = filters.query.trim().replace(/[,()%*\\]/g, " ");
         query = query.or(
           `title.ilike.%${cleanQuery}%,organization.ilike.%${cleanQuery}%,description.ilike.%${cleanQuery}%,location.ilike.%${cleanQuery}%`
         );
@@ -76,12 +89,11 @@ export async function getOpportunities(
         .order("deadline", { ascending: filters.sortBy !== "deadline_desc" });
 
       const { data, error } = await query;
-
-      if (!error && Array.isArray(data) && data.length > 0) {
-        return data.map((item) => opportunitySchema.parse(item));
-      }
-    } catch {
-      // Fallback silently to local dataset if Supabase network/auth fails
+      if (error) throw error;
+      return (data ?? []).map((row) => fromRow(row as Record<string, unknown>));
+    } catch (error) {
+      // Keep the page up with the bundled catalog, but leave a trace for the logs
+      console.error("[opportunities] Supabase read failed, serving local catalog:", error);
     }
   }
 
@@ -154,17 +166,21 @@ export async function getOpportunityBySlug(
 
   if (supabase) {
     try {
-      const { data, error } = await supabase
-        .from("opportunities")
-        .select("*")
-        .or(`slug.eq.${slugOrId},id.eq.${slugOrId}`)
-        .single();
-
-      if (!error && data) {
-        return opportunitySchema.parse(data);
+      // Two exact matches instead of an .or() string, so the slug cannot inject PostgREST filters
+      for (const column of ["slug", "id"]) {
+        const { data, error } = await supabase
+          .from(TABLE)
+          .select(PUBLIC_COLUMNS)
+          .eq(column, slugOrId)
+          .eq("status", "active")
+          .eq("verified", true)
+          .maybeSingle();
+        if (error) throw error;
+        if (data) return fromRow(data as Record<string, unknown>);
       }
-    } catch {
-      // Fallback to local
+      return null;
+    } catch (error) {
+      console.error("[opportunities] Supabase lookup failed, using local catalog:", error);
     }
   }
 
@@ -222,77 +238,108 @@ export async function getOpportunityStats(): Promise<OpportunityStats> {
   };
 }
 
-/**
- * Creates and validates a new opportunity, inserting into Supabase or fallback memory
- */
-export async function createOpportunity(
-  input: Omit<Opportunity, "id" | "created_at"> & { id?: string; created_at?: string }
-): Promise<Opportunity> {
-  const slug =
-    input.slug ||
-    input.title
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "");
+/** Shape of a bundled catalog entry as a database row (published, curated by Breakout). */
+export function toCatalogRecord(item: unknown) {
+  const opportunity = opportunitySchema.parse(item);
+  return {
+    ...opportunity,
+    slug: opportunity.slug || opportunity.id.replace("opp-", ""),
+    status: "active" as const,
+    source: "catalog" as const,
+  };
+}
 
-  const id = input.id || `opp-${slug}-${Date.now().toString(36)}`;
-  const created_at = input.created_at || new Date().toISOString();
+export class SuggestionsUnavailableError extends Error {
+  constructor() {
+    super("Suggestions need Supabase (SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY)");
+    this.name = "SuggestionsUnavailableError";
+  }
+}
 
-  const newOpportunity = opportunitySchema.parse({
+export class SuggestionRejectedError extends Error {}
+
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 80);
+}
+
+/** A visitor's suggestion always lands as an unverified community draft until an admin approves it. */
+export function buildSuggestionRecord(input: SuggestionInput, today: Date = new Date()) {
+  const days = daysUntil(input.deadline, today);
+  if (days === null || days < 0) {
+    throw new SuggestionRejectedError("La fecha límite ya pasó");
+  }
+  const suffix = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
+  const slug = `${slugify(input.title) || "oportunidad"}-${suffix}`;
+  return {
     ...input,
-    id,
+    id: `opp-${slug}`,
     slug,
-    created_at,
-  });
+    featured: false,
+    verified: false,
+    status: "draft" as const,
+    source: "community" as const,
+  };
+}
 
+export async function submitSuggestion(payload: unknown): Promise<{ id: string }> {
   const supabase = getSupabaseClient();
-  if (supabase) {
-    try {
-      const { data, error } = await supabase
-        .from("opportunities")
-        .insert({
-          ...newOpportunity,
-          status: "active",
-        })
-        .select()
-        .single();
+  if (!supabase) throw new SuggestionsUnavailableError();
 
-      if (!error && data) {
-        const validated = opportunitySchema.parse(data);
-        inMemoryStore.unshift(validated);
-        return validated;
-      }
-    } catch {
-      // Fallback to in-memory persistence
-    }
-  }
-
-  // Prepend to in-memory list
-  inMemoryStore.unshift(newOpportunity);
-  return newOpportunity;
+  const record = buildSuggestionRecord(suggestionInputSchema.parse(payload));
+  const { error } = await supabase.from(TABLE).insert(record);
+  if (error) throw error;
+  return { id: record.id };
 }
 
-export function getAllOpportunitiesIncludingPending(): Opportunity[] {
-  return [...inMemoryStore];
+export interface SuggestionSummary {
+  id: string;
+  title: string;
+  organization: string;
+  category: string;
+  deadline: string;
+  description: string;
+  application_url: string;
+  status: "draft" | "active" | "archived";
+  created_at: string;
 }
 
-export function approveOpportunityById(id: string): boolean {
-  const opp = inMemoryStore.find(o => o.id === id);
-  if (opp) {
-    opp.verified = true;
-    return true;
-  }
-  return false;
+function requireSupabase() {
+  const supabase = getSupabaseClient();
+  if (!supabase) throw new SuggestionsUnavailableError();
+  return supabase;
 }
 
-export function rejectOpportunityById(id: string): boolean {
-  const idx = inMemoryStore.findIndex(o => o.id === id);
-  if (idx !== -1) {
-    inMemoryStore.splice(idx, 1);
-    return true;
-  }
-  return false;
+/** Community suggestions for the admin panel: pending drafts plus the most recent reviewed ones. */
+export async function listSuggestions(): Promise<SuggestionSummary[]> {
+  const { data, error } = await requireSupabase()
+    .from(TABLE)
+    .select("id, title, organization, category, deadline, description, application_url, status, created_at")
+    .eq("source", "community")
+    .in("status", ["draft", "active", "archived"])
+    .order("created_at", { ascending: false })
+    .limit(200);
+  if (error) throw error;
+  return (data ?? []) as SuggestionSummary[];
 }
 
+/** Approve publishes the suggestion; reject archives it (kept for the record, never shown). */
+export async function reviewSuggestion(id: string, action: "approve" | "reject"): Promise<boolean> {
+  const changes =
+    action === "approve"
+      ? { status: "active", verified: true, reviewed_at: new Date().toISOString() }
+      : { status: "archived", verified: false, reviewed_at: new Date().toISOString() };
+  const { data, error } = await requireSupabase()
+    .from(TABLE)
+    .update(changes)
+    .eq("id", id)
+    .eq("source", "community")
+    .select("id");
+  if (error) throw error;
+  return (data ?? []).length > 0;
+}

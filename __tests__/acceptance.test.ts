@@ -1,6 +1,5 @@
 import { describe, expect, test } from "bun:test";
 import {
-  createOpportunity,
   getOpportunities,
   getOpportunityBySlug,
   getOpportunityStats,
@@ -106,33 +105,6 @@ describe("Opportunities Hub — Acceptance Test Suite (R-1 to R-6)", () => {
     expect(stats.byCategory.hackathon).toBeDefined();
     expect(stats.byCategory.grant).toBeDefined();
     expect(stats.remoteCount).toBeGreaterThan(0);
-  });
-
-  // R-7: Opportunity Creation
-  test("R-7: creates and validates a new opportunity into the repository", async () => {
-    const initialList = await getOpportunities();
-    const created = await createOpportunity({
-      title: "Hackathon IA PUCP & Breakout",
-      organization: "Breakout Tech",
-      category: "hackathon",
-      description: "Competencia estudiantil para crear agentes inteligentes de IA.",
-      deadline: "2026-11-30",
-      funding_or_prize: "$10,000 USD en premios",
-      eligibility: "Estudiantes universitarios de Perú.",
-      modality: "presencial",
-      location: "Lima, Perú",
-      application_url: "https://breakout.lat/hackathon-pucp",
-      tags: ["pucp", "ai", "hackathon", "peru"],
-      featured: true,
-      verified: true,
-    });
-
-    expect(created.id).toBeDefined();
-    expect(created.title).toBe("Hackathon IA PUCP & Breakout");
-
-    const updatedList = await getOpportunities({ query: "PUCP" });
-    expect(updatedList.length).toBeGreaterThan(0);
-    expect(updatedList.some((o) => o.organization === "Breakout Tech")).toBe(true);
   });
 });
 

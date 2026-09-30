@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "test": "bun test",
     "seed": "bun run scripts/seed-opportunities.ts",
+    "db:sync": "bun run scripts/sync-supabase.ts",
     "digest": "bun run scripts/digest.ts",
     "typecheck": "tsc --noEmit"
   },
