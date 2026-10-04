@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import ParticlesBackground from "@/components/layout/particles-background";
 import HeroTitle from "./hero-title";
-import HeroCta from "./hero-cta";
 
 // Blue brand register: cobalt page, white wireframe particles, Open World headline
 export default function Hero() {
@@ -40,8 +39,6 @@ export default function Hero() {
         >
           Innovation · Startups · Technology
         </motion.p>
-
-        <HeroCta />
       </div>
     </section>
   );

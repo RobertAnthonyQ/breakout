@@ -34,12 +34,6 @@ export default function Footer() {
               {link.label}
             </a>
           ))}
-          <a
-            href="/form"
-            className="bg-white text-[var(--bo-cobalt)] hover:bg-[var(--bo-cobalt-50)] font-semibold px-6 py-3 rounded-full transition-colors"
-          >
-            Aplicar al Fellowship
-          </a>
         </nav>
       </div>
     </footer>

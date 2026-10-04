@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useLightSection } from "@/hooks/use-light-section";
 import NavLinks from "./nav-links";
 import MobileMenu from "./mobile-menu";
@@ -55,18 +55,6 @@ export default function Header() {
             }`}
           />
         </nav>
-
-        <a
-          href="/form"
-          className={`group hidden lg:inline-flex items-center gap-2 font-semibold px-6 py-2.5 rounded-full text-sm transition-colors ${
-            onLight
-              ? "bg-[var(--bo-cobalt)] text-white hover:bg-[var(--bo-cobalt-700)]"
-              : "bg-white text-[var(--bo-cobalt)] hover:bg-[var(--bo-cobalt-50)]"
-          }`}
-        >
-          Aplicar al Fellowship
-          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </a>
 
         <button
           onClick={() => setIsMenuOpen((open) => !open)}

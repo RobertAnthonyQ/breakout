@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import NavLinks from "./nav-links";
 
 interface MobileMenuProps {
@@ -25,15 +24,6 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               onLinkClick={onClose}
               linkClassName="font-display text-white hover:text-white/70 transition-colors text-5xl"
             />
-
-            <a
-              href="/form"
-              onClick={onClose}
-              className="group mt-8 inline-flex items-center gap-2 bg-white text-[var(--bo-cobalt)] font-semibold px-8 py-4 rounded-full text-lg"
-            >
-              Aplicar al Fellowship
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
           </nav>
         </motion.div>
       )}

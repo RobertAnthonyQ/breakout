@@ -142,17 +142,6 @@ body.events-light {
   color: var(--bo-ink);
 }
 
-/* Cambiar color de las etiquetas de Stats cuando el fondo es blanco */
-body.events-light .stat-value {
-  color: var(--bo-cobalt);
-  transition: color 900ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-body.events-light .stat-label {
-  color: var(--bo-muted) !important;
-  transition: color 900ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
 /* WhatIsBreakout: white register while the section is pinned */
 body.about-light {
   background-color: #ffffff;
