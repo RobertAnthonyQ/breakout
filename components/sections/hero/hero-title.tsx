@@ -30,6 +30,7 @@ export default function HeroTitle() {
       aria-label="Break the limits"
     >
       <AnimatedWord text="Break the" className="text-outline" />
+      {" "}
       <AnimatedWord text="Limits" />
     </motion.h1>
   );

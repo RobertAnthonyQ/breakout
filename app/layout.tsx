@@ -24,6 +24,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.breakout.lat"),
   title: "BREAKOUT - La comunidad de founders de Latinoamérica",
   description:
     "Conectamos emprendedores, desarrolladores y visionarios tech para crear el futuro de las startups",
@@ -46,12 +47,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_LA",
     siteName: "BREAKOUT",
+    url: "https://www.breakout.lat",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Breakout" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "BREAKOUT - La comunidad de founders de Latinoamérica",
     description:
       "Conectamos emprendedores, desarrolladores y visionarios tech para crear el futuro de las startups",
+    images: ["/og-image.png"],
   },
   robots: {
     

@@ -4,6 +4,7 @@ import Image from "next/image";
 const SOCIAL_LINKS = [
   { label: "Instagram", href: "https://www.instagram.com/breakout_community/" },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/breakoutperu/" },
+  { label: "WhatsApp", href: "https://chat.whatsapp.com/H57OlPIk33v75h9ZE6u1zs" },
 ];
 
 export default function Footer() {
@@ -16,6 +17,16 @@ export default function Footer() {
             <span className="text-outline">Break the limits.</span>
             <br />
             Build the future.
+          </p>
+          <p className="text-sm text-white/70 mt-4">
+            © 2026 Breakout ·{" "}
+            <a href="mailto:breakout.fellow@gmail.com" className="underline hover:text-white">
+              breakout.fellow@gmail.com
+            </a>{" "}
+            ·{" "}
+            <a href="/privacidad" className="underline hover:text-white">
+              Política de privacidad
+            </a>
           </p>
         </div>
 
